@@ -102,6 +102,34 @@
   }
   .nav-cta:hover { opacity: .88; }
 
+  /* ─── MISSION ─── */
+  .mission-block {
+    margin-bottom: 2rem;
+    padding: 1.75rem;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+  .mission-body {
+    font-size: 14px; color: var(--ink-mid); line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+  .mission-body:last-of-type { margin-bottom: 1.25rem; }
+  .mission-body strong { color: var(--ink); font-weight: 600; }
+  .mission-levels { display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--border); padding-top: 1rem; }
+  .mission-level {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 13px; color: var(--ink-mid); line-height: 1.5;
+  }
+  .mission-level strong { color: var(--ink); font-weight: 600; display: block; }
+  .ml-dot {
+    width: 10px; height: 10px; border-radius: 2px;
+    flex-shrink: 0; margin-top: 3px;
+  }
+  .mission-level.beg .ml-dot { background: var(--green); }
+  .mission-level.int .ml-dot { background: var(--blue); }
+  .mission-level.adv .ml-dot { background: var(--amber); }
+
   /* ─── HERO ─── */
   .hero {
     padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
@@ -613,6 +641,25 @@
       <div>
         <div class="hero-series-name">Hotspot &amp; Learn</div>
         <div class="hero-series-rva">RVA Community Tech Series</div>
+      </div>
+    </div>
+    <div class="mission-block">
+      <p class="mission-body">Most of us don't think about protecting ourselves online until something goes wrong — a stolen credit card, an impersonated account, a hacked inbox. By then, the damage is done. The culprit is almost always poor <strong>OPSEC</strong>: operational security, the discipline of managing what you expose and to whom.</p>
+      <p class="mission-body">We started Hotspot &amp; Learn RVA to change that. We bring industry best practices out of the IT department and into the hands of everyday people — remote workers, freelancers, café regulars, anyone who opens a laptop in public. No jargon. No prerequisites for the first half of the series. Just practical skills you can use the same afternoon.</p>
+      <p class="mission-body">And the stakes are only going up. AI is making it dramatically easier for bad actors to scale attacks, craft convincing phishing, and impersonate people at speed. The best defense isn't fear — it's knowing exactly what to do.</p>
+      <div class="mission-levels">
+        <div class="mission-level beg">
+          <span class="ml-dot"></span>
+          <div><strong>Sessions 1–4</strong> No experience needed. Smartphone + curiosity.</div>
+        </div>
+        <div class="mission-level int">
+          <span class="ml-dot"></span>
+          <div><strong>Sessions 5–8</strong> Comfortable with basic router settings.</div>
+        </div>
+        <div class="mission-level adv">
+          <span class="ml-dot"></span>
+          <div><strong>Sessions 9–10</strong> Linux users, sysadmins, power users.</div>
+        </div>
       </div>
     </div>
     <div class="hero-eyebrow">Exclusive to Afterglow Coffee · Richmond, VA</div>
