@@ -136,6 +136,52 @@
   .workshop-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); margin-right: 5px; vertical-align: middle; animation: pulse 2s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
 
+  .hero-card-logo {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-card-logo img { height: 32px; object-fit: contain; display: block; }
+
+  .card-tabs {
+    display: flex; gap: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+  }
+  .card-tab {
+    flex: 1; padding: 8px 12px;
+    font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500;
+    letter-spacing: .04em; cursor: pointer;
+    background: none; border: none; color: var(--ink-light);
+    transition: background .15s, color .15s;
+  }
+  .card-tab + .card-tab { border-left: 1px solid var(--border); }
+  .card-tab.active { background: var(--blue); color: #fff; }
+  .card-tab:not(.active):hover { background: var(--cream-dark); color: var(--ink); }
+
+  .req-form { display: flex; flex-direction: column; gap: 8px; }
+  .req-form input, .req-form select, .req-form textarea {
+    font-family: 'DM Sans', sans-serif; font-size: 13px;
+    padding: 9px 12px; border: 1px solid var(--border);
+    border-radius: var(--radius); background: var(--cream);
+    color: var(--ink); outline: none; transition: border-color .15s;
+    width: 100%;
+  }
+  .req-form input:focus, .req-form select:focus, .req-form textarea:focus {
+    border-color: var(--blue);
+  }
+  .req-form textarea { resize: vertical; }
+  .req-form button {
+    background: var(--blue); color: #fff;
+    font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500;
+    letter-spacing: .05em; padding: 10px 20px;
+    border: none; border-radius: var(--radius); cursor: pointer;
+    transition: opacity .15s; text-align: center;
+  }
+  .req-form button:hover { opacity: .88; }
+
   .hero-address {
     margin-top: 1.5rem; padding-top: 1.5rem;
     border-top: 1px solid var(--border);
@@ -521,25 +567,62 @@
   <div class="hero-aside">
     <img src="images/scene/security-lock.jpg" alt="Digital privacy and security" style="width:100%;height:180px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:1rem;">
     <div class="hero-card">
-      <div class="hero-card-label">Café hours · 1719 Summit Ave</div>
-      <div class="hero-hours">
-        <div class="hour-row"><span class="hour-day">Monday</span><span class="hour-time closed">Closed</span></div>
-        <div class="hour-row"><span class="hour-day">Tuesday</span><span class="hour-time closed">Closed</span></div>
-        <div class="hour-row"><span class="hour-day">Wednesday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
-        <div class="hour-row"><span class="hour-day">Thursday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
-        <div class="hour-row"><span class="hour-day">Friday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
-        <div class="hour-row">
-          <span class="hour-day" style="font-weight:500;color:var(--ink)">Saturday</span>
-          <span class="hour-time workshop">
-            <span class="workshop-dot"></span>8:00 AM – 6:00 PM · Workshop 10 AM
-          </span>
-        </div>
-        <div class="hour-row"><span class="hour-day">Sunday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
+      <!-- Logo -->
+      <div class="hero-card-logo">
+        <a href="https://www.afterglowcoffee.com" target="_blank">
+          <img src="images/logo/afterglow.png" alt="Afterglow Coffee Cooperative">
+        </a>
       </div>
-      <div class="hero-address">
-        <strong>Afterglow Coffee Cooperative</strong>
-        1719 Summit Ave, Richmond, VA 23230<br>
-        Scott's Addition · (804) 214-4210
+      <!-- Tabs -->
+      <div class="card-tabs">
+        <button class="card-tab active" onclick="switchTab('hours',this)">Café hours</button>
+        <button class="card-tab" onclick="switchTab('request',this)">Request a session</button>
+      </div>
+      <!-- Tab: Hours -->
+      <div id="tab-hours" class="card-tab-panel">
+        <div class="hero-hours">
+          <div class="hour-row"><span class="hour-day">Monday</span><span class="hour-time closed">Closed</span></div>
+          <div class="hour-row"><span class="hour-day">Tuesday</span><span class="hour-time closed">Closed</span></div>
+          <div class="hour-row"><span class="hour-day">Wednesday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
+          <div class="hour-row"><span class="hour-day">Thursday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
+          <div class="hour-row"><span class="hour-day">Friday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
+          <div class="hour-row">
+            <span class="hour-day" style="font-weight:500;color:var(--ink)">Saturday</span>
+            <span class="hour-time workshop">
+              <span class="workshop-dot"></span>8:00 AM – 6:00 PM · Workshop 10 AM
+            </span>
+          </div>
+          <div class="hour-row"><span class="hour-day">Sunday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
+        </div>
+        <div class="hero-address">
+          <strong>Afterglow Coffee Cooperative</strong>
+          1719 Summit Ave, Richmond, VA 23230<br>
+          Scott's Addition · (804) 214-4210
+        </div>
+      </div>
+      <!-- Tab: Request Form -->
+      <div id="tab-request" class="card-tab-panel" style="display:none;">
+        <p style="font-size:13px;color:var(--ink-mid);margin-bottom:1.25rem;line-height:1.6;">Want to bring a group, host a private session, or suggest a topic? Drop us a note.</p>
+        <div class="req-form">
+          <input type="text" placeholder="Your name" id="req-name">
+          <input type="email" placeholder="Email address" id="req-email">
+          <select id="req-session">
+            <option value="">Which session interests you?</option>
+            <option>01 — WiFi Safety 101</option>
+            <option>02 — One-Tap VPN</option>
+            <option>03 — Multi-WAN Failover</option>
+            <option>04 — AdGuard Home</option>
+            <option>05 — Home Office Tunnel</option>
+            <option>06 — Pi-hole DNS Sinkhole</option>
+            <option>07 — VLAN & Guest Hardening</option>
+            <option>08 — Kill Switch & DNS Leak</option>
+            <option>09 — Secure Remote Team Hub</option>
+            <option>10 — OpenWRT Deep Dive</option>
+            <option>Private / group session</option>
+          </select>
+          <textarea placeholder="Anything else? Group size, questions, special requests…" id="req-note" rows="3"></textarea>
+          <button onclick="handleRequest()">Send request →</button>
+        </div>
       </div>
     </div>
   </div>
@@ -963,6 +1046,27 @@
 </footer>
 
 <script>
+function switchTab(tab, btn) {
+  document.querySelectorAll('.card-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.card-tab-panel').forEach(p => p.style.display = 'none');
+  btn.classList.add('active');
+  document.getElementById('tab-' + tab).style.display = 'block';
+}
+
+function handleRequest() {
+  const name = document.getElementById('req-name').value.trim();
+  const email = document.getElementById('req-email').value.trim();
+  if (!name || !email || !email.includes('@')) {
+    if (!name) document.getElementById('req-name').style.borderColor = 'rgba(200,50,50,.5)';
+    if (!email || !email.includes('@')) document.getElementById('req-email').style.borderColor = 'rgba(200,50,50,.5)';
+    return;
+  }
+  const btn = document.querySelector('.req-form button');
+  btn.textContent = 'Request sent ✓';
+  btn.style.background = 'var(--green)';
+  document.querySelectorAll('.req-form input, .req-form select, .req-form textarea').forEach(el => el.disabled = true);
+}
+
 function handleRSVP() {
   const email = document.getElementById('email-input').value.trim();
   if (!email || !email.includes('@')) {
