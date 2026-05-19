@@ -279,67 +279,82 @@
   }
   .wcard-prize::before { content: '★'; font-size: 10px; color: var(--amber); }
 
-  /* ─── PRODUCT SHOWCASE ─── */
-  .product-section {
-    background: var(--ink); color: var(--cream);
-    padding: 5rem clamp(1.5rem, 5vw, 4rem);
+  /* ─── HARDWARE INTRO ─── */
+  .hardware-intro {
+    border-top: 1px solid var(--border);
+    padding: 4rem clamp(1.5rem, 5vw, 4rem) 0;
   }
-  .product-section-inner { max-width: 1200px; margin: 0 auto; }
-  .product-section h2 {
+  .hardware-intro-inner {
+    max-width: 1200px; margin: 0 auto 3rem;
+  }
+  .hardware-intro-label {
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-light); margin-bottom: 0.5rem;
+  }
+  .hardware-intro-inner h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700;
-    color: var(--cream); margin-bottom: 0.5rem;
+    color: var(--ink); margin-bottom: 0.5rem;
   }
-  .product-section-sub { font-size: 15px; color: rgba(246,241,230,.55); margin-bottom: 3rem; }
+  .hardware-intro-sub { font-size: 15px; color: var(--ink-mid); max-width: 640px; }
 
-  .product-showcase {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+  .hardware-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--border);
   }
+  .hw-card {
+    border-right: 1px solid var(--border);
+    display: flex; flex-direction: column;
+  }
+  .hw-card:last-child { border-right: none; }
 
-  .product-card {
-    background: rgba(255,255,255,.05);
-    border: 1px solid rgba(246,241,230,.12);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-  }
-  .product-card-img {
-    background: rgba(255,255,255,.04);
-    height: 200px; display: flex; align-items: center; justify-content: center;
+  .hw-card-img {
+    height: 240px;
+    display: flex; align-items: center; justify-content: center;
     padding: 2rem;
   }
-  .product-card-img img { height: 100%; object-fit: contain; filter: brightness(1.1); }
-  .product-card-body { padding: 1.5rem; }
-  .product-card-tier {
-    font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500;
-    letter-spacing: .1em; text-transform: uppercase;
-    color: var(--blue-mid); margin-bottom: 0.5rem;
-  }
-  .product-card-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem; font-weight: 700; color: var(--cream);
-    margin-bottom: 0.25rem;
-  }
-  .product-card-model {
-    font-family: 'DM Mono', monospace; font-size: 11px;
-    color: rgba(246,241,230,.4); margin-bottom: 1rem;
-  }
-  .product-card-specs { display: flex; flex-direction: column; gap: 6px; }
-  .spec-row { display: flex; justify-content: space-between; font-size: 13px; }
-  .spec-label { color: rgba(246,241,230,.45); }
-  .spec-val { color: rgba(246,241,230,.85); font-family: 'DM Mono', monospace; font-size: 12px; }
+  .hw-card-img img { height: 100%; width: 100%; object-fit: contain; }
 
-  .product-sessions {
-    margin-top: 1rem; padding-top: 1rem;
-    border-top: 1px solid rgba(246,241,230,.1);
-    font-size: 12px; color: rgba(246,241,230,.4);
+  .hw-card-body {
+    padding: 1.75rem;
+    border-top: 1px solid var(--border);
+    flex: 1; display: flex; flex-direction: column; gap: 0.75rem;
   }
-  .product-sessions span {
-    display: inline-block; margin-top: 5px;
-    background: rgba(246,241,230,.07); border-radius: 3px;
-    padding: 2px 7px; margin-right: 4px;
+  .hw-card-nick {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; font-style: italic; color: var(--ink-light);
+  }
+  .hw-card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--ink);
+  }
+  .hw-card-model {
     font-family: 'DM Mono', monospace; font-size: 11px;
-    color: rgba(246,241,230,.6);
+    color: var(--ink-light); font-style: normal; margin-left: 6px;
+  }
+  .hw-card-desc {
+    font-size: 13px; color: var(--ink-mid); line-height: 1.65;
+  }
+  .hw-card-uses {
+    display: flex; flex-direction: column; gap: 5px;
+    margin-top: 0.25rem;
+  }
+  .hw-use {
+    font-size: 12px; color: var(--ink-mid);
+    background: var(--cream-dark); border-radius: var(--radius);
+    padding: 5px 10px;
+  }
+  .hw-card-sessions {
+    margin-top: auto; padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-light);
+  }
+  .hw-card-sessions span {
+    display: inline-block; background: var(--blue-light); color: var(--blue);
+    border-radius: 3px; padding: 2px 7px; margin-left: 4px;
+    font-size: 11px;
   }
 
   /* ─── RSVP STRIP ─── */
@@ -446,8 +461,9 @@
     .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
     .nav-links { display: none; }
     .workshop-grid { grid-template-columns: 1fr; }
-    .scene-strip { grid-template-columns: 1fr 1fr; }
-    .scene-strip img:first-child { grid-column: 1 / -1; }
+    .hardware-cards { grid-template-columns: 1fr; }
+    .hw-card { border-right: none; border-bottom: 1px solid var(--border); }
+    .hw-card:last-child { border-bottom: none; }
     .vibe-bar { grid-template-columns: 1fr; gap: 2rem; }
   }
 </style>
@@ -519,12 +535,68 @@
   </div>
 </section>
 
-<!-- ─── PRODUCT STRIP ─── -->
-<div class="scene-strip">
-  <img src="images/products/router-beryl.webp" alt="GL.iNet Beryl AX — GL-MT3000" style="object-fit:contain;background:#EDF4F0;padding:1.5rem;">
-  <img src="images/products/router-slate.webp" alt="GL.iNet Slate AX — GL-AXT1800" style="object-fit:contain;background:#EEF3FB;padding:1.5rem;">
-  <img src="images/products/router-flint.webp" alt="GL.iNet Flint 2 — GL-MT6000" style="object-fit:contain;background:#FBF5EE;padding:1.5rem;">
-</div>
+<!-- ─── HARDWARE INTRO ─── -->
+<section class="hardware-intro">
+  <div class="hardware-intro-inner">
+    <p class="hardware-intro-label">The gear</p>
+    <h2>Three routers. Ten sessions. One bag.</h2>
+    <p class="hardware-intro-sub">Every workshop uses one of these. Matched to skill level. All pocket-sized. All OpenWRT. All VPN-ready before you even unbox them.</p>
+  </div>
+  <div class="hardware-cards">
+
+    <div class="hw-card">
+      <div class="hw-card-img" style="background:#EDF4F0;">
+        <img src="images/products/router-beryl.webp" alt="GL.iNet Beryl AX">
+      </div>
+      <div class="hw-card-body">
+        <div class="hw-card-nick">"The Pocket Shield"</div>
+        <div class="hw-card-name">Beryl AX <span class="hw-card-model">GL-MT3000</span></div>
+        <p class="hw-card-desc">The one you'll actually carry every day. Pocket-sized, Wi-Fi 6, WireGuard at 300 Mbps. Plugs into any hotel or café and wraps every device in an encrypted tunnel — in under 60 seconds.</p>
+        <div class="hw-card-uses">
+          <div class="hw-use">📡 One-tap VPN for all your devices</div>
+          <div class="hw-use">🛡️ Ad + tracker blocking via AdGuard Home</div>
+          <div class="hw-use">☕ Open WiFi survival kit</div>
+        </div>
+        <div class="hw-card-sessions">Sessions: <span>01</span><span>02</span><span>04</span></div>
+      </div>
+    </div>
+
+    <div class="hw-card">
+      <div class="hw-card-img" style="background:#EEF3FB;">
+        <img src="images/products/router-slate.webp" alt="GL.iNet Slate AX">
+      </div>
+      <div class="hw-card-body">
+        <div class="hw-card-nick">"The Road Warrior"</div>
+        <div class="hw-card-name">Slate AX <span class="hw-card-model">GL-AXT1800</span></div>
+        <p class="hw-card-desc">Built for the remote professional who can't afford a dropped call. Bond the café WiFi with your phone hotspot. If one dies, the other takes over automatically — mid-Zoom, no hiccup.</p>
+        <div class="hw-card-uses">
+          <div class="hw-use">🔄 Multi-WAN failover + load balancing</div>
+          <div class="hw-use">🏠 Site-to-site tunnel to your home office</div>
+          <div class="hw-use">🔒 Kill switch + DNS leak protection</div>
+        </div>
+        <div class="hw-card-sessions">Sessions: <span>03</span><span>05</span><span>08</span></div>
+      </div>
+    </div>
+
+    <div class="hw-card">
+      <div class="hw-card-img" style="background:#FBF5EE;">
+        <img src="images/products/router-flint.webp" alt="GL.iNet Flint 2">
+      </div>
+      <div class="hw-card-body">
+        <div class="hw-card-nick">"The Lab in a Box"</div>
+        <div class="hw-card-name">Flint 2 <span class="hw-card-model">GL-MT6000</span></div>
+        <p class="hw-card-desc">When you're done playing it safe and want to run your own infrastructure from a bag. Docker, Pi-hole, Prometheus, nftables — this is the router that IT teams wish they'd started with.</p>
+        <div class="hw-card-uses">
+          <div class="hw-use">🐳 Docker · Pi-hole · Grafana</div>
+          <div class="hw-use">🌐 VLAN isolation + guest hardening</div>
+          <div class="hw-use">⚙️ Full OpenWRT · custom firmware</div>
+        </div>
+        <div class="hw-card-sessions">Sessions: <span>06</span><span>07</span><span>09</span><span>10</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <!-- ─── WORKSHOPS GRID ─── -->
 <div class="section-header" id="workshops">
@@ -823,77 +895,6 @@
 
 </div>
 
-<!-- ─── PRODUCT SHOWCASE ─── -->
-<section class="product-section" id="hardware">
-  <div class="product-section-inner">
-    <h2>The hardware behind each session</h2>
-    <p class="product-section-sub">Three GL.iNet routers, matched to the right skill level. All OpenWRT. All VPN-ready out of the box.</p>
-
-    <div class="product-showcase">
-
-      <div class="product-card">
-        <div class="product-card-img">
-          <img src="images/products/router-beryl.webp"
-               alt="GL.iNet Beryl AX"
-               onerror="this.style.display='none'">
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-tier">Beginner — Intermediate</div>
-          <div class="product-card-name">Beryl AX</div>
-          <div class="product-card-model">GL-MT3000 · AX3000</div>
-          <div class="product-card-specs">
-            <div class="spec-row"><span class="spec-label">Wi-Fi</span><span class="spec-val">Wi-Fi 6 · 3000 Mbps</span></div>
-            <div class="spec-row"><span class="spec-label">WireGuard</span><span class="spec-val">300 Mbps</span></div>
-            <div class="spec-row"><span class="spec-label">WAN</span><span class="spec-val">2.5G Multi-gigabit</span></div>
-            <div class="spec-row"><span class="spec-label">Size</span><span class="spec-val">Pocket-sized</span></div>
-          </div>
-          <div class="product-sessions">Used in sessions: <span>01</span><span>02</span><span>04</span></div>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-card-img">
-          <img src="images/products/router-slate.webp"
-               alt="GL.iNet Slate AX"
-               onerror="this.style.display='none'">
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-tier">Intermediate — Advanced</div>
-          <div class="product-card-name">Slate AX</div>
-          <div class="product-card-model">GL-AXT1800 · AX1800</div>
-          <div class="product-card-specs">
-            <div class="spec-row"><span class="spec-label">Wi-Fi</span><span class="spec-val">Wi-Fi 6 · 1800 Mbps</span></div>
-            <div class="spec-row"><span class="spec-label">WireGuard</span><span class="spec-val">Up to 400 Mbps</span></div>
-            <div class="spec-row"><span class="spec-label">Multi-WAN</span><span class="spec-val">Failover + Load balance</span></div>
-            <div class="spec-row"><span class="spec-label">USB</span><span class="spec-val">USB 3.0 · Tethering</span></div>
-          </div>
-          <div class="product-sessions">Used in sessions: <span>03</span><span>05</span><span>08</span></div>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-card-img">
-          <img src="images/products/router-flint.webp"
-               alt="GL.iNet Flint 2"
-               onerror="this.style.display='none'">
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-tier">Advanced — Pro</div>
-          <div class="product-card-name">Flint 2</div>
-          <div class="product-card-model">GL-MT6000 · AX6000</div>
-          <div class="product-card-specs">
-            <div class="spec-row"><span class="spec-label">Wi-Fi</span><span class="spec-val">Wi-Fi 6 · 6000 Mbps</span></div>
-            <div class="spec-row"><span class="spec-label">WireGuard</span><span class="spec-val">900 Mbps</span></div>
-            <div class="spec-row"><span class="spec-label">Ports</span><span class="spec-val">2× 2.5G Ethernet</span></div>
-            <div class="spec-row"><span class="spec-label">Docker</span><span class="spec-val">Supported · Pi-hole ready</span></div>
-          </div>
-          <div class="product-sessions">Used in sessions: <span>06</span><span>07</span><span>09</span><span>10</span></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 <!-- ─── VIBE BAR ─── -->
 <div class="vibe-bar">
