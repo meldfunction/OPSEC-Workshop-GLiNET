@@ -454,6 +454,16 @@
     margin-bottom: 1rem;
   }
   .vibe-bar-text p { font-size: 15px; color: var(--ink-mid); line-height: 1.75; }
+  .vibe-bar-logo { margin-bottom: 1.25rem; }
+  .vibe-bar-logo img { height: 40px; object-fit: contain; display: block; }
+  .vibe-bar-link {
+    display: inline-block; margin-top: 1.5rem;
+    font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500;
+    letter-spacing: .05em; color: var(--blue);
+    text-decoration: none; border-bottom: 1px solid var(--blue-mid);
+    padding-bottom: 2px; transition: opacity .15s;
+  }
+  .vibe-bar-link:hover { opacity: .7; }
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
@@ -899,11 +909,16 @@
 <!-- ─── VIBE BAR ─── -->
 <div class="vibe-bar">
   <div class="vibe-bar-img">
-    <img src="images/scene/cafe-work.jpg" alt="Professionals working together at a café">
+    <img src="images/scene/cafe-work.jpg" alt="Professionals working together at Afterglow Coffee">
   </div>
   <div class="vibe-bar-text">
-    <h3>A community of people who take their privacy seriously — and their coffee even more so.</h3>
-    <p>Every Saturday morning, a small group gathers at Afterglow Coffee in Scott's Addition. No slides. No jargon. Just routers on the table, great espresso, and one practical skill you'll use every time you open your laptop in public.</p>
+    <div class="vibe-bar-logo">
+      <img src="images/logo/afterglow.png" alt="Afterglow Coffee Cooperative">
+    </div>
+    <h3>Richmond, Virginia's first worker-owned coffee roaster and café.</h3>
+    <p>Afterglow Coffee Cooperative is collectively owned and operated by the people who work there — rooted in Scott's Addition and committed to building something worth being part of. It's the kind of place where a workshop about digital autonomy just makes sense.</p>
+    <p style="margin-top:.75rem">Every Saturday at 10 AM, Afterglow opens its doors for this series. Free to attend. Great coffee. Leave with a skill.</p>
+    <a href="https://www.afterglowcoffee.com" target="_blank" class="vibe-bar-link">Visit afterglowcoffee.com →</a>
   </div>
 </div>
 
