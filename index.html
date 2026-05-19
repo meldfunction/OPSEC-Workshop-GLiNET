@@ -238,6 +238,7 @@
     border-left: 1px solid var(--border);
     overflow: hidden;
     min-height: 420px;
+    position: relative;
   }
   .hero-map-col iframe { width:100%; height:100%; min-height:420px; }
   .hero-card {
@@ -740,6 +741,182 @@
 </style>
 </head>
 <body>
+<script>
+function switchTab(tab, btn) {
+  document.querySelectorAll('.card-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.card-tab-panel').forEach(p => p.style.display = 'none');
+  btn.classList.add('active');
+  document.getElementById('tab-' + tab).style.display = 'block';
+}
+
+function handleRequest() {
+  const name  = document.getElementById('req-name').value.trim();
+  const email = document.getElementById('req-email').value.trim();
+  if (!name)  document.getElementById('req-name').style.borderColor  = 'rgba(200,50,50,.5)';
+  if (!email || !email.includes('@')) document.getElementById('req-email').style.borderColor = 'rgba(200,50,50,.5)';
+  if (!name || !email || !email.includes('@')) return;
+  const btn = document.querySelector('.req-form button');
+  btn.textContent = 'Request sent ✓';
+  btn.style.background = 'var(--green)';
+  document.querySelectorAll('.req-form input, .req-form select, .req-form textarea').forEach(el => el.disabled = true);
+}
+
+function handleRSVP() {
+  const email = document.getElementById('email-input').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('email-input').style.borderColor = 'rgba(255,100,100,.6)';
+    return;
+  }
+  const btn = document.querySelector('.rsvp-form button');
+  btn.textContent = "You're on the list ✓";
+  btn.style.background = '#d4f0e4';
+  btn.style.color = '#1D7A54';
+  document.getElementById('email-input').disabled = true;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const inp = document.getElementById('email-input');
+  if (inp) inp.addEventListener('keydown', e => {
+    e.target.style.borderColor = 'rgba(255,255,255,.3)';
+    if (e.key === 'Enter') handleRSVP();
+  });
+});
+
+// ── WORKSHOP DATA ──────────────────────────────────────────────────────────
+const WORKSHOPS = [
+  { num:1,  title:"WiFi Safety 101: Your Coffee Shop Survival Kit",       level:"Beginner",     levelKey:0, date:"SAT · MAY 2",  dateSort:1,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", dur:"~15 min", durSort:15,  prize:"Coffee voucher + stickers",       desc:"Live packet-sniffing demo. We'll show what's visible on open WiFi, then plug in a travel router and make it disappear in under 5 minutes." },
+  { num:2,  title:"One-Tap VPN — No Tech Knowledge Required",        level:"Beginner",     levelKey:0, date:"SAT · MAY 9",  dateSort:2,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", dur:"~15 min", durSort:15,  prize:"1-month VPN subscription",        desc:"Download the GL.iNet app, connect to a VPN with one toggle, and watch your IP address change live. Every device you own, protected instantly." },
+  { num:3,  title:"Never Drop a Zoom Call Again — Multi-WAN Failover",level:"Intermediate",levelKey:1, date:"SAT · MAY 16", dateSort:3,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", dur:"~20 min", durSort:20,  prize:"GL.iNet Beryl AX unit",           desc:"Bond the cafe WiFi with your phone hotspot. Kill the connection mid-demo and watch it switch automatically without missing a beat." },
+  { num:4,  title:"Block Every Ad & Tracker — AdGuard Home Setup",   level:"Intermediate",levelKey:1, date:"SAT · MAY 23", dateSort:4,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EEF3FB", dur:"~15 min", durSort:15,  prize:"Branded travel pouch + router",    desc:"Enable AdGuard Home from the GL.iNet admin panel. Add three blocklists. Open a news site. Watch ads vanish across every connected device." },
+  { num:5,  title:"Access Your Home Office from Any Cafe",                level:"Intermediate",levelKey:1, date:"SAT · MAY 30", dateSort:5,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", dur:"~20 min", durSort:20,  prize:"GL.iNet Slate AX unit",           desc:"Configure a site-to-site WireGuard tunnel using GoodCloud. Browse a home NAS from this table. No exposed ports, no static IP, no headaches." },
+  { num:6,  title:"Pi-hole on GL.iNet — Full DNS Sinkhole",          level:"Advanced",    levelKey:2, date:"SAT · JUN 7",  dateSort:6,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"GL.iNet Flint 2 (AX6000)",        desc:"SSH in. Install Docker. Pull Pi-hole. Watch the dashboard light up with blocked queries from every device at this table." },
+  { num:7,  title:"Isolate Your Clients — VLAN & Guest Network Hardening",level:"Advanced",levelKey:2,date:"SAT · JUN 14",dateSort:7,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"Beryl AX + 3-month VPN",          desc:"Create a proper VLAN for guest devices. Block them from your LAN. Throttle their bandwidth. Prove it with a live ping test." },
+  { num:8,  title:"Kill Switch & DNS Leak — Ironclad VPN Setup",     level:"Advanced",    levelKey:2, date:"SAT · JUN 21", dateSort:8,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"Slate AX + privacy kit",          desc:"Enable the kill switch. Run a DNS leak test. Configure DNS-over-HTTPS. Drop the VPN. Prove nothing leaked." },
+  { num:9,  title:"Build a Secure Remote Team Hub at a Co-working Cafe",  level:"Pro",         levelKey:3, date:"SAT · JUN 28", dateSort:9,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", dur:"~25 min", durSort:25,  prize:"GL.iNet Flint 2 for the team",    desc:"One router. Five colleagues. Separate VLANs per role. Pi-hole + AdGuard chained DNS. Individual WireGuard peers. Enterprise-grade, from a bag." },
+  { num:10, title:"OpenWRT Deep Dive — Custom Firmware for Power Users",level:"Pro",       levelKey:3, date:"SAT · JUL 12", dateSort:10, device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", dur:"~30 min", durSort:30,  prize:"Flint 2 + developer swag kit",    desc:"Go past the admin panel. Write your own nftables ruleset. Stand up Prometheus + Grafana in Docker. Watch live network traffic visualised." },
+];
+
+const LEVEL_CLASS = { Beginner:"beg", Intermediate:"int", Advanced:"adv", Pro:"pro" };
+const LEVEL_ORDER = { Beginner:0, Intermediate:1, Advanced:2, Pro:3 };
+
+let _view = 'grid', _filter = 'all', _sortCol = null, _sortDir = 1;
+
+function setFilter(level, btn) {
+  _filter = level;
+  document.querySelectorAll('.ws-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderWorkshops();
+}
+
+function setView(v) {
+  _view = v;
+  document.getElementById('ws-grid-view').style.display = v === 'grid' ? '' : 'none';
+  document.getElementById('ws-list-view').style.display  = v === 'list' ? '' : 'none';
+  document.getElementById('btn-grid').classList.toggle('active', v === 'grid');
+  document.getElementById('btn-list').classList.toggle('active', v === 'list');
+}
+
+function sortCol(col) {
+  if (_sortCol === col) { _sortDir *= -1; } else { _sortCol = col; _sortDir = 1; }
+  document.querySelectorAll('.sort-icon').forEach(el => el.textContent = '↕');
+  const si = document.getElementById('si-' + col);
+  if (si) si.textContent = _sortDir === 1 ? '↑' : '↓';
+  document.querySelectorAll('.ws-table th').forEach(th => th.classList.remove('sort-active'));
+  renderWorkshops();
+}
+
+function getFiltered() {
+  const q = (document.getElementById('ws-search') ? document.getElementById('ws-search').value : '').toLowerCase();
+  let data = WORKSHOPS.filter(function(w) {
+    if (_filter !== 'all' && w.level !== _filter) return false;
+    if (q && w.title.toLowerCase().indexOf(q) < 0 && w.desc.toLowerCase().indexOf(q) < 0 && w.device.toLowerCase().indexOf(q) < 0) return false;
+    return true;
+  });
+  const sortVal = document.getElementById('ws-sort') ? document.getElementById('ws-sort').value : 'num-asc';
+  if (_sortCol) {
+    const map = { num:'num', title:'title', level:'levelKey', date:'dateSort', device:'device', dur:'durSort' };
+    const key = map[_sortCol] || 'num';
+    data.sort(function(a,b) {
+      const av = a[key], bv = b[key];
+      return typeof av === 'string' ? av.localeCompare(bv) * _sortDir : (av - bv) * _sortDir;
+    });
+  } else {
+    if (sortVal === 'num-asc')    data.sort(function(a,b){ return a.num - b.num; });
+    if (sortVal === 'num-desc')   data.sort(function(a,b){ return b.num - a.num; });
+    if (sortVal === 'level-asc')  data.sort(function(a,b){ return a.levelKey - b.levelKey; });
+    if (sortVal === 'level-desc') data.sort(function(a,b){ return b.levelKey - a.levelKey; });
+    if (sortVal === 'dur-asc')    data.sort(function(a,b){ return a.durSort - b.durSort; });
+  }
+  return data;
+}
+
+function renderWorkshops() {
+  const data = getFiltered();
+  const meta = document.getElementById('ws-meta');
+  if (meta) meta.textContent = data.length + ' of ' + WORKSHOPS.length + ' sessions';
+
+  // GRID
+  const grid = document.getElementById('ws-grid');
+  if (grid) {
+    if (data.length === 0) {
+      grid.innerHTML = '<p class="no-results" style="grid-column:1/-1">No sessions match.</p>';
+    } else {
+      grid.innerHTML = data.map(function(w) {
+        const lc = LEVEL_CLASS[w.level];
+        const model = w.device.split('·')[1] ? w.device.split('·')[1].trim() : '';
+        const brand = w.device.split('·')[0].trim();
+        return '<article class="wcard">'
+          + '<div class="wcard-top-bar ' + lc + '"></div>'
+          + '<div class="wcard-img" style="background:' + w.imgBg + '">'
+          + '<img src="' + w.deviceImg + '" alt="' + w.device + '">'
+          + '<div class="wcard-img-overlay">' + model + '</div>'
+          + '</div>'
+          + '<div class="wcard-body">'
+          + '<div class="wcard-meta">'
+          + '<span class="wcard-date">' + w.date + ' · 10 AM</span>'
+          + '<span class="wcard-level ' + lc + '">' + w.level + '</span>'
+          + '</div>'
+          + '<div class="wcard-num">Session ' + String(w.num).padStart(2,'0') + '</div>'
+          + '<h3>' + w.title + '</h3>'
+          + '<p class="wcard-sub">' + w.desc + '</p>'
+          + '<div class="wcard-product">'
+          + '<span class="product-icon">📡</span>'
+          + '<div><strong>' + brand + '</strong><br>' + w.device + '</div>'
+          + '</div>'
+          + '<div class="wcard-footer">'
+          + '<span class="wcard-time">' + w.dur + '</span>'
+          + '<span class="wcard-prize">' + w.prize + '</span>'
+          + '</div>'
+          + '</div></article>';
+      }).join('');
+    }
+  }
+
+  // TABLE
+  const tbody = document.getElementById('ws-tbody');
+  if (tbody) {
+    if (data.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="7" class="no-results">No sessions match.</td></tr>';
+    } else {
+      tbody.innerHTML = data.map(function(w) {
+        const lc = LEVEL_CLASS[w.level];
+        return '<tr>'
+          + '<td class="col-num">Session ' + String(w.num).padStart(2,'0') + '</td>'
+          + '<td class="col-title">' + w.title + '</td>'
+          + '<td><span class="tbl-level ' + lc + '">' + w.level + '</span></td>'
+          + '<td class="col-date">' + w.date + '</td>'
+          + '<td class="col-device">' + w.device + '</td>'
+          + '<td class="col-dur">' + w.dur + '</td>'
+          + '<td class="col-prize">' + w.prize + '</td>'
+          + '</tr>';
+      }).join('');
+    }
+  }
+}
+
+renderWorkshops();
+</script>
+
 
 <!-- ─── NAV ─── -->
 <nav>
@@ -888,11 +1065,13 @@
   </div><!-- end hero-card-col -->
   <div class="hero-map-col">
     <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.2!2d-77.4737!3d37.5535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b1113b3e3b3b3b%3A0x1!2s1719+Summit+Ave%2C+Richmond%2C+VA+23230!5e0!3m2!1sen!2sus!4v1"
-      width="100%" height="100%" style="border:0;display:block;" allowfullscreen="" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.openstreetmap.org/export/embed.html?bbox=-77.4780%2C37.5510%2C-77.4700%2C37.5560&amp;layer=mapnik&amp;marker=37.5535%2C-77.4737"
+      width="100%" height="100%" style="border:0;display:block;" loading="lazy"
       title="Afterglow Coffee Cooperative — 1719 Summit Ave, Richmond VA">
     </iframe>
+    <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:4px 10px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.04em;color:var(--ink-mid);white-space:nowrap;pointer-events:none;">
+      1719 Summit Ave · Scott&#39;s Addition · Richmond VA
+    </div>
   </div>
 </div>
 
@@ -1082,181 +1261,5 @@
     <span>Exclusive workshop series · Richmond, Virginia</span>
   </div>
 </footer>
-
-<script>
-function switchTab(tab, btn) {
-  document.querySelectorAll('.card-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.card-tab-panel').forEach(p => p.style.display = 'none');
-  btn.classList.add('active');
-  document.getElementById('tab-' + tab).style.display = 'block';
-}
-
-function handleRequest() {
-  const name  = document.getElementById('req-name').value.trim();
-  const email = document.getElementById('req-email').value.trim();
-  if (!name)  document.getElementById('req-name').style.borderColor  = 'rgba(200,50,50,.5)';
-  if (!email || !email.includes('@')) document.getElementById('req-email').style.borderColor = 'rgba(200,50,50,.5)';
-  if (!name || !email || !email.includes('@')) return;
-  const btn = document.querySelector('.req-form button');
-  btn.textContent = 'Request sent ✓';
-  btn.style.background = 'var(--green)';
-  document.querySelectorAll('.req-form input, .req-form select, .req-form textarea').forEach(el => el.disabled = true);
-}
-
-function handleRSVP() {
-  const email = document.getElementById('email-input').value.trim();
-  if (!email || !email.includes('@')) {
-    document.getElementById('email-input').style.borderColor = 'rgba(255,100,100,.6)';
-    return;
-  }
-  const btn = document.querySelector('.rsvp-form button');
-  btn.textContent = "You're on the list ✓";
-  btn.style.background = '#d4f0e4';
-  btn.style.color = '#1D7A54';
-  document.getElementById('email-input').disabled = true;
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  const inp = document.getElementById('email-input');
-  if (inp) inp.addEventListener('keydown', e => {
-    e.target.style.borderColor = 'rgba(255,255,255,.3)';
-    if (e.key === 'Enter') handleRSVP();
-  });
-});
-
-// ── WORKSHOP DATA ──────────────────────────────────────────────────────────
-const WORKSHOPS = [
-  { num:1,  title:"WiFi Safety 101: Your Coffee Shop Survival Kit",       level:"Beginner",     levelKey:0, date:"SAT · MAY 2",  dateSort:1,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", dur:"~15 min", durSort:15,  prize:"Coffee voucher + stickers",       desc:"Live packet-sniffing demo. We'll show what's visible on open WiFi, then plug in a travel router and make it disappear in under 5 minutes." },
-  { num:2,  title:"One-Tap VPN — No Tech Knowledge Required",        level:"Beginner",     levelKey:0, date:"SAT · MAY 9",  dateSort:2,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", dur:"~15 min", durSort:15,  prize:"1-month VPN subscription",        desc:"Download the GL.iNet app, connect to a VPN with one toggle, and watch your IP address change live. Every device you own, protected instantly." },
-  { num:3,  title:"Never Drop a Zoom Call Again — Multi-WAN Failover",level:"Intermediate",levelKey:1, date:"SAT · MAY 16", dateSort:3,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", dur:"~20 min", durSort:20,  prize:"GL.iNet Beryl AX unit",           desc:"Bond the cafe WiFi with your phone hotspot. Kill the connection mid-demo and watch it switch automatically without missing a beat." },
-  { num:4,  title:"Block Every Ad & Tracker — AdGuard Home Setup",   level:"Intermediate",levelKey:1, date:"SAT · MAY 23", dateSort:4,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EEF3FB", dur:"~15 min", durSort:15,  prize:"Branded travel pouch + router",    desc:"Enable AdGuard Home from the GL.iNet admin panel. Add three blocklists. Open a news site. Watch ads vanish across every connected device." },
-  { num:5,  title:"Access Your Home Office from Any Cafe",                level:"Intermediate",levelKey:1, date:"SAT · MAY 30", dateSort:5,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", dur:"~20 min", durSort:20,  prize:"GL.iNet Slate AX unit",           desc:"Configure a site-to-site WireGuard tunnel using GoodCloud. Browse a home NAS from this table. No exposed ports, no static IP, no headaches." },
-  { num:6,  title:"Pi-hole on GL.iNet — Full DNS Sinkhole",          level:"Advanced",    levelKey:2, date:"SAT · JUN 7",  dateSort:6,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"GL.iNet Flint 2 (AX6000)",        desc:"SSH in. Install Docker. Pull Pi-hole. Watch the dashboard light up with blocked queries from every device at this table." },
-  { num:7,  title:"Isolate Your Clients — VLAN & Guest Network Hardening",level:"Advanced",levelKey:2,date:"SAT · JUN 14",dateSort:7,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"Beryl AX + 3-month VPN",          desc:"Create a proper VLAN for guest devices. Block them from your LAN. Throttle their bandwidth. Prove it with a live ping test." },
-  { num:8,  title:"Kill Switch & DNS Leak — Ironclad VPN Setup",     level:"Advanced",    levelKey:2, date:"SAT · JUN 21", dateSort:8,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"Slate AX + privacy kit",          desc:"Enable the kill switch. Run a DNS leak test. Configure DNS-over-HTTPS. Drop the VPN. Prove nothing leaked." },
-  { num:9,  title:"Build a Secure Remote Team Hub at a Co-working Cafe",  level:"Pro",         levelKey:3, date:"SAT · JUN 28", dateSort:9,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", dur:"~25 min", durSort:25,  prize:"GL.iNet Flint 2 for the team",    desc:"One router. Five colleagues. Separate VLANs per role. Pi-hole + AdGuard chained DNS. Individual WireGuard peers. Enterprise-grade, from a bag." },
-  { num:10, title:"OpenWRT Deep Dive — Custom Firmware for Power Users",level:"Pro",       levelKey:3, date:"SAT · JUL 12", dateSort:10, device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", dur:"~30 min", durSort:30,  prize:"Flint 2 + developer swag kit",    desc:"Go past the admin panel. Write your own nftables ruleset. Stand up Prometheus + Grafana in Docker. Watch live network traffic visualised." },
-];
-
-const LEVEL_CLASS = { Beginner:"beg", Intermediate:"int", Advanced:"adv", Pro:"pro" };
-const LEVEL_ORDER = { Beginner:0, Intermediate:1, Advanced:2, Pro:3 };
-
-let _view = 'grid', _filter = 'all', _sortCol = null, _sortDir = 1;
-
-function setFilter(level, btn) {
-  _filter = level;
-  document.querySelectorAll('.ws-filter').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderWorkshops();
-}
-
-function setView(v) {
-  _view = v;
-  document.getElementById('ws-grid-view').style.display = v === 'grid' ? '' : 'none';
-  document.getElementById('ws-list-view').style.display  = v === 'list' ? '' : 'none';
-  document.getElementById('btn-grid').classList.toggle('active', v === 'grid');
-  document.getElementById('btn-list').classList.toggle('active', v === 'list');
-}
-
-function sortCol(col) {
-  if (_sortCol === col) { _sortDir *= -1; } else { _sortCol = col; _sortDir = 1; }
-  document.querySelectorAll('.sort-icon').forEach(el => el.textContent = '↕');
-  const si = document.getElementById('si-' + col);
-  if (si) si.textContent = _sortDir === 1 ? '↑' : '↓';
-  document.querySelectorAll('.ws-table th').forEach(th => th.classList.remove('sort-active'));
-  renderWorkshops();
-}
-
-function getFiltered() {
-  const q = (document.getElementById('ws-search') ? document.getElementById('ws-search').value : '').toLowerCase();
-  let data = WORKSHOPS.filter(function(w) {
-    if (_filter !== 'all' && w.level !== _filter) return false;
-    if (q && w.title.toLowerCase().indexOf(q) < 0 && w.desc.toLowerCase().indexOf(q) < 0 && w.device.toLowerCase().indexOf(q) < 0) return false;
-    return true;
-  });
-  const sortVal = document.getElementById('ws-sort') ? document.getElementById('ws-sort').value : 'num-asc';
-  if (_sortCol) {
-    const map = { num:'num', title:'title', level:'levelKey', date:'dateSort', device:'device', dur:'durSort' };
-    const key = map[_sortCol] || 'num';
-    data.sort(function(a,b) {
-      const av = a[key], bv = b[key];
-      return typeof av === 'string' ? av.localeCompare(bv) * _sortDir : (av - bv) * _sortDir;
-    });
-  } else {
-    if (sortVal === 'num-asc')    data.sort(function(a,b){ return a.num - b.num; });
-    if (sortVal === 'num-desc')   data.sort(function(a,b){ return b.num - a.num; });
-    if (sortVal === 'level-asc')  data.sort(function(a,b){ return a.levelKey - b.levelKey; });
-    if (sortVal === 'level-desc') data.sort(function(a,b){ return b.levelKey - a.levelKey; });
-    if (sortVal === 'dur-asc')    data.sort(function(a,b){ return a.durSort - b.durSort; });
-  }
-  return data;
-}
-
-function renderWorkshops() {
-  const data = getFiltered();
-  const meta = document.getElementById('ws-meta');
-  if (meta) meta.textContent = data.length + ' of ' + WORKSHOPS.length + ' sessions';
-
-  // GRID
-  const grid = document.getElementById('ws-grid');
-  if (grid) {
-    if (data.length === 0) {
-      grid.innerHTML = '<p class="no-results" style="grid-column:1/-1">No sessions match.</p>';
-    } else {
-      grid.innerHTML = data.map(function(w) {
-        const lc = LEVEL_CLASS[w.level];
-        const model = w.device.split('·')[1] ? w.device.split('·')[1].trim() : '';
-        const brand = w.device.split('·')[0].trim();
-        return '<article class="wcard">'
-          + '<div class="wcard-top-bar ' + lc + '"></div>'
-          + '<div class="wcard-img" style="background:' + w.imgBg + '">'
-          + '<img src="' + w.deviceImg + '" alt="' + w.device + '">'
-          + '<div class="wcard-img-overlay">' + model + '</div>'
-          + '</div>'
-          + '<div class="wcard-body">'
-          + '<div class="wcard-meta">'
-          + '<span class="wcard-date">' + w.date + ' · 10 AM</span>'
-          + '<span class="wcard-level ' + lc + '">' + w.level + '</span>'
-          + '</div>'
-          + '<div class="wcard-num">Session ' + String(w.num).padStart(2,'0') + '</div>'
-          + '<h3>' + w.title + '</h3>'
-          + '<p class="wcard-sub">' + w.desc + '</p>'
-          + '<div class="wcard-product">'
-          + '<span class="product-icon">📡</span>'
-          + '<div><strong>' + brand + '</strong><br>' + w.device + '</div>'
-          + '</div>'
-          + '<div class="wcard-footer">'
-          + '<span class="wcard-time">' + w.dur + '</span>'
-          + '<span class="wcard-prize">' + w.prize + '</span>'
-          + '</div>'
-          + '</div></article>';
-      }).join('');
-    }
-  }
-
-  // TABLE
-  const tbody = document.getElementById('ws-tbody');
-  if (tbody) {
-    if (data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="7" class="no-results">No sessions match.</td></tr>';
-    } else {
-      tbody.innerHTML = data.map(function(w) {
-        const lc = LEVEL_CLASS[w.level];
-        return '<tr>'
-          + '<td class="col-num">Session ' + String(w.num).padStart(2,'0') + '</td>'
-          + '<td class="col-title">' + w.title + '</td>'
-          + '<td><span class="tbl-level ' + lc + '">' + w.level + '</span></td>'
-          + '<td class="col-date">' + w.date + '</td>'
-          + '<td class="col-device">' + w.device + '</td>'
-          + '<td class="col-dur">' + w.dur + '</td>'
-          + '<td class="col-prize">' + w.prize + '</td>'
-          + '</tr>';
-      }).join('');
-    }
-  }
-}
-
-renderWorkshops();
-</script>
 </body>
 </html>
