@@ -55,6 +55,40 @@
   .nav-sep { width: 1px; height: 24px; background: var(--border); }
   .nav-glinet { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; color: var(--ink-mid); letter-spacing: .04em; }
 
+  /* ─── HOTSPOT & LEARN LOGO ─── */
+  .hl-logo {
+    display: flex; align-items: center; gap: 8px;
+    text-decoration: none; flex-shrink: 0;
+  }
+  .hl-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .hl-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px; font-weight: 700; color: var(--ink);
+    letter-spacing: -.01em;
+  }
+  .hl-rva {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; font-weight: 500; letter-spacing: .14em;
+    color: var(--blue); text-transform: uppercase;
+  }
+
+  /* Hero series lockup */
+  .hero-series-logo {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 2rem;
+  }
+  .hero-series-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--ink);
+    line-height: 1.1;
+  }
+  .hero-series-rva {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; font-weight: 500; letter-spacing: .12em;
+    color: var(--blue); text-transform: uppercase;
+    margin-top: 3px;
+  }
+
   .nav-links { display: flex; gap: 2rem; }
   .nav-links a { font-size: 13px; color: var(--ink-mid); text-decoration: none; letter-spacing: .02em; transition: color .15s; }
   .nav-links a:hover { color: var(--blue); }
@@ -529,6 +563,24 @@
 <!-- ─── NAV ─── -->
 <nav>
   <div class="nav-logos">
+    <!-- Hotspot & Learn RVA logo -->
+    <a href="/" class="hl-logo" aria-label="Hotspot & Learn RVA">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- WiFi arcs -->
+        <path d="M16 22 C16 22 16 22 16 22" stroke="#0047CC" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M11.5 18.5 C12.6 17.1 14.2 16.2 16 16.2 C17.8 16.2 19.4 17.1 20.5 18.5" stroke="#0047CC" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M7.5 14.8 C9.4 12.4 12.5 10.9 16 10.9 C19.5 10.9 22.6 12.4 24.5 14.8" stroke="#0047CC" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M3.5 11 C6.4 7.5 10.9 5.3 16 5.3 C21.1 5.3 25.6 7.5 28.5 11" stroke="#0047CC" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <!-- Coffee cup hint at bottom -->
+        <circle cx="16" cy="22" r="2" fill="#0047CC"/>
+        <path d="M13 25 Q13 27.5 16 27.5 Q19 27.5 19 25" stroke="#B05A00" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="hl-logo-text">
+        <span class="hl-name">Hotspot &amp; Learn</span>
+        <span class="hl-rva">RVA</span>
+      </div>
+    </a>
+    <div class="nav-sep"></div>
     <img src="images/logo/afterglow.png"
          alt="Afterglow Coffee Cooperative"
          onerror="this.replaceWith(document.createTextNode('Afterglow Coffee'))">
@@ -548,6 +600,21 @@
 <!-- ─── HERO ─── -->
 <section class="hero">
   <div>
+    <!-- Series identity lockup -->
+    <div class="hero-series-logo">
+      <svg width="48" height="48" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 22 C16 22 16 22 16 22" stroke="#0047CC" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M11.5 18.5 C12.6 17.1 14.2 16.2 16 16.2 C17.8 16.2 19.4 17.1 20.5 18.5" stroke="#0047CC" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M7.5 14.8 C9.4 12.4 12.5 10.9 16 10.9 C19.5 10.9 22.6 12.4 24.5 14.8" stroke="#0047CC" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M3.5 11 C6.4 7.5 10.9 5.3 16 5.3 C21.1 5.3 25.6 7.5 28.5 11" stroke="#0047CC" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <circle cx="16" cy="22" r="2" fill="#0047CC"/>
+        <path d="M13 25 Q13 27.5 16 27.5 Q19 27.5 19 25" stroke="#B05A00" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div>
+        <div class="hero-series-name">Hotspot &amp; Learn</div>
+        <div class="hero-series-rva">RVA Community Tech Series</div>
+      </div>
+    </div>
     <div class="hero-eyebrow">Exclusive to Afterglow Coffee · Richmond, VA</div>
     <h1>Work safer.<br><em>Sip better.</em><br>Every Saturday.</h1>
     <p class="hero-body">
