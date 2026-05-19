@@ -738,6 +738,176 @@
   .tbl-level.pro { background:var(--rose-light); color:var(--rose); }
   .no-results { text-align:center; padding:3rem; font-size:14px; color:var(--ink-light); font-style:italic; }
   #ws-grid-view .workshop-grid { padding-top:0; }
+
+  /* ─── ATTACK DEMO MODAL ─── */
+  .atk-trigger {
+    display:inline-flex; align-items:center; gap:8px;
+    background:linear-gradient(135deg,#ff4444,#c0392b);
+    color:#fff; font-family:'DM Mono',monospace;
+    font-size:12px; font-weight:600; letter-spacing:.08em;
+    padding:10px 20px; border-radius:6px; border:none;
+    cursor:pointer; margin-top:1.25rem;
+    box-shadow:0 4px 16px rgba(255,68,68,.35);
+    transition:transform .15s,box-shadow .15s;
+  }
+  .atk-trigger:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(255,68,68,.45); }
+  .atk-trigger svg { width:16px; height:16px; }
+
+  .atk-overlay {
+    display:none; position:fixed; inset:0; z-index:9999;
+    background:rgba(0,0,0,.85); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center;
+  }
+  .atk-overlay.open { display:flex; }
+  .atk-modal {
+    width:min(780px,96vw); background:#0d1117;
+    border-radius:12px; overflow:hidden;
+    border:1px solid #30363d;
+    box-shadow:0 24px 64px rgba(0,0,0,.8);
+    position:relative;
+  }
+  .atk-header {
+    background:#161b22; padding:14px 20px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:1px solid #30363d;
+  }
+  .atk-steps {
+    display:flex; gap:0; counter-reset:atk-step;
+  }
+  .atk-step-pill {
+    font-family:'DM Mono',monospace; font-size:10px; font-weight:600;
+    letter-spacing:.08em; padding:5px 14px; color:#8b949e;
+    border:1px solid #30363d; cursor:pointer;
+    transition:all .15s; background:#0d1117;
+    margin-right:-1px;
+  }
+  .atk-step-pill:first-child { border-radius:6px 0 0 6px; }
+  .atk-step-pill:last-child  { border-radius:0 6px 6px 0; margin-right:0; }
+  .atk-step-pill.active { background:#ff4444; border-color:#ff4444; color:#fff; z-index:1; position:relative; }
+  .atk-close {
+    background:none; border:none; color:#8b949e; font-size:20px;
+    cursor:pointer; line-height:1; padding:4px 8px; border-radius:4px;
+  }
+  .atk-close:hover { color:#fff; background:#30363d; }
+  .atk-body { padding:0; }
+  .atk-screen { display:none; }
+  .atk-screen.active { display:block; }
+
+  /* Screen 1 — victim login */
+  .atk-s1 { background:#f3f4f6; padding:2rem; display:flex; align-items:center; justify-content:center; min-height:340px; }
+  .atk-fake-browser {
+    background:#fff; border-radius:8px; width:100%; max-width:380px;
+    box-shadow:0 8px 32px rgba(0,0,0,.15); overflow:hidden;
+  }
+  .atk-browser-bar {
+    background:#e8e8e8; padding:8px 12px; display:flex; align-items:center; gap:8px;
+  }
+  .atk-traffic-lights { display:flex; gap:5px; }
+  .atk-traffic-lights span { width:11px; height:11px; border-radius:50%; display:block; }
+  .atk-tl-r { background:#ff5f56; }
+  .atk-tl-y { background:#ffbd2e; }
+  .atk-tl-g { background:#28ca41; }
+  .atk-url-bar {
+    flex:1; background:#fff; border-radius:4px; padding:4px 10px;
+    font-family:'DM Mono',monospace; font-size:11px; color:#555;
+    border:1px solid #d0d0d0; display:flex; align-items:center; gap:6px;
+  }
+  .atk-url-bar .lock { color:#d93025; font-size:12px; }
+  .atk-login-form { padding:1.5rem; }
+  .atk-login-form h4 { font-size:18px; font-weight:700; color:#1a1a2e; margin:0 0 4px; }
+  .atk-login-form p { font-size:12px; color:#888; margin:0 0 1.25rem; }
+  .atk-field { margin-bottom:.85rem; }
+  .atk-field label { display:block; font-size:11px; font-weight:600; color:#555; margin-bottom:4px; }
+  .atk-field input {
+    width:100%; padding:9px 12px; border:1.5px solid #e0e0e0; border-radius:6px;
+    font-size:13px; color:#1a1a2e; box-sizing:border-box; outline:none;
+    font-family:'DM Sans',sans-serif;
+  }
+  .atk-field input:focus { border-color:#4285f4; }
+  .atk-btn-login {
+    width:100%; background:#4285f4; color:#fff; border:none;
+    padding:10px; border-radius:6px; font-size:14px; font-weight:600;
+    cursor:pointer; margin-top:.5rem; font-family:'DM Sans',sans-serif;
+  }
+  .atk-s1-caption {
+    margin-top:1rem; font-size:11px; color:#888; text-align:center;
+    font-family:'DM Mono',monospace; letter-spacing:.04em;
+  }
+  .atk-s1-caption strong { color:#ff4444; }
+
+  /* Screen 2 — attacker terminal */
+  .atk-s2 { background:#0d1117; padding:1.5rem; min-height:340px; }
+  .atk-terminal-title {
+    font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.1em;
+    color:#ff4444; text-transform:uppercase; margin-bottom:1rem;
+    display:flex; align-items:center; gap:8px;
+  }
+  .atk-pulse {
+    width:8px; height:8px; border-radius:50%; background:#ff4444;
+    animation:atk-blink 1s infinite;
+  }
+  @keyframes atk-blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+  .atk-terminal {
+    font-family:'DM Mono',monospace; font-size:12px; line-height:1.9;
+    color:#c9d1d9;
+  }
+  .atk-terminal .dim    { color:#484f58; }
+  .atk-terminal .green  { color:#3fb950; }
+  .atk-terminal .yellow { color:#e3b341; }
+  .atk-terminal .red    { color:#ff6b6b; }
+  .atk-terminal .white  { color:#f0f6fc; font-weight:600; }
+  .atk-terminal .hi     { background:#ff4444; color:#fff; padding:1px 5px; border-radius:3px; }
+  .atk-s2-caption {
+    margin-top:1.25rem; font-size:11px; color:#8b949e; text-align:center;
+    font-family:'DM Mono',monospace; letter-spacing:.04em;
+  }
+
+  /* Screen 3 — aftermath */
+  .atk-s3 { padding:2rem; min-height:340px; background:#0d1117; }
+  .atk-s3-grid {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem;
+  }
+  .atk-consequence {
+    background:#161b22; border:1px solid #30363d; border-radius:8px;
+    padding:1.25rem; border-top:3px solid;
+  }
+  .atk-consequence.c1 { border-top-color:#ff4444; }
+  .atk-consequence.c2 { border-top-color:#e3b341; }
+  .atk-consequence.c3 { border-top-color:#9e6ef5; }
+  .atk-consequence h5 {
+    font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.07em;
+    text-transform:uppercase; color:#8b949e; margin:0 0 .6rem;
+  }
+  .atk-consequence p {
+    font-size:13px; color:#c9d1d9; line-height:1.65; margin:0;
+  }
+  .atk-consequence .big-icon { font-size:28px; margin-bottom:.75rem; display:block; }
+  .atk-cta-row {
+    margin-top:1.5rem; text-align:center;
+    font-family:'DM Mono',monospace; font-size:11px; color:#8b949e;
+    letter-spacing:.06em;
+  }
+  .atk-cta-row a {
+    color:#3fb950; text-decoration:underline; cursor:pointer;
+  }
+  .atk-nav-row {
+    padding:14px 20px; background:#161b22; border-top:1px solid #30363d;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .atk-nav-btn {
+    font-family:'DM Mono',monospace; font-size:11px; font-weight:600;
+    letter-spacing:.07em; padding:8px 18px; border-radius:6px;
+    border:1px solid #30363d; background:#0d1117; color:#8b949e;
+    cursor:pointer; transition:all .15s;
+  }
+  .atk-nav-btn:hover { background:#30363d; color:#f0f6fc; }
+  .atk-nav-btn.primary { background:#ff4444; border-color:#ff4444; color:#fff; }
+  .atk-nav-btn.primary:hover { background:#c0392b; }
+  .atk-nav-btn:disabled { opacity:.35; cursor:not-allowed; }
+  .atk-screen-label {
+    font-family:'DM Mono',monospace; font-size:10px; color:#484f58; letter-spacing:.08em;
+  }
+
 </style>
 </head>
 <body>
@@ -784,16 +954,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ── WORKSHOP DATA ──────────────────────────────────────────────────────────
 const WORKSHOPS = [
-  { num:1,  title:"WiFi Safety 101: Your Coffee Shop Survival Kit",       level:"Beginner",     levelKey:0, date:"SAT · MAY 2",  dateSort:1,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", dur:"~15 min", durSort:15,  prize:"Coffee voucher + stickers",       desc:"Live packet-sniffing demo. We'll show what's visible on open WiFi, then plug in a travel router and make it disappear in under 5 minutes." },
-  { num:2,  title:"One-Tap VPN — No Tech Knowledge Required",        level:"Beginner",     levelKey:0, date:"SAT · MAY 9",  dateSort:2,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", dur:"~15 min", durSort:15,  prize:"1-month VPN subscription",        desc:"Download the GL.iNet app, connect to a VPN with one toggle, and watch your IP address change live. Every device you own, protected instantly." },
-  { num:3,  title:"Never Drop a Zoom Call Again — Multi-WAN Failover",level:"Intermediate",levelKey:1, date:"SAT · MAY 16", dateSort:3,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", dur:"~20 min", durSort:20,  prize:"GL.iNet Beryl AX unit",           desc:"Bond the cafe WiFi with your phone hotspot. Kill the connection mid-demo and watch it switch automatically without missing a beat." },
-  { num:4,  title:"Block Every Ad & Tracker — AdGuard Home Setup",   level:"Intermediate",levelKey:1, date:"SAT · MAY 23", dateSort:4,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EEF3FB", dur:"~15 min", durSort:15,  prize:"Branded travel pouch + router",    desc:"Enable AdGuard Home from the GL.iNet admin panel. Add three blocklists. Open a news site. Watch ads vanish across every connected device." },
-  { num:5,  title:"Access Your Home Office from Any Cafe",                level:"Intermediate",levelKey:1, date:"SAT · MAY 30", dateSort:5,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", dur:"~20 min", durSort:20,  prize:"GL.iNet Slate AX unit",           desc:"Configure a site-to-site WireGuard tunnel using GoodCloud. Browse a home NAS from this table. No exposed ports, no static IP, no headaches." },
-  { num:6,  title:"Pi-hole on GL.iNet — Full DNS Sinkhole",          level:"Advanced",    levelKey:2, date:"SAT · JUN 7",  dateSort:6,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"GL.iNet Flint 2 (AX6000)",        desc:"SSH in. Install Docker. Pull Pi-hole. Watch the dashboard light up with blocked queries from every device at this table." },
-  { num:7,  title:"Isolate Your Clients — VLAN & Guest Network Hardening",level:"Advanced",levelKey:2,date:"SAT · JUN 14",dateSort:7,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"Beryl AX + 3-month VPN",          desc:"Create a proper VLAN for guest devices. Block them from your LAN. Throttle their bandwidth. Prove it with a live ping test." },
-  { num:8,  title:"Kill Switch & DNS Leak — Ironclad VPN Setup",     level:"Advanced",    levelKey:2, date:"SAT · JUN 21", dateSort:8,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"Slate AX + privacy kit",          desc:"Enable the kill switch. Run a DNS leak test. Configure DNS-over-HTTPS. Drop the VPN. Prove nothing leaked." },
-  { num:9,  title:"Build a Secure Remote Team Hub at a Co-working Cafe",  level:"Pro",         levelKey:3, date:"SAT · JUN 28", dateSort:9,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", dur:"~25 min", durSort:25,  prize:"GL.iNet Flint 2 for the team",    desc:"One router. Five colleagues. Separate VLANs per role. Pi-hole + AdGuard chained DNS. Individual WireGuard peers. Enterprise-grade, from a bag." },
-  { num:10, title:"OpenWRT Deep Dive — Custom Firmware for Power Users",level:"Pro",       levelKey:3, date:"SAT · JUL 12", dateSort:10, device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", dur:"~30 min", durSort:30,  prize:"Flint 2 + developer swag kit",    desc:"Go past the admin panel. Write your own nftables ruleset. Stand up Prometheus + Grafana in Docker. Watch live network traffic visualised." },
+  { num:1,  title:"WiFi Safety 101: Your Coffee Shop Survival Kit",       level:"Beginner",     levelKey:0, date:"FRI · MAY 1",  dateSort:1,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", dur:"~15 min", durSort:15,  prize:"Coffee voucher + stickers",       desc:"Live packet-sniffing demo. We'll show what's visible on open WiFi, then plug in a travel router and make it disappear in under 5 minutes." },
+  { num:2,  title:"One-Tap VPN — No Tech Knowledge Required",        level:"Beginner",     levelKey:0, date:"FRI · MAY 8",  dateSort:2,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", dur:"~15 min", durSort:15,  prize:"1-month VPN subscription",        desc:"Download the GL.iNet app, connect to a VPN with one toggle, and watch your IP address change live. Every device you own, protected instantly." },
+  { num:3,  title:"Never Drop a Zoom Call Again — Multi-WAN Failover",level:"Intermediate",levelKey:1, date:"FRI · MAY 15", dateSort:3,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", dur:"~20 min", durSort:20,  prize:"GL.iNet Beryl AX unit",           desc:"Bond the cafe WiFi with your phone hotspot. Kill the connection mid-demo and watch it switch automatically without missing a beat." },
+  { num:4,  title:"Block Every Ad & Tracker — AdGuard Home Setup",   level:"Intermediate",levelKey:1, date:"FRI · MAY 22", dateSort:4,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EEF3FB", dur:"~15 min", durSort:15,  prize:"Branded travel pouch + router",    desc:"Enable AdGuard Home from the GL.iNet admin panel. Add three blocklists. Open a news site. Watch ads vanish across every connected device." },
+  { num:5,  title:"Access Your Home Office from Any Cafe",                level:"Intermediate",levelKey:1, date:"FRI · MAY 29", dateSort:5,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", dur:"~20 min", durSort:20,  prize:"GL.iNet Slate AX unit",           desc:"Configure a site-to-site WireGuard tunnel using GoodCloud. Browse a home NAS from this table. No exposed ports, no static IP, no headaches." },
+  { num:6,  title:"Pi-hole on GL.iNet — Full DNS Sinkhole",          level:"Advanced",    levelKey:2, date:"FRI · JUN 6",  dateSort:6,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"GL.iNet Flint 2 (AX6000)",        desc:"SSH in. Install Docker. Pull Pi-hole. Watch the dashboard light up with blocked queries from every device at this table." },
+  { num:7,  title:"Isolate Your Clients — VLAN & Guest Network Hardening",level:"Advanced",levelKey:2,date:"FRI · JUN 13",dateSort:7,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"Beryl AX + 3-month VPN",          desc:"Create a proper VLAN for guest devices. Block them from your LAN. Throttle their bandwidth. Prove it with a live ping test." },
+  { num:8,  title:"Kill Switch & DNS Leak — Ironclad VPN Setup",     level:"Advanced",    levelKey:2, date:"FRI · JUN 20", dateSort:8,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"Slate AX + privacy kit",          desc:"Enable the kill switch. Run a DNS leak test. Configure DNS-over-HTTPS. Drop the VPN. Prove nothing leaked." },
+  { num:9,  title:"Build a Secure Remote Team Hub at a Co-working Cafe",  level:"Pro",         levelKey:3, date:"FRI · JUN 27", dateSort:9,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", dur:"~25 min", durSort:25,  prize:"GL.iNet Flint 2 for the team",    desc:"One router. Five colleagues. Separate VLANs per role. Pi-hole + AdGuard chained DNS. Individual WireGuard peers. Enterprise-grade, from a bag." },
+  { num:10, title:"OpenWRT Deep Dive — Custom Firmware for Power Users",level:"Pro",       levelKey:3, date:"FRI · JUL 11", dateSort:10, device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", dur:"~30 min", durSort:30,  prize:"Flint 2 + developer swag kit",    desc:"Go past the admin panel. Write your own nftables ruleset. Stand up Prometheus + Grafana in Docker. Watch live network traffic visualised." },
 ];
 
 const LEVEL_CLASS = { Beginner:"beg", Intermediate:"int", Advanced:"adv", Pro:"pro" };
@@ -805,7 +975,36 @@ function setFilter(level, btn) {
   _filter = level;
   document.querySelectorAll('.ws-filter').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  renderWorkshops();
+  
+function openAttackModal() {
+  document.getElementById('atkOverlay').classList.add('open');
+  goAtkScreen(1);
+}
+function closeAttackModal() {
+  document.getElementById('atkOverlay').classList.remove('open');
+}
+function goAtkScreen(n) {
+  [1,2,3].forEach(function(i) {
+    var s = document.getElementById('atkS' + i);
+    var p = document.getElementById('atkPill' + i);
+    if (s) s.classList.toggle('active', i === n);
+    if (p) p.classList.toggle('active', i === n);
+  });
+  var prev = document.getElementById('atkPrev');
+  var next = document.getElementById('atkNext');
+  var lbl  = document.getElementById('atkLabel');
+  if (prev) prev.disabled = (n === 1);
+  if (next) {
+    next.textContent = (n === 3) ? 'CLOSE' : 'NEXT →';
+    next.onclick = (n === 3) ? closeAttackModal : function(){ goAtkScreen(n+1); };
+  }
+  if (prev) prev.onclick = function(){ goAtkScreen(n-1); };
+  var labels = ['', 'STEP 1 OF 3 — VICTIM VIEW', 'STEP 2 OF 3 — ATTACKER VIEW', 'STEP 3 OF 3 — AFTERMATH'];
+  if (lbl) lbl.textContent = labels[n];
+}
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeAttackModal(); });
+
+renderWorkshops();
 }
 
 function setView(v) {
@@ -873,7 +1072,7 @@ function renderWorkshops() {
           + '</div>'
           + '<div class="wcard-body">'
           + '<div class="wcard-meta">'
-          + '<span class="wcard-date">' + w.date + ' · 10 AM</span>'
+          + '<span class="wcard-date">' + w.date + ' · 11 AM</span>'
           + '<span class="wcard-level ' + lc + '">' + w.level + '</span>'
           + '</div>'
           + '<div class="wcard-num">Session ' + String(w.num).padStart(2,'0') + '</div>'
@@ -984,7 +1183,15 @@ renderWorkshops();
         <div class="hero-actions" style="margin-top:1.5rem;">
           <a href="#rsvp" class="btn-primary">Reserve your seat</a>
           <button class="btn-secondary" onclick="document.getElementById('workshops').scrollIntoView({behavior:'smooth'})">See all 10 sessions ↓</button>
-        </div>
+        
+<button class="atk-trigger" onclick="openAttackModal()">
+  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 1L2 5v6l6 4 6-4V5L8 1z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M8 8V5M8 10.5v.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>
+  SEE A LIVE ATTACK
+</button>
+      </div>
       </div>
     </div>
   </div>
@@ -1027,8 +1234,12 @@ renderWorkshops();
         <div class="hour-row"><span class="hour-day">Thursday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
         <div class="hour-row"><span class="hour-day">Friday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
         <div class="hour-row">
-          <span class="hour-day" style="font-weight:500;color:var(--ink)">Saturday</span>
-          <span class="hour-time workshop"><span class="workshop-dot"></span>8:00 AM – 6:00 PM · Workshop 10 AM</span>
+          <span class="hour-day" style="font-weight:500;color:var(--ink)">Friday</span>
+          <span class="hour-time workshop"><span class="workshop-dot"></span>8:00 AM – 6:00 PM
+        </div>
+        <div class="hour-row">
+          <span class="hour-day" style="font-weight:500;color:var(--ink)">Friday (Workshop)</span>
+          <span class="hour-time workshop"><span class="workshop-dot"></span>11:00 AM – 12:00 PM · Free session</span>
         </div>
         <div class="hour-row"><span class="hour-day">Sunday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
       </div>
@@ -1141,7 +1352,7 @@ renderWorkshops();
 <!-- ─── WORKSHOPS GRID ─── -->
 <div class="section-header" id="workshops">
   <h2>The 10-session arc</h2>
-  <span class="section-note">Every Saturday at 10 AM · Free to attend · Limited seats</span>
+  <span class="section-note">Every Friday at 11 AM · Free to attend · Limited seats</span>
 </div>
 
 <!-- ─── WORKSHOP TOOLBAR ─── -->
@@ -1217,7 +1428,7 @@ renderWorkshops();
     </div>
     <h3>Richmond, Virginia's first worker-owned coffee roaster and café.</h3>
     <p>Afterglow Coffee Cooperative is collectively owned and operated by the people who work there — rooted in Scott's Addition and committed to building something worth being part of. It's the kind of place where a workshop about digital autonomy just makes sense.</p>
-    <p style="margin-top:.75rem">Every Saturday at 10 AM, Afterglow opens its doors for this series. Free to attend. Great coffee. Leave with a skill.</p>
+    <p style="margin-top:.75rem">Every Friday at 11 AM, Afterglow opens its doors for this series. Free to attend. Great coffee. Leave with a skill.</p>
     <a href="https://www.afterglowcoffee.com" target="_blank" class="vibe-bar-link">Visit afterglowcoffee.com →</a>
   </div>
 </div>
@@ -1230,7 +1441,7 @@ renderWorkshops();
     <input type="email" placeholder="your@email.com" id="email-input">
     <button onclick="handleRSVP()">Get your spot →</button>
   </div>
-  <p style="font-size:12px;color:rgba(255,255,255,.4);margin-top:1rem;">Exclusively at Afterglow Coffee Cooperative · 1719 Summit Ave, Richmond VA · Saturdays 10 AM</p>
+  <p style="font-size:12px;color:rgba(255,255,255,.4);margin-top:1rem;">Exclusively at Afterglow Coffee Cooperative · 1719 Summit Ave, Richmond VA · Fridays 11 AM</p>
 </section>
 
 <!-- ─── FOOTER ─── -->
@@ -1238,7 +1449,7 @@ renderWorkshops();
   <div class="footer-inner">
     <div class="footer-col">
       <h4>The series</h4>
-      <p>10 workshops. Beginner to Pro. Every Saturday at Afterglow Coffee, Scott's Addition, Richmond VA.</p>
+      <p>10 workshops. Beginner to Pro. Every Friday 11 AM at Afterglow Coffee, Scott's Addition, Richmond VA.</p>
       <p style="margin-top:.75rem">Free to attend. Prizes each session. No tech background required for the first four.</p>
     </div>
     <div class="footer-col">
@@ -1261,5 +1472,116 @@ renderWorkshops();
     <span>Exclusive workshop series · Richmond, Virginia</span>
   </div>
 </footer>
+
+<!-- ATTACK DEMO MODAL -->
+<div class="atk-overlay" id="atkOverlay" onclick="if(event.target===this)closeAttackModal()">
+  <div class="atk-modal">
+    <div class="atk-header">
+      <div class="atk-steps">
+        <button class="atk-step-pill" id="atkPill1" onclick="goAtkScreen(1)">01 · VICTIM</button>
+        <button class="atk-step-pill" id="atkPill2" onclick="goAtkScreen(2)">02 · ATTACKER</button>
+        <button class="atk-step-pill" id="atkPill3" onclick="goAtkScreen(3)">03 · AFTERMATH</button>
+      </div>
+      <button class="atk-close" onclick="closeAttackModal()" aria-label="Close">✕</button>
+    </div>
+    <div class="atk-body">
+
+      <!-- SCREEN 1: Victim login page -->
+      <div class="atk-screen atk-s1 active" id="atkS1">
+        <div style="width:100%;max-width:420px;margin:0 auto">
+          <div class="atk-fake-browser">
+            <div class="atk-browser-bar">
+              <div class="atk-traffic-lights">
+                <span class="atk-tl-r"></span>
+                <span class="atk-tl-y"></span>
+                <span class="atk-tl-g"></span>
+              </div>
+              <div class="atk-url-bar">
+                <span class="lock">⚠</span>
+                <span>http://mybank-signin.com/login</span>
+              </div>
+            </div>
+            <div class="atk-login-form">
+              <h4>Sign In to MyBank</h4>
+              <p>Secure access to your account</p>
+              <div class="atk-field">
+                <label>Email address</label>
+                <input type="email" value="sarah.jones@gmail.com" readonly>
+              </div>
+              <div class="atk-field">
+                <label>Password</label>
+                <input type="password" value="hunter2pass" readonly>
+              </div>
+              <button class="atk-btn-login">Sign In →</button>
+            </div>
+          </div>
+          <p class="atk-s1-caption">Sarah is at a coffee shop. She types her credentials into what looks like her bank's site.<br><strong>This page is not her bank.</strong></p>
+        </div>
+      </div>
+
+      <!-- SCREEN 2: Attacker terminal -->
+      <div class="atk-screen atk-s2" id="atkS2">
+        <div class="atk-terminal-title">
+          <div class="atk-pulse"></div>
+          PACKET CAPTURE LIVE — INTERFACE: wlan0
+        </div>
+        <div class="atk-terminal">
+          <div class="dim">$ sudo tcpdump -i wlan0 -A port 80 | grep -A 20 POST</div>
+          <div>&nbsp;</div>
+          <div class="green">[✓] Listening on wlan0 (open network — no WPA2)</div>
+          <div class="dim">──────────────────────────────────────────────</div>
+          <div>&nbsp;</div>
+          <div class="yellow">14:23:07.441  IP 192.168.1.42 → 104.21.8.133</div>
+          <div class="yellow">POST /login HTTP/1.1</div>
+          <div>Host: mybank-signin.com</div>
+          <div>Content-Type: application/x-www-form-urlencoded</div>
+          <div>&nbsp;</div>
+          <div>email=<span class="hi">sarah.jones@gmail.com</span>&amp;password=<span class="hi">hunter2pass</span></div>
+          <div>&nbsp;</div>
+          <div class="dim">──────────────────────────────────────────────</div>
+          <div class="red">[!] Credentials captured in plaintext.</div>
+          <div class="dim">    Session took: 0.3 seconds.</div>
+          <div class="dim">    Sarah has no idea this happened.</div>
+        </div>
+        <p class="atk-s2-caption">On an open WiFi network, HTTP traffic is readable by anyone nearby. No hacking required — just a laptop and free software.</p>
+      </div>
+
+      <!-- SCREEN 3: Aftermath -->
+      <div class="atk-screen atk-s3" id="atkS3">
+        <div style="margin-bottom:1.25rem">
+          <div style="font-family:DM Mono,monospace;font-size:10px;letter-spacing:.1em;color:#ff4444;text-transform:uppercase;margin-bottom:.5rem">WHAT HAPPENS NEXT</div>
+          <div style="font-family:DM Mono,monospace;font-size:12px;color:#8b949e">The attacker now has Sarah's login. Here's what they can do with it — automatically, in minutes.</div>
+        </div>
+        <div class="atk-s3-grid">
+          <div class="atk-consequence c1">
+            <span class="big-icon">💳</span>
+            <h5>Financial Fraud</h5>
+            <p>Wire transfers initiated. Credit card added to Apple Pay. Bank account drained before Sarah finishes her coffee.</p>
+          </div>
+          <div class="atk-consequence c2">
+            <span class="big-icon">🤖</span>
+            <h5>AI-Powered Phishing</h5>
+            <p>LLMs now write flawless impersonation emails using her name, contacts, and writing style. Her family gets a "loan request."</p>
+          </div>
+          <div class="atk-consequence c3">
+            <span class="big-icon">🔗</span>
+            <h5>Credential Stuffing</h5>
+            <p>Same password tried on Gmail, Venmo, Amazon, Uber. If she reused it anywhere — those accounts fall too.</p>
+          </div>
+        </div>
+        <div class="atk-cta-row">
+          This takes under 60 seconds on any open WiFi. · <a href="#rsvp" onclick="closeAttackModal()">Sign up for Session 01 →</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="atk-nav-row">
+      <button class="atk-nav-btn" id="atkPrev" disabled onclick="goAtkScreen(0)">← PREV</button>
+      <span class="atk-screen-label" id="atkLabel">STEP 1 OF 3 — VICTIM VIEW</span>
+      <button class="atk-nav-btn primary" id="atkNext" onclick="goAtkScreen(2)">NEXT →</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
