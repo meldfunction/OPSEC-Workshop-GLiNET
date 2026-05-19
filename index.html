@@ -225,16 +225,28 @@
   /* Hours + request card strip */
   .hero-card-strip {
     border-bottom: 1px solid var(--border);
-    padding: 2rem clamp(2rem,5vw,4rem);
     background: var(--cream-dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 420px;
   }
+  .hero-card-col {
+    padding: 2rem clamp(1.5rem,4vw,3rem);
+    display: flex; align-items: flex-start;
+  }
+  .hero-map-col {
+    border-left: 1px solid var(--border);
+    overflow: hidden;
+    min-height: 420px;
+  }
+  .hero-map-col iframe { width:100%; height:100%; min-height:420px; }
   .hero-card {
     background: #fff;
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: 2rem;
     box-shadow: 0 2px 24px rgba(0,71,204,.06);
-    max-width: 560px;
+    width: 100%;
   }
   .hero-card-label {
     font-family: 'DM Mono', monospace; font-size: 10px; color: var(--ink-light);
@@ -636,6 +648,8 @@
     .hardware-cards { grid-template-columns: 1fr; }
     .hw-card { border-right: none; border-bottom: 1px solid var(--border); }
     .hw-card:last-child { border-bottom: none; }
+    .hero-card-strip { grid-template-columns: 1fr; }
+    .hero-map-col { border-left: none; border-top: 1px solid var(--border); min-height: 280px; }
     .vibe-bar { grid-template-columns: 1fr; gap: 2rem; }
   }
 
@@ -817,6 +831,7 @@
 
 <!-- ─── HERO CARD (hours + request) ─── -->
 <div class="hero-card-strip">
+  <div class="hero-card-col">
   <div class="hero-card">
     <div class="hero-card-logo">
       <a href="https://www.afterglowcoffee.com" target="_blank">
@@ -869,6 +884,15 @@
         <button onclick="handleRequest()">Send request →</button>
       </div>
     </div>
+  </div>
+  </div><!-- end hero-card-col -->
+  <div class="hero-map-col">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.2!2d-77.4737!3d37.5535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b1113b3e3b3b3b%3A0x1!2s1719+Summit+Ave%2C+Richmond%2C+VA+23230!5e0!3m2!1sen!2sus!4v1"
+      width="100%" height="100%" style="border:0;display:block;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Afterglow Coffee Cooperative — 1719 Summit Ave, Richmond VA">
+    </iframe>
   </div>
 </div>
 
@@ -1092,9 +1116,9 @@ function handleRequest() {
 
 // ── WORKSHOP DATA ──────────────────────────────────────────────────────────
 const WORKSHOPS = [
-  { num:1,  title:'WiFi Safety 101: Your Coffee Shop Survival Kit',      level:'Beginner',     levelKey:0, date:'SAT · MAY 2',  dateSort:1,  device:'Beryl AX · GL-MT3000',  deviceImg:'images/products/router-beryl.webp', imgBg:'#EDF4F0', dur:'~15 min', durSort:15,  prize:'Coffee voucher + stickers',      desc:'Live packet-sniffing demo. We'll show what's visible on open WiFi, then plug in a travel router and make it disappear — in under 5 minutes.' },
+  { num:1,  title:'WiFi Safety 101: Your Coffee Shop Survival Kit',      level:'Beginner',     levelKey:0, date:'SAT · MAY 2',  dateSort:1,  device:'Beryl AX · GL-MT3000',  deviceImg:'images/products/router-beryl.webp', imgBg:'#EDF4F0', dur:'~15 min', durSort:15,  prize:'Coffee voucher + stickers',      desc:'Live packet-sniffing demo. We\'ll show what's visible on open WiFi, then plug in a travel router and make it disappear — in under 5 minutes.' },
   { num:2,  title:'One-Tap VPN — No Tech Knowledge Required',            level:'Beginner',     levelKey:0, date:'SAT · MAY 9',  dateSort:2,  device:'Beryl AX · GL-MT3000',  deviceImg:'images/products/router-beryl.webp', imgBg:'#EDF4F0', dur:'~15 min', durSort:15,  prize:'1-month VPN subscription',       desc:'Download the GL.iNet app, connect to a VPN with one toggle, and watch your IP address change live. Every device you own, protected instantly.' },
-  { num:3,  title:'Never Drop a Zoom Call Again — Multi-WAN Failover',   level:'Intermediate', levelKey:1, date:'SAT · MAY 16', dateSort:3,  device:'Slate AX · GL-AXT1800', deviceImg:'images/products/router-slate.webp', imgBg:'#EEF3FB', dur:'~20 min', durSort:20,  prize:'GL.iNet Beryl AX unit',          desc:'Bond the café WiFi with your phone hotspot. We'll kill the café's internet mid-demo and watch the connection switch automatically.' },
+  { num:3,  title:'Never Drop a Zoom Call Again — Multi-WAN Failover',   level:'Intermediate', levelKey:1, date:'SAT · MAY 16', dateSort:3,  device:'Slate AX · GL-AXT1800', deviceImg:'images/products/router-slate.webp', imgBg:'#EEF3FB', dur:'~20 min', durSort:20,  prize:'GL.iNet Beryl AX unit',          desc:'Bond the café WiFi with your phone hotspot. We\'ll kill the caf\'s internet mid-demo and watch the connection switch automatically.' },
   { num:4,  title:'Block Every Ad & Tracker — AdGuard Home Setup',       level:'Intermediate', levelKey:1, date:'SAT · MAY 23', dateSort:4,  device:'Beryl AX · GL-MT3000',  deviceImg:'images/products/router-beryl.webp', imgBg:'#EEF3FB', dur:'~15 min', durSort:15,  prize:'Branded travel pouch + router',   desc:'Enable AdGuard Home from the GL.iNet admin panel. Add three blocklists. Open a news site. Watch ads vanish across every connected device.' },
   { num:5,  title:'Access Your Home Office from Any Café',               level:'Intermediate', levelKey:1, date:'SAT · MAY 30', dateSort:5,  device:'Slate AX · GL-AXT1800', deviceImg:'images/products/router-slate.webp', imgBg:'#EEF3FB', dur:'~20 min', durSort:20,  prize:'GL.iNet Slate AX unit',          desc:'Configure a site-to-site WireGuard tunnel using GoodCloud. Demo: browse a home NAS from this table. No exposed ports, no static IP.' },
   { num:6,  title:'Pi-hole on GL.iNet — Full DNS Sinkhole',             level:'Advanced',     levelKey:2, date:'SAT · JUN 7',  dateSort:6,  device:'Flint 2 · GL-MT6000',   deviceImg:'images/products/router-flint.webp', imgBg:'#FBF5EE', dur:'~20 min', durSort:20,  prize:'GL.iNet Flint 2 (AX6000)',       desc:'SSH in. Install Docker. Pull Pi-hole. Watch the dashboard light up with blocked queries from every device at this table.' },
