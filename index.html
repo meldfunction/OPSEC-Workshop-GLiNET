@@ -908,6 +908,60 @@
     font-family:'DM Mono',monospace; font-size:10px; color:#484f58; letter-spacing:.08em;
   }
 
+
+  /* ─── SESSION SIGNUP ─── */
+  .ws-signup-cb {
+    display:none;
+  }
+  .ws-signup-label {
+    display:inline-flex; align-items:center; gap:7px;
+    font-family:"DM Mono",monospace; font-size:10px; font-weight:600;
+    letter-spacing:.07em; text-transform:uppercase;
+    color:var(--ink-light); cursor:pointer;
+    padding:6px 10px 6px 8px;
+    border:1.5px solid var(--border);
+    border-radius:20px; background:#fff;
+    transition:all .18s; user-select:none; white-space:nowrap;
+  }
+  .ws-signup-label:hover { border-color:var(--green); color:var(--green); }
+  .ws-signup-label .cb-box {
+    width:14px; height:14px; border-radius:3px;
+    border:1.5px solid currentColor;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; transition:all .15s;
+  }
+  .ws-signup-label .cb-check { display:none; font-size:10px; line-height:1; }
+  .ws-signup-label.checked {
+    border-color:var(--green); color:var(--green);
+    background:#f0fdf6;
+  }
+  .ws-signup-label.checked .cb-box { background:var(--green); border-color:var(--green); }
+  .ws-signup-label.checked .cb-check { display:block; color:#fff; }
+  .ws-signup-label.checked .cb-txt::before { content:"Signed up"; }
+  .ws-signup-label:not(.checked) .cb-txt::before { content:"Sign up"; }
+
+  /* card footer flex fix */
+  .wcard-footer { flex-wrap:wrap; gap:6px; }
+
+  /* table signup col */
+  .col-signup { width:100px; text-align:center; }
+  .tbl-signup-label {
+    display:inline-flex; align-items:center; gap:5px;
+    font-family:"DM Mono",monospace; font-size:10px; font-weight:600;
+    letter-spacing:.06em; cursor:pointer;
+    padding:5px 10px; border-radius:20px;
+    border:1.5px solid var(--border); background:#fff;
+    color:var(--ink-light); transition:all .15s; user-select:none;
+  }
+  .tbl-signup-label:hover { border-color:var(--green); color:var(--green); }
+  .tbl-signup-label.checked { border-color:var(--green); color:var(--green); background:#f0fdf6; }
+  .tbl-signup-label .cb-check { display:none; }
+  .tbl-signup-label.checked .cb-check { display:inline; }
+  .tbl-signup-label .cb-txt-off { display:inline; }
+  .tbl-signup-label .cb-txt-on  { display:none; }
+  .tbl-signup-label.checked .cb-txt-off { display:none; }
+  .tbl-signup-label.checked .cb-txt-on  { display:inline; }
+
 </style>
 </head>
 <body>
@@ -976,6 +1030,21 @@ function setFilter(level, btn) {
   document.querySelectorAll('.ws-filter').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   
+
+var signedUp = new Set();
+function toggleSignup(num, e) {
+  if (e) { e.stopPropagation(); }
+  if (signedUp.has(num)) {
+    signedUp.delete(num);
+  } else {
+    signedUp.add(num);
+  }
+  // update all labels with this session num (card + table may both exist)
+  document.querySelectorAll('[data-signup="' + num + '"]').forEach(function(el) {
+    el.classList.toggle('checked', signedUp.has(num));
+  });
+}
+
 function openAttackModal() {
   document.getElementById('atkOverlay').classList.add('open');
   goAtkScreen(1);
@@ -1085,6 +1154,10 @@ function renderWorkshops() {
           + '<div class="wcard-footer">'
           + '<span class="wcard-time">' + w.dur + '</span>'
           + '<span class="wcard-prize">' + w.prize + '</span>'
+          + '<span class="ws-signup-label" data-signup="' + w.num + '" onclick="toggleSignup(' + w.num + ',event)">'
+          + '<span class="cb-box"><span class="cb-check">✓</span></span>'
+          + '<span class="cb-txt"></span>'
+          + '</span>'
           + '</div>'
           + '</div></article>';
       }).join('');
@@ -1095,7 +1168,7 @@ function renderWorkshops() {
   const tbody = document.getElementById('ws-tbody');
   if (tbody) {
     if (data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="7" class="no-results">No sessions match.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="8" class="no-results">No sessions match.</td></tr>';
     } else {
       tbody.innerHTML = data.map(function(w) {
         const lc = LEVEL_CLASS[w.level];
@@ -1107,6 +1180,11 @@ function renderWorkshops() {
           + '<td class="col-device">' + w.device + '</td>'
           + '<td class="col-dur">' + w.dur + '</td>'
           + '<td class="col-prize">' + w.prize + '</td>'
+          + '<td class="col-signup"><span class="tbl-signup-label" data-signup="' + w.num + '" onclick="toggleSignup(' + w.num + ',event)">'
+          + '<span class="cb-check">✓ </span>'
+          + '<span class="cb-txt-on">Going</span>'
+          + '<span class="cb-txt-off">Sign up</span>'
+          + '</span></td>'
           + '</tr>';
       }).join('');
     }
@@ -1400,6 +1478,7 @@ renderWorkshops();
         <th class="sortable" onclick="sortCol('device')">Hardware <span class="sort-icon" id="si-device">↕</span></th>
         <th class="sortable" onclick="sortCol('dur')">Duration <span class="sort-icon" id="si-dur">↕</span></th>
         <th>Prize</th>
+        <th class="col-signup">Sign Up</th>
       </tr></thead>
       <tbody id="ws-tbody"></tbody>
     </table>
