@@ -965,14 +965,6 @@
   <span class="section-note">Every Saturday at 10 AM · Free to attend · Limited seats</span>
 </div>
 
-<div class="legend">
-  <div class="legend-item"><div class="legend-dot beg"></div>Beginner</div>
-  <div class="legend-item"><div class="legend-dot int"></div>Intermediate</div>
-  <div class="legend-item"><div class="legend-dot adv"></div>Advanced</div>
-  <div class="legend-item"><div class="legend-dot pro"></div>Pro</div>
-</div>
-
-
 <!-- ─── WORKSHOP TOOLBAR ─── -->
 <div class="ws-toolbar">
   <div class="ws-search-wrap">
@@ -1252,8 +1244,8 @@ function renderWorkshops() {
   }
 }
 
-// init on load
-document.addEventListener('DOMContentLoaded', renderWorkshops);
+// init — run immediately since script is at end of body, DOM is ready
+renderWorkshops();
 
 function handleRSVP() {
   const email = document.getElementById('email-input').value.trim();
