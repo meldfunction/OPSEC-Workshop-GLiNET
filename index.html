@@ -130,37 +130,55 @@
   .mission-level.int .ml-dot { background: var(--blue); }
   .mission-level.adv .ml-dot { background: var(--amber); }
 
-  /* ─── HERO ─── */
-  .hero {
-    padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  /* ─── HERO SPLIT ─── */
+  .hero-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 560px;
   }
 
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--blue-light); color: var(--blue);
-    font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500;
-    letter-spacing: .1em; padding: 5px 12px; border-radius: 20px;
-    margin-bottom: 1.5rem; text-transform: uppercase;
+  /* Left brand panel */
+  .hero-brand {
+    background: var(--cream);
+    display: flex; align-items: center;
+    padding: clamp(3rem,8vw,6rem) clamp(2rem,5vw,4rem);
+    border-right: 1px solid var(--border);
   }
-  .hero-eyebrow::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
-
-  .hero h1 {
+  .hero-brand-inner { max-width: 480px; }
+  .hero-brand-icon { width: 64px; height: 64px; margin-bottom: 1.25rem; display: block; }
+  .hero-brand-name {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.4rem, 5vw, 4rem);
-    line-height: 1.1; font-weight: 700;
-    color: var(--ink); margin-bottom: 1.5rem;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 700; line-height: .95;
+    color: var(--ink); margin-bottom: .5rem;
   }
-  .hero h1 em { font-style: italic; color: var(--blue); }
-
-  .hero-body {
-    font-size: 17px; color: var(--ink-mid);
-    line-height: 1.75; margin-bottom: 2rem; max-width: 520px;
+  .hero-brand-rva {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px; font-weight: 500; letter-spacing: .2em;
+    color: var(--blue); text-transform: uppercase;
+    margin-bottom: 2rem;
   }
+  .hero-bumper {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
+    font-style: italic; color: var(--ink-mid);
+    line-height: 1.4;
+    border-left: 3px solid var(--blue);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+  }
+  .hero-sub-lockup { border-top: 1px solid var(--border); padding-top: 1.5rem; }
+  .hero-eyebrow-small {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-light);
+    display: block; margin-bottom: .75rem;
+  }
+  .hero-partner-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .hero-partner-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-light); }
+  .hero-partner-logo { height: 28px; object-fit: contain; display: block; }
 
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-
   .btn-primary {
     background: var(--blue); color: #fff;
     font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500;
@@ -169,20 +187,54 @@
     transition: opacity .15s; display: inline-block;
   }
   .btn-primary:hover { opacity: .88; }
-
   .btn-secondary {
     color: var(--ink-mid); font-size: 14px;
     text-decoration: underline; text-underline-offset: 3px;
     cursor: pointer; background: none; border: none;
   }
 
-  .hero-aside { position: relative; }
+  /* Right photo + mission overlay */
+  .hero-photo {
+    position: relative; overflow: hidden;
+    min-height: 560px;
+  }
+  .hero-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    filter: brightness(.45);
+  }
+  .hero-mission-overlay {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(2rem,5vw,4rem);
+  }
+  .hero-mission-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(.95rem, 1.4vw, 1.15rem);
+    color: #fff; line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+  .hero-mission-levels { margin-top: .5rem; display: flex; flex-direction: column; gap: 6px; }
+  .hml-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,.8); }
+  .hml-item strong { color: #fff; }
+  .hml-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+  .hml-dot.beg { background: var(--green); }
+  .hml-dot.int { background: var(--blue-mid); }
+  .hml-dot.adv { background: var(--amber); }
+
+  /* Hours + request card strip */
+  .hero-card-strip {
+    border-bottom: 1px solid var(--border);
+    padding: 2rem clamp(2rem,5vw,4rem);
+    background: var(--cream-dark);
+  }
   .hero-card {
     background: #fff;
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: 2rem;
     box-shadow: 0 2px 24px rgba(0,71,204,.06);
+    max-width: 560px;
   }
   .hero-card-label {
     font-family: 'DM Mono', monospace; font-size: 10px; color: var(--ink-light);
@@ -575,7 +627,9 @@
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-split { grid-template-columns: 1fr; }
+    .hero-photo { min-height: 320px; }
+    .hero-brand { border-right: none; border-bottom: 1px solid var(--border); }
     .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
     .nav-links { display: none; }
     .workshop-grid { grid-template-columns: 1fr; }
@@ -711,11 +765,12 @@
 </nav>
 
 <!-- ─── HERO ─── -->
-<section class="hero">
-  <div>
-    <!-- Series identity lockup -->
-    <div class="hero-series-logo">
-      <svg width="48" height="48" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<section class="hero-split">
+
+  <!-- LEFT: big logo + bumper sticker -->
+  <div class="hero-brand">
+    <div class="hero-brand-inner">
+      <svg class="hero-brand-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M16 22 C16 22 16 22 16 22" stroke="#0047CC" stroke-width="2.5" stroke-linecap="round"/>
         <path d="M11.5 18.5 C12.6 17.1 14.2 16.2 16 16.2 C17.8 16.2 19.4 17.1 20.5 18.5" stroke="#0047CC" stroke-width="2" stroke-linecap="round" fill="none"/>
         <path d="M7.5 14.8 C9.4 12.4 12.5 10.9 16 10.9 C19.5 10.9 22.6 12.4 24.5 14.8" stroke="#0047CC" stroke-width="2" stroke-linecap="round" fill="none"/>
@@ -723,109 +778,99 @@
         <circle cx="16" cy="22" r="2" fill="#0047CC"/>
         <path d="M13 25 Q13 27.5 16 27.5 Q19 27.5 19 25" stroke="#B05A00" stroke-width="1.5" stroke-linecap="round" fill="none"/>
       </svg>
-      <div>
-        <div class="hero-series-name">Hotspot &amp; Learn</div>
-        <div class="hero-series-rva">RVA Community Tech Series</div>
-      </div>
-    </div>
-    <div class="mission-block">
-      <p class="mission-body">Most of us don't think about protecting ourselves online until something goes wrong — a stolen credit card, an impersonated account, a hacked inbox. By then, the damage is done. The culprit is almost always poor <strong>OPSEC</strong>: operational security, the discipline of managing what you expose and to whom.</p>
-      <p class="mission-body">We started Hotspot &amp; Learn RVA to change that. We bring industry best practices out of the IT department and into the hands of everyday people — remote workers, freelancers, café regulars, anyone who opens a laptop in public. No jargon. No prerequisites for the first half of the series. Just practical skills you can use the same afternoon.</p>
-      <p class="mission-body">And the stakes are only going up. AI is making it dramatically easier for bad actors to scale attacks, craft convincing phishing, and impersonate people at speed. The best defense isn't fear — it's knowing exactly what to do.</p>
-      <div class="mission-levels">
-        <div class="mission-level beg">
-          <span class="ml-dot"></span>
-          <div><strong>Sessions 1–4</strong> No experience needed. Smartphone + curiosity.</div>
+      <h1 class="hero-brand-name">Hotspot<br>&amp; Learn</h1>
+      <span class="hero-brand-rva">RVA</span>
+      <div class="hero-bumper">Your café has WiFi.<br>Now make it safe.</div>
+      <div class="hero-sub-lockup">
+        <span class="hero-eyebrow-small">Exclusive to Afterglow Coffee · Richmond, VA</span>
+        <div class="hero-partner-row">
+          <span class="hero-partner-label">Venue partner</span>
+          <a href="https://www.afterglowcoffee.com" target="_blank">
+            <img src="images/logo/afterglow.png" alt="Afterglow Coffee Cooperative" class="hero-partner-logo">
+          </a>
+          <span class="hero-partner-label" style="margin-left:8px;">× GL.iNet</span>
         </div>
-        <div class="mission-level int">
-          <span class="ml-dot"></span>
-          <div><strong>Sessions 5–8</strong> Comfortable with basic router settings.</div>
-        </div>
-        <div class="mission-level adv">
-          <span class="ml-dot"></span>
-          <div><strong>Sessions 9–10</strong> Linux users, sysadmins, power users.</div>
+        <div class="hero-actions" style="margin-top:1.5rem;">
+          <a href="#rsvp" class="btn-primary">Reserve your seat</a>
+          <button class="btn-secondary" onclick="document.getElementById('workshops').scrollIntoView({behavior:'smooth'})">See all 10 sessions ↓</button>
         </div>
       </div>
     </div>
-    <div class="hero-eyebrow">Exclusive to Afterglow Coffee · Richmond, VA</div>
-    <h1>Work safer.<br><em>Sip better.</em><br>Every Saturday.</h1>
-    <p class="hero-body">
-      A 10-week hands-on workshop series for remote professionals — held exclusively at Afterglow Coffee Cooperative on Summit Ave. Learn to secure your connection, block ads, and build a private network, all before your second cup.
-    </p>
-    <div class="hero-actions">
-      <a href="#rsvp" class="btn-primary">Reserve your seat</a>
-      <button class="btn-secondary" onclick="document.getElementById('workshops').scrollIntoView({behavior:'smooth'})">See all 10 sessions ↓</button>
+  </div>
+
+  <!-- RIGHT: photo + mission overlay -->
+  <div class="hero-photo">
+    <img src="images/scene/cafe-laptop.jpg" alt="Remote worker at a café">
+    <div class="hero-mission-overlay">
+      <p class="hero-mission-text">Most of us don't think about protecting ourselves online until something goes wrong. We're here to change that — before it does.</p>
+      <p class="hero-mission-text">We bring industry best practices out of the IT department and into everyday hands. Remote workers, freelancers, café regulars. No jargon. Just skills you'll use the same afternoon.</p>
+      <p class="hero-mission-text">And the stakes are rising. AI is making it dramatically easier for bad actors to scale attacks, impersonate people, and craft convincing phishing at speed. The best defense isn't fear — it's knowing exactly what to do.</p>
+      <div class="hero-mission-levels">
+        <div class="hml-item"><span class="hml-dot beg"></span><span><strong>Sessions 1–4</strong> No experience needed</span></div>
+        <div class="hml-item"><span class="hml-dot int"></span><span><strong>Sessions 5–8</strong> Basic router comfort</span></div>
+        <div class="hml-item"><span class="hml-dot adv"></span><span><strong>Sessions 9–10</strong> Linux / power users</span></div>
+      </div>
     </div>
-    <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:1.25rem;">
-      <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);">Venue partner</span>
-      <a href="https://www.afterglowcoffee.com" target="_blank" style="display:block;">
-        <img src="images/logo/afterglow.png" alt="Afterglow Coffee Cooperative" style="height:36px;object-fit:contain;display:block;">
+  </div>
+
+</section>
+
+<!-- ─── HERO CARD (hours + request) ─── -->
+<div class="hero-card-strip">
+  <div class="hero-card">
+    <div class="hero-card-logo">
+      <a href="https://www.afterglowcoffee.com" target="_blank">
+        <img src="images/logo/afterglow.png" alt="Afterglow Coffee Cooperative">
       </a>
     </div>
-  </div>
-  <div class="hero-aside">
-    <img src="images/scene/security-lock.jpg" alt="Digital privacy and security" style="width:100%;height:180px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:1rem;">
-    <div class="hero-card">
-      <!-- Logo -->
-      <div class="hero-card-logo">
-        <a href="https://www.afterglowcoffee.com" target="_blank">
-          <img src="images/logo/afterglow.png" alt="Afterglow Coffee Cooperative">
-        </a>
-      </div>
-      <!-- Tabs -->
-      <div class="card-tabs">
-        <button class="card-tab active" onclick="switchTab('hours',this)">Café hours</button>
-        <button class="card-tab" onclick="switchTab('request',this)">Request a session</button>
-      </div>
-      <!-- Tab: Hours -->
-      <div id="tab-hours" class="card-tab-panel">
-        <div class="hero-hours">
-          <div class="hour-row"><span class="hour-day">Monday</span><span class="hour-time closed">Closed</span></div>
-          <div class="hour-row"><span class="hour-day">Tuesday</span><span class="hour-time closed">Closed</span></div>
-          <div class="hour-row"><span class="hour-day">Wednesday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
-          <div class="hour-row"><span class="hour-day">Thursday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
-          <div class="hour-row"><span class="hour-day">Friday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
-          <div class="hour-row">
-            <span class="hour-day" style="font-weight:500;color:var(--ink)">Saturday</span>
-            <span class="hour-time workshop">
-              <span class="workshop-dot"></span>8:00 AM – 6:00 PM · Workshop 10 AM
-            </span>
-          </div>
-          <div class="hour-row"><span class="hour-day">Sunday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
+    <div class="card-tabs">
+      <button class="card-tab active" onclick="switchTab('hours',this)">Café hours</button>
+      <button class="card-tab" onclick="switchTab('request',this)">Request a session</button>
+    </div>
+    <div id="tab-hours" class="card-tab-panel">
+      <div class="hero-hours">
+        <div class="hour-row"><span class="hour-day">Monday</span><span class="hour-time closed">Closed</span></div>
+        <div class="hour-row"><span class="hour-day">Tuesday</span><span class="hour-time closed">Closed</span></div>
+        <div class="hour-row"><span class="hour-day">Wednesday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
+        <div class="hour-row"><span class="hour-day">Thursday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
+        <div class="hour-row"><span class="hour-day">Friday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
+        <div class="hour-row">
+          <span class="hour-day" style="font-weight:500;color:var(--ink)">Saturday</span>
+          <span class="hour-time workshop"><span class="workshop-dot"></span>8:00 AM – 6:00 PM · Workshop 10 AM</span>
         </div>
-        <div class="hero-address">
-          <strong>Afterglow Coffee Cooperative</strong>
-          1719 Summit Ave, Richmond, VA 23230<br>
-          Scott's Addition · (804) 214-4210
-        </div>
+        <div class="hour-row"><span class="hour-day">Sunday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
       </div>
-      <!-- Tab: Request Form -->
-      <div id="tab-request" class="card-tab-panel" style="display:none;">
-        <p style="font-size:13px;color:var(--ink-mid);margin-bottom:1.25rem;line-height:1.6;">Want to bring a group, host a private session, or suggest a topic? Drop us a note.</p>
-        <div class="req-form">
-          <input type="text" placeholder="Your name" id="req-name">
-          <input type="email" placeholder="Email address" id="req-email">
-          <select id="req-session">
-            <option value="">Which session interests you?</option>
-            <option>01 — WiFi Safety 101</option>
-            <option>02 — One-Tap VPN</option>
-            <option>03 — Multi-WAN Failover</option>
-            <option>04 — AdGuard Home</option>
-            <option>05 — Home Office Tunnel</option>
-            <option>06 — Pi-hole DNS Sinkhole</option>
-            <option>07 — VLAN & Guest Hardening</option>
-            <option>08 — Kill Switch & DNS Leak</option>
-            <option>09 — Secure Remote Team Hub</option>
-            <option>10 — OpenWRT Deep Dive</option>
-            <option>Private / group session</option>
-          </select>
-          <textarea placeholder="Anything else? Group size, questions, special requests…" id="req-note" rows="3"></textarea>
-          <button onclick="handleRequest()">Send request →</button>
-        </div>
+      <div class="hero-address">
+        <strong>Afterglow Coffee Cooperative</strong>
+        1719 Summit Ave, Richmond, VA 23230<br>
+        Scott's Addition · (804) 214-4210
+      </div>
+    </div>
+    <div id="tab-request" class="card-tab-panel" style="display:none;">
+      <p style="font-size:13px;color:var(--ink-mid);margin-bottom:1.25rem;line-height:1.6;">Want to bring a group, host a private session, or suggest a topic? Drop us a note.</p>
+      <div class="req-form">
+        <input type="text" placeholder="Your name" id="req-name">
+        <input type="email" placeholder="Email address" id="req-email">
+        <select id="req-session">
+          <option value="">Which session interests you?</option>
+          <option>01 — WiFi Safety 101</option>
+          <option>02 — One-Tap VPN</option>
+          <option>03 — Multi-WAN Failover</option>
+          <option>04 — AdGuard Home</option>
+          <option>05 — Home Office Tunnel</option>
+          <option>06 — Pi-hole DNS Sinkhole</option>
+          <option>07 — VLAN &amp; Guest Hardening</option>
+          <option>08 — Kill Switch &amp; DNS Leak</option>
+          <option>09 — Secure Remote Team Hub</option>
+          <option>10 — OpenWRT Deep Dive</option>
+          <option>Private / group session</option>
+        </select>
+        <textarea placeholder="Anything else? Group size, questions, special requests…" id="req-note" rows="3"></textarea>
+        <button onclick="handleRequest()">Send request →</button>
       </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- ─── HARDWARE INTRO ─── -->
 <section class="hardware-intro">
