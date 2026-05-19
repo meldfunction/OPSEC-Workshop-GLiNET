@@ -399,12 +399,56 @@
     font-size: 12px; color: var(--ink-light); flex-wrap: wrap; gap: 0.5rem;
   }
 
+  /* ─── SCENE STRIP ─── */
+  .scene-strip {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 6px;
+    max-width: 1200px;
+    margin: 0 auto 0;
+    padding: 0 clamp(1.5rem, 5vw, 4rem) 0;
+  }
+  .scene-strip img {
+    width: 100%; height: 220px;
+    object-fit: cover; border-radius: var(--radius-lg);
+    display: block;
+  }
+
+  /* ─── VIBE BAR ─── */
+  .vibe-bar {
+    background: var(--cream-dark);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 3rem clamp(1.5rem, 5vw, 4rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 100%;
+  }
+  .vibe-bar-img {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    height: 280px;
+  }
+  .vibe-bar-img img { width: 100%; height: 100%; object-fit: cover; }
+  .vibe-bar-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 700; color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  .vibe-bar-text p { font-size: 15px; color: var(--ink-mid); line-height: 1.75; }
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
     .hero { grid-template-columns: 1fr; gap: 2.5rem; }
     .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
     .nav-links { display: none; }
     .workshop-grid { grid-template-columns: 1fr; }
+    .scene-strip { grid-template-columns: 1fr 1fr; }
+    .scene-strip img:first-child { grid-column: 1 / -1; }
+    .vibe-bar { grid-template-columns: 1fr; gap: 2rem; }
   }
 </style>
 </head>
@@ -413,7 +457,7 @@
 <!-- ─── NAV ─── -->
 <nav>
   <div class="nav-logos">
-    <img src="https://images.squarespace-cdn.com/content/v1/5f2566c326e6fb7b1944ce19/1a40e862-995f-414f-8cd6-63b7104f1d29/AFTERGLOW-blue.png"
+    <img src="images/logo/afterglow.png"
          alt="Afterglow Coffee Cooperative"
          onerror="this.replaceWith(document.createTextNode('Afterglow Coffee'))">
     <div class="nav-sep"></div>
@@ -443,6 +487,7 @@
     </div>
   </div>
   <div class="hero-aside">
+    <img src="images/scene/security-lock.jpg" alt="Digital privacy and security" style="width:100%;height:180px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:1rem;">
     <div class="hero-card">
       <div class="hero-card-label">Café hours · 1719 Summit Ave</div>
       <div class="hero-hours">
@@ -468,6 +513,13 @@
   </div>
 </section>
 
+<!-- ─── SCENE STRIP ─── -->
+<div class="scene-strip">
+  <img src="images/scene/cafe-laptop.jpg" alt="Remote worker at a café with laptop">
+  <img src="images/scene/workshop-group.jpg" alt="Group workshop session">
+  <img src="images/scene/workshop-coffee.jpg" alt="Coffee and conversation at workshop">
+</div>
+
 <!-- ─── WORKSHOPS GRID ─── -->
 <div class="section-header" id="workshops">
   <h2>The 10-session arc</h2>
@@ -487,9 +539,9 @@
   <article class="wcard">
     <div class="wcard-top-bar beg"></div>
     <div class="wcard-img" style="background:#EDF4F0;">
-      <img src="https://static.gl-inet.com/www/images/products/gl-mt3000/v2/GL-MT3000_main.jpg"
+      <img src="images/products/router-beryl.jpg"
            alt="GL.iNet Beryl AX"
-           onerror="this.src='https://via.placeholder.com/400x200/EDF4F0/1D7A54?text=Beryl+AX'">
+           >
       <div class="wcard-img-overlay">GL-MT3000</div>
     </div>
     <div class="wcard-body">
@@ -515,9 +567,9 @@
   <article class="wcard">
     <div class="wcard-top-bar beg"></div>
     <div class="wcard-img" style="background:#EDF4F0;">
-      <img src="https://static.gl-inet.com/www/images/products/gl-mt3000/v2/GL-MT3000_main.jpg"
+      <img src="images/products/router-beryl.jpg"
            alt="GL.iNet Beryl AX"
-           onerror="this.src='https://via.placeholder.com/400x200/EDF4F0/1D7A54?text=Beryl+AX'">
+           >
       <div class="wcard-img-overlay">GL-MT3000</div>
     </div>
     <div class="wcard-body">
@@ -543,9 +595,9 @@
   <article class="wcard">
     <div class="wcard-top-bar int"></div>
     <div class="wcard-img" style="background:#EEF3FB;">
-      <img src="https://static.gl-inet.com/www/images/products/gl-axt1800/GL-AXT1800_main.jpg"
+      <img src="images/products/router-slate.jpg"
            alt="GL.iNet Slate AX"
-           onerror="this.src='https://via.placeholder.com/400x200/EEF3FB/0047CC?text=Slate+AX'">
+           >
       <div class="wcard-img-overlay">GL-AXT1800</div>
     </div>
     <div class="wcard-body">
@@ -571,9 +623,9 @@
   <article class="wcard">
     <div class="wcard-top-bar int"></div>
     <div class="wcard-img" style="background:#EEF3FB;">
-      <img src="https://static.gl-inet.com/www/images/products/gl-mt3000/v2/GL-MT3000_main.jpg"
+      <img src="images/products/router-beryl.jpg"
            alt="GL.iNet Beryl AX"
-           onerror="this.src='https://via.placeholder.com/400x200/EEF3FB/0047CC?text=Beryl+AX'">
+           >
       <div class="wcard-img-overlay">GL-MT3000</div>
     </div>
     <div class="wcard-body">
@@ -599,9 +651,9 @@
   <article class="wcard">
     <div class="wcard-top-bar int"></div>
     <div class="wcard-img" style="background:#EEF3FB;">
-      <img src="https://static.gl-inet.com/www/images/products/gl-axt1800/GL-AXT1800_main.jpg"
+      <img src="images/products/router-slate.jpg"
            alt="GL.iNet Slate AX"
-           onerror="this.src='https://via.placeholder.com/400x200/EEF3FB/0047CC?text=Slate+AX'">
+           >
       <div class="wcard-img-overlay">GL-AXT1800</div>
     </div>
     <div class="wcard-body">
@@ -627,9 +679,9 @@
   <article class="wcard">
     <div class="wcard-top-bar adv"></div>
     <div class="wcard-img" style="background:#FBF5EE;">
-      <img src="https://static.gl-inet.com/www/images/products/gl-mt6000/GL-MT6000_main.jpg"
+      <img src="images/products/router-flint.jpg"
            alt="GL.iNet Flint 2"
-           onerror="this.src='https://via.placeholder.com/400x200/FBF5EE/B05A00?text=Flint+2'">
+           >
       <div class="wcard-img-overlay">GL-MT6000</div>
     </div>
     <div class="wcard-body">
@@ -655,9 +707,9 @@
   <article class="wcard">
     <div class="wcard-top-bar adv"></div>
     <div class="wcard-img" style="background:#FBF5EE;">
-      <img src="https://static.gl-inet.com/www/images/products/gl-mt6000/GL-MT6000_main.jpg"
+      <img src="images/products/router-flint.jpg"
            alt="GL.iNet Flint 2"
-           onerror="this.src='https://via.placeholder.com/400x200/FBF5EE/B05A00?text=Flint+2'">
+           >
       <div class="wcard-img-overlay">GL-MT6000</div>
     </div>
     <div class="wcard-body">
@@ -683,9 +735,9 @@
   <article class="wcard">
     <div class="wcard-top-bar adv"></div>
     <div class="wcard-img" style="background:#FBF5EE;">
-      <img src="https://static.gl-inet.com/www/images/products/gl-axt1800/GL-AXT1800_main.jpg"
+      <img src="images/products/router-slate.jpg"
            alt="GL.iNet Slate AX"
-           onerror="this.src='https://via.placeholder.com/400x200/FBF5EE/B05A00?text=Slate+AX'">
+           >
       <div class="wcard-img-overlay">GL-AXT1800</div>
     </div>
     <div class="wcard-body">
@@ -711,9 +763,9 @@
   <article class="wcard">
     <div class="wcard-top-bar pro"></div>
     <div class="wcard-img" style="background:#FAF0F4;">
-      <img src="https://static.gl-inet.com/www/images/products/gl-mt6000/GL-MT6000_main.jpg"
+      <img src="images/products/router-flint.jpg"
            alt="GL.iNet Flint 2"
-           onerror="this.src='https://via.placeholder.com/400x200/FAF0F4/8C2245?text=Flint+2'">
+           >
       <div class="wcard-img-overlay">GL-MT6000</div>
     </div>
     <div class="wcard-body">
@@ -739,9 +791,9 @@
   <article class="wcard">
     <div class="wcard-top-bar pro"></div>
     <div class="wcard-img" style="background:#FAF0F4;">
-      <img src="https://static.gl-inet.com/www/images/products/gl-mt6000/GL-MT6000_main.jpg"
+      <img src="images/products/router-flint.jpg"
            alt="GL.iNet Flint 2"
-           onerror="this.src='https://via.placeholder.com/400x200/FAF0F4/8C2245?text=Flint+2'">
+           >
       <div class="wcard-img-overlay">GL-MT6000</div>
     </div>
     <div class="wcard-body">
@@ -775,7 +827,7 @@
 
       <div class="product-card">
         <div class="product-card-img">
-          <img src="https://static.gl-inet.com/www/images/products/gl-mt3000/v2/GL-MT3000_main.jpg"
+          <img src="images/products/router-beryl.jpg"
                alt="GL.iNet Beryl AX"
                onerror="this.style.display='none'">
         </div>
@@ -795,7 +847,7 @@
 
       <div class="product-card">
         <div class="product-card-img">
-          <img src="https://static.gl-inet.com/www/images/products/gl-axt1800/GL-AXT1800_main.jpg"
+          <img src="images/products/router-slate.jpg"
                alt="GL.iNet Slate AX"
                onerror="this.style.display='none'">
         </div>
@@ -815,7 +867,7 @@
 
       <div class="product-card">
         <div class="product-card-img">
-          <img src="https://static.gl-inet.com/www/images/products/gl-mt6000/GL-MT6000_main.jpg"
+          <img src="images/products/router-flint.jpg"
                alt="GL.iNet Flint 2"
                onerror="this.style.display='none'">
         </div>
@@ -836,6 +888,17 @@
     </div>
   </div>
 </section>
+
+<!-- ─── VIBE BAR ─── -->
+<div class="vibe-bar">
+  <div class="vibe-bar-img">
+    <img src="images/scene/cafe-work.jpg" alt="Professionals working together at a café">
+  </div>
+  <div class="vibe-bar-text">
+    <h3>A community of people who take their privacy seriously — and their coffee even more so.</h3>
+    <p>Every Saturday morning, a small group gathers at Afterglow Coffee in Scott's Addition. No slides. No jargon. Just routers on the table, great espresso, and one practical skill you'll use every time you open your laptop in public.</p>
+  </div>
+</div>
 
 <!-- ─── RSVP ─── -->
 <section class="rsvp-strip" id="rsvp">
