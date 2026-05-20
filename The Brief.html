@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<!--
+  THE BRIEF — A sibling page to index.html.
+  Frames Safe at the Table as Chapter One of a community-resilience publication.
+  Uses the warm 70s palette + Fraunces + DM Mono + DM Sans system from index.html.
+  Editorial / civic-pamphlet register. No AI-slop SVG illustrations.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Brief — Afterglow Field Manual · Vol. 01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script>
+/* Tweaks state — host-editable */
+window.__BRIEF_TWEAKS = /*EDITMODE-BEGIN*/{
+  "accent": "terra",
+  "numbering": "off",
+  "density": "cozy",
+  "opener": "promise"
+}/*EDITMODE-END*/;
+</script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue:        #1B4D8E;
+    --blue-light:  #D4E4F7;
+    --orange:      #D95F00;
+    --orange-light:#FFE8D6;
+    --gold:        #C49A00;
+    --gold-light:  #FFF4CC;
+    --avocado:     #5C7A3E;
+    --avocado-light:#DFF0D0;
+    --terra:       #A64B2A;
+    --terra-light: #FADDCC;
+    --cream:       #F7F2E5;
+    --cream-dark:  #EDE5CC;
+    --cream-mid:   #F0E8D0;
+    --ink:         #2B1D0E;
+    --ink-mid:     #5C3D20;
+    --ink-light:   #9C7A56;
+    --border:      rgba(43,29,14,.13);
+    --border-strong: rgba(43,29,14,.45);
+
+    --accent:      var(--orange);
+    --accent-light:var(--orange-light);
+
+    --pad-section: 5.5rem;
+    --pad-block:   2.5rem;
+    --grid-gap:    1.5rem;
+  }
+
+  body[data-accent="avocado"] { --accent: var(--avocado); --accent-light: var(--avocado-light); }
+  body[data-accent="terra"]   { --accent: var(--terra);   --accent-light: var(--terra-light); }
+  body[data-accent="gold"]    { --accent: var(--gold);    --accent-light: var(--gold-light); }
+
+  body[data-density="compact"] {
+    --pad-section: 3.5rem;
+    --pad-block:   1.5rem;
+    --grid-gap:    1rem;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─────────────────────────  TYPE  ───────────────────────── */
+  .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    letter-spacing: -.02em;
+    line-height: .96;
+    color: var(--ink);
+  }
+  .display em { font-style: italic; font-weight: 400; color: var(--accent); }
+  .label-mono {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-light);
+  }
+  .label-mono.on-accent { color: rgba(255,255,255,.65); }
+  .rule {
+    height: 1px; background: var(--border);
+    border: 0; margin: 0;
+  }
+  .rule.thick { height: 3px; background: var(--ink); }
+
+  /* ─────────────────────────  TOPBAR  ───────────────────────── */
+  .topbar {
+    border-bottom: 1px solid var(--border-strong);
+    background: var(--cream);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .topbar-inner {
+    max-width: 1280px; margin: 0 auto;
+    padding: 14px clamp(1.25rem,4vw,3rem);
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  }
+  .tb-mark {
+    display: flex; align-items: baseline; gap: 10px;
+    text-decoration: none; color: var(--ink);
+  }
+  .tb-mark-name {
+    font-family: 'Fraunces', serif; font-weight: 900;
+    font-size: 18px; letter-spacing: -.01em;
+  }
+  .tb-mark-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: .14em;
+    color: var(--accent); text-transform: uppercase;
+  }
+  .tb-meta {
+    display: flex; gap: 1.5rem; align-items: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: .08em; color: var(--ink-light);
+    text-transform: uppercase;
+  }
+  .tb-meta a {
+    color: var(--ink); text-decoration: none;
+    border-bottom: 1.5px solid var(--accent);
+    padding-bottom: 2px;
+  }
+  .tb-meta a:hover { color: var(--accent); }
+  @media (max-width: 720px) {
+    .tb-meta .tb-iss, .tb-meta .tb-date { display: none; }
+  }
+
+  /* ─────────────────────────  MASTHEAD  ───────────────────────── */
+  .masthead {
+    border-bottom: 3px double var(--ink);
+    padding: 3rem clamp(1.25rem,4vw,3rem) 2rem;
+  }
+  .masthead-inner { max-width: 1280px; margin: 0 auto; }
+  .masthead-row {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .mast-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 11vw, 8.5rem);
+    letter-spacing: -.04em; line-height: .85;
+    color: var(--ink);
+  }
+  .mast-title sup {
+    font-family: 'DM Mono', monospace;
+    font-size: .14em; vertical-align: top;
+    color: var(--accent); font-weight: 500;
+    letter-spacing: .08em; margin-left: .25em;
+    top: 1.6em; position: relative;
+  }
+  .mast-tag {
+    font-family: 'Fraunces', serif;
+    font-style: italic; font-weight: 400;
+    font-size: clamp(1rem, 1.6vw, 1.3rem);
+    color: var(--ink-mid); max-width: 32ch;
+    line-height: 1.35;
+  }
+  .mast-strip {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1.25rem;
+  }
+  .mast-strip-cell .label-mono { display: block; margin-bottom: 4px; }
+  .mast-strip-cell .v {
+    font-family: 'Fraunces', serif; font-weight: 700;
+    font-size: clamp(1.1rem, 1.6vw, 1.4rem); color: var(--ink);
+    line-height: 1.1;
+  }
+  @media (max-width: 720px) { .mast-strip { grid-template-columns: repeat(2,1fr); } }
+
+  /* ─────────────────────────  PREMISE  ───────────────────────── */
+  .premise {
+    padding: var(--pad-section) clamp(1.25rem,4vw,3rem);
+    max-width: 1280px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .premise-left .label-mono { margin-bottom: 1.5rem; display: block; }
+  .premise-headline {
+    font-family: 'Fraunces', serif;
+    font-weight: 900; letter-spacing: -.025em; line-height: .98;
+    font-size: clamp(2rem, 4.2vw, 3.6rem);
+    color: var(--ink);
+  }
+  .premise-headline em {
+    font-style: italic; font-weight: 700; color: var(--accent);
+  }
+  .premise-right {
+    border-top: 3px solid var(--ink);
+    padding-top: 1.25rem;
+  }
+  .premise-right .lede {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(1.05rem,1.4vw,1.25rem);
+    line-height: 1.55; color: var(--ink-mid);
+    margin-bottom: 1.25rem;
+  }
+  .premise-right .lede strong { color: var(--ink); font-weight: 700; }
+  .premise-right .lede:first-letter {
+    font-family: 'Fraunces', serif; font-weight: 900;
+    font-size: 3.2em; float: left;
+    line-height: .85; padding: .1em .12em 0 0;
+    color: var(--accent);
+  }
+  .premise-credits {
+    margin-top: 1.5rem; padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--ink-light); letter-spacing: .04em;
+    line-height: 1.7;
+  }
+  @media (max-width: 860px) { .premise { grid-template-columns: 1fr; gap: 2rem; } }
+
+  /* ─────────────────────────  THREATS  ───────────────────────── */
+  .threats {
+    background: var(--ink);
+    color: #efe5d0;
+    padding: var(--pad-section) clamp(1.25rem,4vw,3rem);
+  }
+  .threats-inner { max-width: 1280px; margin: 0 auto; }
+  .threats-head {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    gap: 2rem; flex-wrap: wrap;
+    border-bottom: 1px solid rgba(239,229,208,.2);
+    padding-bottom: 1.5rem; margin-bottom: 2.5rem;
+  }
+  .threats-head .label-mono { color: var(--accent); }
+  .threats-head h2 {
+    font-family: 'Fraunces', serif; font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    letter-spacing: -.02em; line-height: 1;
+    color: #efe5d0; margin-top: .5rem; max-width: 18ch;
+  }
+  .threats-head .note {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 1rem; color: rgba(239,229,208,.6);
+    max-width: 28ch; line-height: 1.5;
+  }
+  .threats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(239,229,208,.2);
+  }
+  .threat {
+    padding: 2rem 1.75rem 2rem 0;
+    border-bottom: 1px solid rgba(239,229,208,.2);
+    position: relative;
+  }
+  .threat:not(:nth-child(3n)) { border-right: 1px solid rgba(239,229,208,.2); padding-right: 1.75rem; }
+  .threat:nth-child(3n+2),
+  .threat:nth-child(3n) { padding-left: 1.75rem; }
+  .threats-grid > .threat:nth-last-child(-n+3) { border-bottom: none; }
+
+  .threat-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: .2em;
+    color: var(--accent); margin-bottom: 1rem;
+    display: block;
+  }
+  .threat h3 {
+    font-family: 'Fraunces', serif; font-weight: 700;
+    font-style: italic;
+    font-size: clamp(1.3rem,2vw,1.75rem); color: #efe5d0;
+    line-height: 1.1; margin-bottom: .75rem;
+    letter-spacing: -.01em;
+  }
+  .threat p {
+    font-size: 14px; line-height: 1.7;
+    color: rgba(239,229,208,.78);
+  }
+  .threat p strong { color: #efe5d0; font-weight: 600; }
+  .threat-tag {
+    margin-top: 1rem;
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: .1em;
+    color: rgba(239,229,208,.5); text-transform: uppercase;
+    border: 1px solid rgba(239,229,208,.2);
+    padding: 4px 10px; border-radius: 99px;
+  }
+  @media (max-width: 860px) {
+    .threats-grid { grid-template-columns: 1fr 1fr; }
+    .threat:not(:nth-child(3n)) { border-right: none; }
+    .threat:nth-child(2n+1) { border-right: 1px solid rgba(239,229,208,.2); padding-right: 1.5rem; }
+    .threat:nth-child(2n) { padding-left: 1.5rem; }
+    .threats-grid > .threat:nth-last-child(-n+3) { border-bottom: 1px solid rgba(239,229,208,.2); }
+    .threats-grid > .threat:nth-last-child(-n+2) { border-bottom: none; }
+  }
+  @media (max-width: 560px) {
+    .threats-grid { grid-template-columns: 1fr; }
+    .threat { border-right: none !important; padding: 1.5rem 0 !important; }
+    .threats-grid > .threat:last-child { border-bottom: none; }
+  }
+
+  /* ─────────────────────────  CURRICULUM  ───────────────────────── */
+  .curriculum {
+    padding: var(--pad-section) clamp(1.25rem,4vw,3rem);
+    max-width: 1280px; margin: 0 auto;
+  }
+  .curr-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: end;
+    border-bottom: 3px double var(--ink);
+    padding-bottom: 1.5rem; margin-bottom: 2.5rem;
+  }
+  .curr-head h2 {
+    font-family: 'Fraunces', serif; font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1; letter-spacing: -.02em; color: var(--ink);
+    max-width: 18ch;
+  }
+  .curr-head h2 em { font-style: italic; font-weight: 700; color: var(--accent); }
+  .curr-head .blurb {
+    font-family: 'Fraunces', serif;
+    font-style: italic; font-size: 1.05rem;
+    color: var(--ink-mid); line-height: 1.5;
+    max-width: 38ch;
+  }
+  .curr-head .label-mono { display: block; margin-bottom: 1rem; }
+  @media (max-width: 860px) { .curr-head { grid-template-columns: 1fr; gap: 1rem; } }
+
+  .chapter-list { display: flex; flex-direction: column; }
+  .chapter {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+    transition: background .15s;
+  }
+  .chapter:hover { background: var(--cream-mid); margin: 0 -1rem; padding-left: 1rem; padding-right: 1rem; }
+  .chapter-num {
+    font-family: 'Fraunces', serif; font-weight: 900;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: -.04em; line-height: .85;
+    color: var(--ink);
+  }
+  .chapter.now .chapter-num { color: var(--accent); }
+  .chapter-body h3 {
+    font-family: 'Fraunces', serif; font-weight: 700;
+    font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.1;
+    color: var(--ink); margin-bottom: .5rem;
+    letter-spacing: -.01em;
+  }
+  .chapter-body h3 em { font-style: italic; color: var(--accent); }
+  .chapter-body .desc {
+    font-size: 15px; color: var(--ink-mid); line-height: 1.6;
+    max-width: 56ch; margin-bottom: .85rem;
+  }
+  .chapter-body .skills {
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .chapter-skill {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: .04em; color: var(--ink-mid);
+    background: var(--cream-mid);
+    border: 1px solid var(--border);
+    padding: 4px 9px; border-radius: 99px;
+  }
+  .chapter-meta {
+    display: flex; flex-direction: column; gap: .5rem;
+    text-align: right; align-items: flex-end;
+    min-width: 140px;
+  }
+  .chapter-status {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: .12em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 99px;
+    border: 1px solid var(--border);
+  }
+  .chapter-status.now { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .chapter-status.next { color: var(--ink-mid); }
+  .chapter-status.scoped { color: var(--ink-light); }
+  .chapter-when {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--ink-light); letter-spacing: .04em;
+  }
+  .chapter-cta {
+    margin-top: .25rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: .06em; color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--accent);
+    padding-bottom: 2px;
+  }
+  .chapter-cta:hover { color: var(--accent); }
+  @media (max-width: 720px) {
+    .chapter { grid-template-columns: 60px 1fr; }
+    .chapter-meta { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap;
+      text-align: left; align-items: center; }
+  }
+
+  /* ─────────────────────────  LEDGER  ───────────────────────── */
+  .ledger {
+    background: var(--accent);
+    color: #fff;
+    padding: var(--pad-section) clamp(1.25rem,4vw,3rem);
+    position: relative; overflow: hidden;
+  }
+  .ledger-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+  .ledger-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: end;
+    border-bottom: 1px solid rgba(255,255,255,.3);
+    padding-bottom: 1.5rem; margin-bottom: 3rem;
+  }
+  .ledger-head .label-mono { display: block; margin-bottom: 1rem; color: rgba(255,255,255,.7); }
+  .ledger-head h2 {
+    font-family: 'Fraunces', serif; font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    letter-spacing: -.02em; line-height: 1; color: #fff;
+    max-width: 16ch;
+  }
+  .ledger-head .note {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 1.05rem; color: rgba(255,255,255,.8);
+    line-height: 1.55; max-width: 40ch;
+  }
+  @media (max-width: 860px) { .ledger-head { grid-template-columns: 1fr; gap: 1rem; } }
+
+  .ledger-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,.3);
+  }
+  .ledger-cell {
+    padding: 2rem 1.5rem 2rem 0;
+    border-right: 1px solid rgba(255,255,255,.3);
+    border-bottom: 1px solid rgba(255,255,255,.3);
+    position: relative;
+  }
+  .ledger-cell:nth-child(4n) { border-right: none; }
+  .ledger-cell:nth-child(n+5) { padding-top: 2rem; }
+  .ledger-cell:not(:nth-child(4n+1)) { padding-left: 1.5rem; }
+  .ledger-grid > .ledger-cell:nth-last-child(-n+4) { border-bottom: none; }
+
+  .ledger-num {
+    font-family: 'Fraunces', serif; font-weight: 900;
+    font-size: clamp(3rem, 6vw, 4.8rem);
+    line-height: .9; letter-spacing: -.04em;
+    color: #fff; display: block;
+  }
+  .ledger-num small {
+    font-family: 'DM Mono', monospace; font-weight: 500;
+    font-size: 14px; letter-spacing: .04em;
+    margin-left: .35em; color: rgba(255,255,255,.7);
+    vertical-align: top; top: 1em; position: relative;
+  }
+  .ledger-cell .what {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-weight: 400; font-size: 1rem;
+    color: rgba(255,255,255,.9); margin-top: .5rem;
+    line-height: 1.35;
+  }
+  .ledger-cell .delta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: .1em;
+    color: rgba(255,255,255,.55); margin-top: .75rem;
+    text-transform: uppercase;
+  }
+  @media (max-width: 860px) {
+    .ledger-grid { grid-template-columns: repeat(2,1fr); }
+    .ledger-cell:nth-child(4n) { border-right: 1px solid rgba(255,255,255,.3); }
+    .ledger-cell:nth-child(2n) { border-right: none; }
+  }
+
+  /* ─────────────────────────  PLEDGE  ───────────────────────── */
+  /* WISHLIST (replaces fake-stats ledger) */
+  .wishlist {
+    background: var(--accent);
+    color: #fff;
+    padding: var(--pad-section) clamp(1.25rem,4vw,3rem);
+    position: relative; overflow: hidden;
+  }
+  .wishlist-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+  .wishlist-head {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: end;
+    border-bottom: 1px solid rgba(255,255,255,.3);
+    padding-bottom: 1.5rem; margin-bottom: 2.5rem;
+  }
+  .wishlist-head .label-mono { display: block; margin-bottom: 1rem; color: rgba(255,255,255,.75); }
+  .wishlist-head h2 {
+    font-family: 'Fraunces', serif; font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    letter-spacing: -.02em; line-height: 1; color: #fff;
+    max-width: 18ch;
+  }
+  .wishlist-head .note {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 1.05rem; color: rgba(255,255,255,.85);
+    line-height: 1.55; max-width: 40ch;
+  }
+  @media (max-width: 860px) { .wishlist-head { grid-template-columns: 1fr; gap: 1rem; } }
+
+  .wishlist-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 2.5rem;
+  }
+  @media (max-width: 860px) { .wishlist-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+  .wishlist-list { display: flex; flex-direction: column; gap: 8px; }
+  .wish-item {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 6px;
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 14px;
+    align-items: center;
+    transition: background .15s;
+  }
+  .wish-item:hover { background: rgba(255,255,255,.13); }
+  @media (max-width: 520px) {
+    .wish-item { grid-template-columns: 42px 1fr; gap: 10px; }
+    .wish-item .wish-status { grid-column: 2; justify-self: start; margin-top: 4px; }
+  }
+
+  .wish-vote-btn {
+    background: rgba(255,255,255,.12); color: #fff;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 4px;
+    padding: 5px 4px;
+    display: flex; flex-direction: column; align-items: center; gap: 1px;
+    cursor: pointer;
+    transition: background .15s, border-color .15s;
+    font-family: 'DM Mono', monospace;
+    width: 100%;
+  }
+  .wish-vote-btn:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.5); }
+  .wish-vote-btn .arrow { font-size: 10px; line-height: 1; opacity: .8; }
+  .wish-vote-btn .count { font-size: 13px; font-weight: 600; line-height: 1.1; color: #fff; }
+  .wish-vote-btn.voted { background: #fff; color: var(--ink); border-color: #fff; }
+  .wish-vote-btn.voted .arrow, .wish-vote-btn.voted .count { color: var(--ink); }
+
+  .wish-body .wish-title {
+    font-family: 'Fraunces', serif; font-weight: 700;
+    font-size: 1rem; color: #fff; line-height: 1.25;
+    margin-bottom: 2px;
+  }
+  .wish-body .wish-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: .06em;
+    color: rgba(255,255,255,.6);
+    text-transform: uppercase;
+  }
+
+  .wish-status {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase;
+    padding: 4px 9px; border-radius: 99px;
+    border: 1px solid rgba(255,255,255,.3);
+    color: #fff; white-space: nowrap;
+  }
+  .wish-status.open { background: rgba(255,255,255,.08); }
+  .wish-status.considering { background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.5); }
+  .wish-status.scheduled { background: #fff; color: var(--ink); border-color: #fff; }
+  .wish-status.taught { opacity: .55; background: rgba(0,0,0,.2); border-color: transparent; }
+
+  .wishlist-form {
+    background: var(--ink); color: #efe5d0;
+    border-radius: 6px;
+    padding: 1.5rem;
+    border: 1px solid var(--ink);
+    box-shadow: 6px 6px 0 rgba(0,0,0,.18);
+    height: fit-content;
+  }
+  .wishlist-form .label-mono { color: var(--accent); display: block; margin-bottom: .65rem; }
+  .wishlist-form h3 {
+    font-family: 'Fraunces', serif; font-weight: 900;
+    font-size: 1.3rem; line-height: 1.05; color: #efe5d0;
+    margin-bottom: .45rem; letter-spacing: -.01em;
+  }
+  .wishlist-form > p {
+    font-size: 12.5px; color: rgba(239,229,208,.7);
+    line-height: 1.5; margin-bottom: 1rem;
+  }
+  .wishlist-form form { display: flex; flex-direction: column; gap: 8px; }
+  .wishlist-form input, .wishlist-form textarea {
+    background: rgba(239,229,208,.06);
+    border: 1px solid rgba(239,229,208,.25);
+    color: #efe5d0;
+    font-family: 'DM Sans', sans-serif; font-size: 13px;
+    padding: 10px 12px; border-radius: 4px; outline: none;
+    transition: border-color .15s;
+  }
+  .wishlist-form input::placeholder, .wishlist-form textarea::placeholder { color: rgba(239,229,208,.4); }
+  .wishlist-form input:focus, .wishlist-form textarea:focus { border-color: var(--accent); }
+  .wishlist-form textarea { resize: vertical; min-height: 64px; font-family: 'DM Sans', sans-serif; }
+  .wishlist-form button {
+    background: var(--accent); color: #fff; border: none;
+    font-family: 'DM Mono', monospace; font-weight: 600;
+    font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+    padding: 12px; border-radius: 4px; cursor: pointer;
+    margin-top: .35rem; transition: opacity .15s;
+  }
+  .wishlist-form button:hover { opacity: .92; }
+  .wishlist-form .finep {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: rgba(239,229,208,.45); letter-spacing: .04em;
+    line-height: 1.6; margin-top: .85rem;
+  }
+
+  .pledge {
+    background: var(--cream);
+    padding: var(--pad-section) clamp(1.25rem,4vw,3rem);
+  }
+  .pledge-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 4rem; align-items: start;
+  }
+  .pledge-text .label-mono { display: block; margin-bottom: 1.5rem; }
+  .pledge-text h2 {
+    font-family: 'Fraunces', serif; font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    letter-spacing: -.025em; line-height: 1; color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+  .pledge-text h2 em { font-style: italic; font-weight: 700; color: var(--accent); }
+  .pledge-clauses {
+    list-style: none; padding: 0;
+    margin-top: 1.5rem;
+    border-top: 3px double var(--ink);
+    padding-top: 1.5rem;
+  }
+  .pledge-clauses li {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    line-height: 1.45; color: var(--ink);
+    padding: 1rem 0; border-bottom: 1px solid var(--border);
+    display: grid; grid-template-columns: 36px 1fr; gap: 1rem;
+    align-items: baseline;
+  }
+  .pledge-clauses li::before {
+    content: counter(pledge-c, upper-roman) ".";
+    counter-increment: pledge-c;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; font-weight: 500;
+    color: var(--accent); letter-spacing: .04em;
+    line-height: 1.5;
+  }
+  .pledge-clauses { counter-reset: pledge-c; }
+  .pledge-clauses li em { font-style: italic; color: var(--accent); }
+
+  .pledge-card {
+    background: var(--ink); color: #efe5d0;
+    border-radius: 6px;
+    padding: 2.5rem;
+    border: 1px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--accent);
+  }
+  .pledge-card .label-mono { color: var(--accent); display: block; margin-bottom: .75rem; }
+  .pledge-card h3 {
+    font-family: 'Fraunces', serif; font-weight: 900;
+    font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+    line-height: 1.05; color: #efe5d0;
+    margin-bottom: 1.25rem; letter-spacing: -.01em;
+  }
+  .pledge-card form { display: flex; flex-direction: column; gap: 10px; }
+  .pledge-card input, .pledge-card select {
+    background: rgba(239,229,208,.06);
+    border: 1px solid rgba(239,229,208,.25);
+    color: #efe5d0;
+    font-family: 'DM Sans', sans-serif; font-size: 14px;
+    padding: 12px 14px; border-radius: 4px; outline: none;
+    transition: border-color .15s;
+  }
+  .pledge-card input::placeholder { color: rgba(239,229,208,.4); }
+  .pledge-card input:focus, .pledge-card select:focus { border-color: var(--accent); }
+  .pledge-card select option { color: var(--ink); }
+  .pledge-card button {
+    background: var(--accent); color: #fff; border: none;
+    font-family: 'DM Mono', monospace; font-weight: 600;
+    font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+    padding: 14px; border-radius: 4px; cursor: pointer;
+    margin-top: .5rem; transition: opacity .15s;
+  }
+  .pledge-card button:hover { opacity: .88; }
+  .pledge-card .finep {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: rgba(239,229,208,.45); letter-spacing: .04em;
+    line-height: 1.6; margin-top: 1rem;
+  }
+  @media (max-width: 860px) { .pledge-inner { grid-template-columns: 1fr; gap: 2rem; } }
+
+  /* ─────────────────────────  COLOPHON / FOOTER  ───────────────────────── */
+  .colophon {
+    background: var(--cream-dark);
+    border-top: 3px double var(--ink);
+    padding: 3.5rem clamp(1.25rem,4vw,3rem) 2.5rem;
+  }
+  .colo-inner { max-width: 1280px; margin: 0 auto; }
+  .colo-top {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2rem;
+  }
+  .colo-mast .display {
+    font-size: 2.5rem; line-height: .9;
+    color: var(--ink);
+  }
+  .colo-mast .display em { color: var(--accent); }
+  .colo-mast .tagline {
+    font-family: 'Fraunces', serif; font-style: italic;
+    color: var(--ink-mid); font-size: 1rem;
+    margin-top: .5rem; max-width: 28ch; line-height: 1.4;
+  }
+  .colo-col h4 {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-light); margin-bottom: 1rem;
+  }
+  .colo-col a, .colo-col p {
+    display: block; font-size: 13px;
+    color: var(--ink-mid); line-height: 1.85;
+    text-decoration: none;
+  }
+  .colo-col a:hover { color: var(--accent); }
+  .colo-bottom {
+    margin-top: 1.5rem;
+    display: flex; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: var(--ink-light); letter-spacing: .08em; text-transform: uppercase;
+  }
+  @media (max-width: 860px) { .colo-top { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .colo-top { grid-template-columns: 1fr; } }
+
+  /* ─────────────────────────  NUMBERING TWEAK  ───────────────────────── */
+  body[data-numbering="decimal"] .threat-num::before { content: ""; }
+  body[data-numbering="off"] .threat-num,
+  body[data-numbering="off"] .chapter-num,
+  body[data-numbering="off"] .mast-title sup {
+    display: none !important;
+  }
+  body[data-numbering="off"] .chapter {
+    grid-template-columns: 1fr auto;
+  }
+
+  /* ─────────────────────────  TWEAKS PANEL  ───────────────────────── */
+  .tweaks {
+    position: fixed; right: 16px; bottom: 16px;
+    width: 280px;
+    background: var(--cream);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    box-shadow: 4px 4px 0 var(--ink);
+    z-index: 100;
+    font-family: 'DM Sans', sans-serif;
+    display: none;
+  }
+  .tweaks.open { display: block; }
+  .tweaks-head {
+    padding: 10px 14px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: var(--ink); color: #efe5d0;
+    border-radius: 5px 5px 0 0;
+  }
+  .tweaks-head h4 {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .tweaks-head .x {
+    background: none; border: none; color: #efe5d0;
+    cursor: pointer; font-size: 18px; line-height: 1; padding: 0 4px;
+  }
+  .tweaks-body { padding: 14px; display: flex; flex-direction: column; gap: 16px; }
+  .tw-group .tw-label {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-light); margin-bottom: 8px; display: block;
+  }
+  .tw-row { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tw-pill {
+    flex: 1; min-width: 50px;
+    font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500;
+    letter-spacing: .06em; text-transform: uppercase;
+    padding: 6px 8px; border: 1px solid var(--border);
+    background: #fff; color: var(--ink-light);
+    cursor: pointer; border-radius: 4px;
+    transition: all .12s; text-align: center;
+  }
+  .tw-pill:hover { color: var(--ink); }
+  .tw-pill.active { background: var(--ink); color: #efe5d0; border-color: var(--ink); }
+  .tw-row.swatches .tw-pill {
+    flex: 1; min-width: 40px; min-height: 36px;
+    padding: 0; border-radius: 4px;
+    border: 2px solid transparent;
+    position: relative;
+    color: transparent;
+  }
+  .tw-row.swatches .tw-pill .dot {
+    position: absolute; inset: 4px;
+    border-radius: 3px; display: block;
+  }
+  .tw-row.swatches .tw-pill[data-v="orange"] .dot   { background: var(--orange); }
+  .tw-row.swatches .tw-pill[data-v="avocado"] .dot  { background: var(--avocado); }
+  .tw-row.swatches .tw-pill[data-v="terra"] .dot    { background: var(--terra); }
+  .tw-row.swatches .tw-pill[data-v="gold"] .dot     { background: var(--gold); }
+  .tw-row.swatches .tw-pill.active { border-color: var(--ink); }
+</style>
+</head>
+<body data-accent="orange" data-numbering="roman" data-density="cozy" data-opener="promise">
+
+<!-- ─────────────────────────  TOPBAR  ───────────────────────── -->
+<header class="topbar" data-screen-label="01 Top Bar">
+  <div class="topbar-inner">
+    <a href="The Brief.html" class="tb-mark">
+      <span class="tb-mark-name">The Brief</span>
+      <span class="tb-mark-sub">Afterglow Field Manual</span>
+    </a>
+    <nav class="tb-meta">
+      <span class="tb-iss">VOL. 01 · ISS. 01</span>
+      <span class="tb-date">Summer 2026</span>
+      <a href="index.html">Workshops →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─────────────────────────  MASTHEAD  ───────────────────────── -->
+<section class="masthead" data-screen-label="02 Masthead">
+  <div class="masthead-inner">
+    <div class="masthead-row">
+      <h1 class="mast-title">The Brief<sup>VOL.&nbsp;01</sup></h1>
+      <p class="mast-tag">A community resilience publication, written from the corner table at Afterglow Coffee Cooperative — Richmond, Virginia.</p>
+    </div>
+    <div class="mast-strip">
+      <div class="mast-strip-cell">
+        <span class="label-mono">Edited by</span>
+        <span class="v">The Cohort</span>
+      </div>
+      <div class="mast-strip-cell">
+        <span class="label-mono">Published</span>
+        <span class="v">Every Friday</span>
+      </div>
+      <div class="mast-strip-cell">
+        <span class="label-mono">Chapters mapped</span>
+        <span class="v">Five &amp; counting</span>
+      </div>
+      <div class="mast-strip-cell">
+        <span class="label-mono">Subscription</span>
+        <span class="v">Free, forever</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────  PREMISE  ───────────────────────── -->
+<section class="premise" data-screen-label="03 The Premise">
+  <div class="premise-left">
+    <span class="label-mono">The Premise · §I</span>
+    <h2 class="premise-headline">
+      The people who promised to protect us<br>
+      are <em>busy, distracted,</em> or <em>not coming.</em>
+    </h2>
+  </div>
+  <div class="premise-right">
+    <p class="lede">We are community tech leaders, neighbors, and small-business owners in Richmond. We started this series because we kept noticing the same thing: the people we&rsquo;re told to rely on — service providers, platforms, agencies — keep leaving the room when we need them most. <strong>The grid flickers and they blame the weather. The breach happens and they send an apology email. The platform changes the rules and the small operator absorbs the cost.</strong></p>
+    <p class="lede">So we&rsquo;re building the alternative the old-fashioned way. In person, on Fridays, around a coffee. Practical skills first. Then mutual aid. Then a neighborhood that does not need permission to keep itself safe.</p>
+    <div class="premise-credits">
+      Signed — Cohort 01 · Afterglow Coffee Cooperative<br>
+      1719 Summit Ave · Scott&rsquo;s Addition · Richmond VA
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────  THREATS  ───────────────────────── -->
+<section class="threats" data-screen-label="04 What We're Preparing For">
+  <div class="threats-inner">
+    <div class="threats-head">
+      <div>
+        <span class="label-mono">A Typology · §II</span>
+        <h2>What we are preparing for, plainly stated.</h2>
+      </div>
+      <p class="note">Six conditions we are already living with, sized from quiet to acute. None are hypothetical.</p>
+    </div>
+
+    <div class="threats-grid">
+
+      <article class="threat">
+        <span class="threat-num">PLATE I</span>
+        <h3>The slow erosion.</h3>
+        <p>The ad network that follows your phone into your bedroom. The data broker that resold your address last spring. <strong>Nothing breaks. Everything is watched.</strong> It is the climate of the modern internet, and we have stopped noticing the weather.</p>
+        <span class="threat-tag">→ Chapter 01</span>
+      </article>
+
+      <article class="threat">
+        <span class="threat-num">PLATE II</span>
+        <h3>The dropped connection.</h3>
+        <p>The cell tower flakes for a county. The ISP&rsquo;s upstream peers fight and your block goes dark for nine hours. <strong>The supports you assumed were permanent are vendor agreements, not infrastructure.</strong></p>
+        <span class="threat-tag">→ Chapter 02</span>
+      </article>
+
+      <article class="threat">
+        <span class="threat-num">PLATE III</span>
+        <h3>The rumor in the group chat.</h3>
+        <p>A neighbor forwards a generated image as if it is news. Local rumor moves faster than any local newsroom can verify. <strong>The bottleneck is not information. It is trust.</strong></p>
+        <span class="threat-tag">→ Chapter 05</span>
+      </article>
+
+      <article class="threat">
+        <span class="threat-num">PLATE IV</span>
+        <h3>The supply pinch.</h3>
+        <p>The service you paid for last year quietly retires. The update bricks the thermostat. The part takes nine weeks. <strong>Convenience and dependency are the same line item, read in different lights.</strong></p>
+        <span class="threat-tag">→ Chapter 03</span>
+      </article>
+
+      <article class="threat">
+        <span class="threat-num">PLATE V</span>
+        <h3>The decision made elsewhere.</h3>
+        <p>The account locks. The terms of service shift. The small operator wakes up deplatformed for reasons no person at the company can explain. <strong>Sovereignty is a setting, until it isn&rsquo;t.</strong></p>
+        <span class="threat-tag">→ Chapter 01</span>
+      </article>
+
+      <article class="threat">
+        <span class="threat-num">PLATE VI</span>
+        <h3>The neighborhood event.</h3>
+        <p>The transformer fails. The water main breaks. The hurricane lands. <strong>FEMA arrives, eventually.</strong> The block survives or struggles on what it set up before the lights went out.</p>
+        <span class="threat-tag">→ Chapter 04</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────  CURRICULUM  ───────────────────────── -->
+<section class="curriculum" data-screen-label="05 The Curriculum">
+  <div class="curr-head">
+    <div>
+      <span class="label-mono">The Curriculum · §III</span>
+      <h2>Five chapters. One <em>neighborhood</em>.</h2>
+    </div>
+    <p class="blurb">A multi-year sequence, taught in person, in public, around coffee. Each chapter is free. Each chapter sends people home with the device or the skill needed to teach the next one.</p>
+  </div>
+
+  <div class="chapter-list">
+
+    <article class="chapter now" data-screen-label="Chapter 01">
+      <div class="chapter-num">01</div>
+      <div class="chapter-body">
+        <h3>Safe at the <em>Table</em>.</h3>
+        <p class="desc">Ten Friday sessions on digital hygiene and small-network OPSEC. The grammar of staying private and connected when working in public. Every attendee leaves with the device used in class.</p>
+        <div class="skills">
+          <span class="chapter-skill">VPN basics</span>
+          <span class="chapter-skill">Travel router</span>
+          <span class="chapter-skill">Network isolation</span>
+          <span class="chapter-skill">Tracker blocking</span>
+          <span class="chapter-skill">Failover comms</span>
+        </div>
+      </div>
+      <div class="chapter-meta">
+        <span class="chapter-status now">Now</span>
+        <span class="chapter-when">May – Jul 2026</span>
+        <a class="chapter-cta" href="index.html#workshops">See sessions →</a>
+      </div>
+    </article>
+
+    <article class="chapter" data-screen-label="Chapter 02">
+      <div class="chapter-num">02</div>
+      <div class="chapter-body">
+        <h3>Voice &amp; <em>Signal</em>.</h3>
+        <p class="desc">When the cell network goes flaky, the block does not have to. A practical introduction to short-range mesh, low-power radio, neighborhood relay nodes, and the kinds of conversations you should be able to have without permission from a carrier.</p>
+        <div class="skills">
+          <span class="chapter-skill">Meshtastic</span>
+          <span class="chapter-skill">Ham basics</span>
+          <span class="chapter-skill">LoRa nodes</span>
+          <span class="chapter-skill">Phone trees that still work</span>
+        </div>
+      </div>
+      <div class="chapter-meta">
+        <span class="chapter-status next">Next</span>
+        <span class="chapter-when">Fall 2026</span>
+        <a class="chapter-cta" href="#pledge">Get notified →</a>
+      </div>
+    </article>
+
+    <article class="chapter" data-screen-label="Chapter 03">
+      <div class="chapter-num">03</div>
+      <div class="chapter-body">
+        <h3>Power &amp; <em>Light</em>.</h3>
+        <p class="desc">The shelf of small power that keeps a block running for the first three days. Solar charging at human scale, battery hygiene, the repair café, what to bring inside when the lights go out. Taught with the local fix-it crew.</p>
+        <div class="skills">
+          <span class="chapter-skill">Off-grid basics</span>
+          <span class="chapter-skill">Battery care</span>
+          <span class="chapter-skill">Repair café</span>
+          <span class="chapter-skill">Right-to-repair</span>
+        </div>
+      </div>
+      <div class="chapter-meta">
+        <span class="chapter-status scoped">Scoped</span>
+        <span class="chapter-when">Winter 2026 – 2027</span>
+        <a class="chapter-cta" href="#pledge">Get notified →</a>
+      </div>
+    </article>
+
+    <article class="chapter" data-screen-label="Chapter 04">
+      <div class="chapter-num">04</div>
+      <div class="chapter-body">
+        <h3>Mutual Aid <em>Logistics</em>.</h3>
+        <p class="desc">Who has the keys, who has the truck, who has the spare room. The unglamorous map-making that turns acquaintances into a response. Block-level inventories, signal trees, the difference between charity and aid.</p>
+        <div class="skills">
+          <span class="chapter-skill">Block census</span>
+          <span class="chapter-skill">Signal trees</span>
+          <span class="chapter-skill">Skill mapping</span>
+          <span class="chapter-skill">Cross-aid handoff</span>
+        </div>
+      </div>
+      <div class="chapter-meta">
+        <span class="chapter-status scoped">Scoped</span>
+        <span class="chapter-when">Spring 2027</span>
+        <a class="chapter-cta" href="#pledge">Get notified →</a>
+      </div>
+    </article>
+
+    <article class="chapter" data-screen-label="Chapter 05">
+      <div class="chapter-num">05</div>
+      <div class="chapter-body">
+        <h3>Local <em>Memory</em>.</h3>
+        <p class="desc">How to tell what is real, where to keep what matters, and what to do with the rumor in the group chat. Verification practices, archiving the local record, the slow art of community journalism in an era of synthetic noise.</p>
+        <div class="skills">
+          <span class="chapter-skill">Verification</span>
+          <span class="chapter-skill">Local archive</span>
+          <span class="chapter-skill">Oral history</span>
+          <span class="chapter-skill">Source hygiene</span>
+        </div>
+      </div>
+      <div class="chapter-meta">
+        <span class="chapter-status scoped">Scoped</span>
+        <span class="chapter-when">Summer 2027</span>
+        <a class="chapter-cta" href="#pledge">Get notified →</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- WISHLIST (replaces Capacity Ledger) -->
+<section class="wishlist" data-screen-label="06 The Wishlist">
+  <div class="wishlist-inner">
+    <div class="wishlist-head">
+      <div>
+        <span class="label-mono on-accent">The Wishlist · §IV</span>
+        <h2>What should we teach next?</h2>
+      </div>
+      <p class="note">A running list of topics neighbors have asked us to cover. Vote up the ones you want first — add your own at right. We read every one.</p>
+    </div>
+
+    <div class="wishlist-grid">
+      <div class="wishlist-list" id="wishlist-list"></div>
+      <aside class="wishlist-form">
+        <span class="label-mono">Submit a topic · §IV.a</span>
+        <h3>Got a topic in mind?</h3>
+        <p>One sentence is fine. Be specific. &ldquo;Backing up family photos without the cloud&rdquo; beats &ldquo;privacy.&rdquo;</p>
+        <form onsubmit="event.preventDefault(); submitWish(this);">
+          <input type="text" name="title" placeholder="Topic — keep it short" maxlength="90" required>
+          <textarea name="why" placeholder="Why this matters to you (optional)" rows="3" maxlength="240"></textarea>
+          <input type="email" name="email" placeholder="Email — optional, to be notified">
+          <button type="submit">Add to the wishlist →</button>
+        </form>
+        <p class="finep">Submissions are public. We read everything; we curate before showing. No spam, no resale.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────  PLEDGE  ───────────────────────── -->
+<section class="pledge" id="pledge" data-screen-label="07 The Pledge">
+  <div class="pledge-inner">
+
+    <div class="pledge-text">
+      <span class="label-mono">The Pledge · §V</span>
+      <h2>Be the help. <em>Help your neighbor</em> become the help.</h2>
+      <p style="font-family: 'Fraunces', serif; font-style: italic; font-size: 1.15rem; color: var(--ink-mid); line-height: 1.5; max-width: 42ch;">A short list of things the Cohort agrees to, freely and in public, on the morning the first chapter begins.</p>
+
+      <ol class="pledge-clauses">
+        <li>I will show up, learn one thing, and <em>teach it back</em> to someone within a week.</li>
+        <li>I will not pretend the platforms are coming to <em>save us</em>, and I will not panic about that.</li>
+        <li>I will keep this work <em>free</em>, because dependency we charge for is dependency we&rsquo;ve made.</li>
+        <li>I will know two of my neighbors by name before the <em>next outage</em>.</li>
+        <li>I will leave each session a <em>little less</em> reliant on a vendor than I was that morning.</li>
+      </ol>
+    </div>
+
+    <aside class="pledge-card">
+      <span class="label-mono">Sign on · §V.a</span>
+      <h3>Add your name to the next issue.</h3>
+      <form onsubmit="event.preventDefault(); handlePledge(this);">
+        <input type="text" placeholder="Your name" name="name" required>
+        <input type="email" placeholder="Email — for the next chapter" name="email" required>
+        <select name="block">
+          <option value="">Your block, neighborhood, or zip</option>
+          <option>Scott&rsquo;s Addition</option>
+          <option>Church Hill</option>
+          <option>The Fan</option>
+          <option>Manchester</option>
+          <option>Northside</option>
+          <option>Southside</option>
+          <option>Somewhere else in RVA</option>
+          <option>Outside Richmond — interested anyway</option>
+        </select>
+        <select name="role">
+          <option value="">How can you help, if at all?</option>
+          <option>I can host — I run a café, co-working space, or community room</option>
+          <option>I can teach — I have a skill the curriculum needs</option>
+          <option>I can learn — I want to attend the next chapter</option>
+          <option>I can fund — I want to underwrite seats for neighbors</option>
+          <option>Not sure yet — keep me on the list</option>
+        </select>
+        <button type="submit">Sign the pledge →</button>
+        <p class="finep">We will email you when the next chapter is scheduled. We do not sell, rent, or syndicate this list. The list lives on a small server we run, and it leaves with us if the platform changes its mind.</p>
+      </form>
+    </aside>
+
+  </div>
+</section>
+
+<!-- ─────────────────────────  COLOPHON  ───────────────────────── -->
+<footer class="colophon" data-screen-label="08 Colophon">
+  <div class="colo-inner">
+    <div class="colo-top">
+
+      <div class="colo-mast">
+        <span class="label-mono">Colophon · §VI</span>
+        <div class="display" style="margin-top: .75rem;">The <em>Brief.</em></div>
+        <p class="tagline">A community resilience publication from Afterglow Coffee Cooperative. Printed in Richmond. Set in Fraunces and DM family. Free, on purpose.</p>
+      </div>
+
+      <div class="colo-col">
+        <h4>Issue</h4>
+        <p>Vol. 01 · Iss. 01</p>
+        <p>Summer 2026</p>
+        <p>Next issue: Fall 2026</p>
+      </div>
+
+      <div class="colo-col">
+        <h4>Read on</h4>
+        <a href="index.html">Workshops →</a>
+        <a href="index.html#workshops">Chapter 01 schedule →</a>
+        <a href="#pledge">Sign the pledge →</a>
+        <a href="https://www.afterglowcoffee.com" target="_blank" rel="noopener">Afterglow Coffee →</a>
+      </div>
+
+      <div class="colo-col">
+        <h4>Hardware partner</h4>
+        <p>GL.iNet provides the travel routers used in Chapter 01. Each attendee keeps the device used in class. The Cohort selects equipment; the partner does not steer the curriculum.</p>
+      </div>
+
+    </div>
+    <div class="colo-bottom">
+      <span>© Cohort 01 · Released freely · Reprint with credit</span>
+      <span>Set in Fraunces · DM Sans · DM Mono</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ─────────────────────────  TWEAKS PANEL  ───────────────────────── -->
+<aside class="tweaks" id="tweaks">
+  <div class="tweaks-head">
+    <h4>Tweaks</h4>
+    <button class="x" onclick="closeTweaks()">×</button>
+  </div>
+  <div class="tweaks-body">
+
+    <div class="tw-group">
+      <span class="tw-label">Accent</span>
+      <div class="tw-row swatches" data-key="accent">
+        <button class="tw-pill" data-v="orange"><span class="dot"></span></button>
+        <button class="tw-pill" data-v="avocado"><span class="dot"></span></button>
+        <button class="tw-pill" data-v="terra"><span class="dot"></span></button>
+        <button class="tw-pill" data-v="gold"><span class="dot"></span></button>
+      </div>
+    </div>
+
+    <div class="tw-group">
+      <span class="tw-label">Numbering</span>
+      <div class="tw-row" data-key="numbering">
+        <button class="tw-pill" data-v="roman">Roman</button>
+        <button class="tw-pill" data-v="decimal">Decimal</button>
+        <button class="tw-pill" data-v="off">Off</button>
+      </div>
+    </div>
+
+    <div class="tw-group">
+      <span class="tw-label">Density</span>
+      <div class="tw-row" data-key="density">
+        <button class="tw-pill" data-v="cozy">Cozy</button>
+        <button class="tw-pill" data-v="compact">Compact</button>
+      </div>
+    </div>
+
+    <div class="tw-group">
+      <span class="tw-label">Premise opener</span>
+      <div class="tw-row" data-key="opener">
+        <button class="tw-pill" data-v="promise">Promise</button>
+        <button class="tw-pill" data-v="warning">Warning</button>
+        <button class="tw-pill" data-v="invite">Invite</button>
+      </div>
+    </div>
+
+  </div>
+</aside>
+
+<!-- ─────────────────────────  NUMBERING (decimal swap)  ───────────────────────── -->
+<script>
+/* Premise opener variants */
+const OPENERS = {
+  promise: "The people who promised to protect us<br>are <em>busy, distracted,</em> or <em>not coming.</em>",
+  warning: "The grid is fine — until <em>the morning</em> it isn&rsquo;t.<br>We don&rsquo;t plan to be <em>surprised twice.</em>",
+  invite:  "Bring a laptop, bring a neighbor.<br>We&rsquo;ll bring <em>the rest.</em>"
+};
+
+/* Roman ↔ Decimal mappings for visible numbered labels */
+const ROMAN = ["PLATE I","PLATE II","PLATE III","PLATE IV","PLATE V","PLATE VI"];
+const DECIM = ["PLATE 01","PLATE 02","PLATE 03","PLATE 04","PLATE 05","PLATE 06"];
+
+function setAccent(v) {
+  document.body.dataset.accent = v;
+  syncPills('accent', v);
+}
+function setNumbering(v) {
+  document.body.dataset.numbering = v;
+  syncPills('numbering', v);
+  const labels = document.querySelectorAll('.threat-num');
+  const src = v === 'decimal' ? DECIM : ROMAN;
+  labels.forEach((el, i) => { el.textContent = src[i] || el.textContent; });
+}
+function setDensity(v) {
+  document.body.dataset.density = v;
+  syncPills('density', v);
+}
+function setOpener(v) {
+  document.body.dataset.opener = v;
+  syncPills('opener', v);
+  const target = document.querySelector('.premise-headline');
+  if (target && OPENERS[v]) target.innerHTML = OPENERS[v];
+}
+function syncPills(key, v) {
+  document.querySelectorAll('[data-key="'+key+'"] .tw-pill').forEach(p => {
+    p.classList.toggle('active', p.dataset.v === v);
+  });
+}
+function pushEdit(key, value) {
+  try {
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: value } }, '*');
+  } catch (e) {}
+}
+
+document.querySelectorAll('.tweaks [data-key]').forEach(row => {
+  const key = row.dataset.key;
+  row.querySelectorAll('.tw-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const v = btn.dataset.v;
+      ({ accent: setAccent, numbering: setNumbering, density: setDensity, opener: setOpener })[key](v);
+      pushEdit(key, v);
+    });
+  });
+});
+
+/* Apply tweaks on load (from __BRIEF_TWEAKS) */
+(function applyTweaks() {
+  const t = window.__BRIEF_TWEAKS || {};
+  setAccent(t.accent || 'orange');
+  setNumbering(t.numbering || 'roman');
+  setDensity(t.density || 'cozy');
+  setOpener(t.opener || 'promise');
+})();
+
+/* Tweaks toggle protocol */
+function openTweaks() { document.getElementById('tweaks').classList.add('open'); }
+function closeTweaks() {
+  document.getElementById('tweaks').classList.remove('open');
+  try { window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*'); } catch(e) {}
+}
+window.addEventListener('message', (e) => {
+  const m = e.data || {};
+  if (m.type === '__activate_edit_mode') openTweaks();
+  if (m.type === '__deactivate_edit_mode') closeTweaks();
+});
+try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch(e) {}
+
+/* Pledge handler */
+function handlePledge(form) {
+  const btn = form.querySelector('button');
+  btn.textContent = '✓ SIGNED — see you Friday';
+  btn.style.background = '#5C7A3E';
+  form.querySelectorAll('input, select').forEach(el => el.disabled = true);
+}
+
+/* ===== WISHLIST ===== */
+const SEED_WISHES = [
+  { id: 'w1', title: 'Setting up Meshtastic for our neighborhood', votes: 14, status: 'open', when: 'Asked 3×' },
+  { id: 'w2', title: 'Backing up family photos without the cloud', votes: 11, status: 'considering', when: 'Asked 5×' },
+  { id: 'w3', title: 'What to actually do when your phone gets seized', votes: 9, status: 'open', when: 'Asked 2×' },
+  { id: 'w4', title: 'Encrypted group chat for our block', votes: 8, status: 'open', when: 'Asked 4×' },
+  { id: 'w5', title: 'Solar charging for small electronics — what works', votes: 7, status: 'scheduled', chapter: 'Ch. 03', when: 'Confirmed for Winter ’26' },
+  { id: 'w6', title: 'Spotting deepfake calls from people who sound like family', votes: 6, status: 'open', when: 'Asked 2×' },
+  { id: 'w7', title: 'Self-hosting a family password manager', votes: 5, status: 'open', when: 'Asked 1×' },
+  { id: 'w8', title: 'Right-to-repair basics: replacing a phone screen yourself', votes: 4, status: 'considering', when: 'Asked 2×' },
+  { id: 'w9', title: 'How to read your home router logs without panicking', votes: 3, status: 'open', when: 'Asked 1×' },
+  { id: 'w10', title: 'Setting up a neighborhood signal tree (we did this in 2024)', votes: 8, status: 'taught', chapter: 'Ch. 04', when: 'Taught Apr ’26' }
+];
+const WISH_KEY = 'brief_wishlist_v1';
+const VOTED_KEY = 'brief_voted_v1';
+
+function getWishes() {
+  try { const s = JSON.parse(localStorage.getItem(WISH_KEY) || 'null');
+    if (Array.isArray(s) && s.length) return s; } catch (e) {}
+  return SEED_WISHES.slice();
+}
+function saveWishes(list) { try { localStorage.setItem(WISH_KEY, JSON.stringify(list)); } catch (e) {} }
+function getVoted() { try { return new Set(JSON.parse(localStorage.getItem(VOTED_KEY) || '[]')); } catch (e) { return new Set(); } }
+function saveVoted(set) { try { localStorage.setItem(VOTED_KEY, JSON.stringify([...set])); } catch (e) {} }
+
+function renderWishlist() {
+  const list = getWishes();
+  const voted = getVoted();
+  list.sort((a, b) => {
+    const order = { scheduled: 0, considering: 1, open: 2, taught: 3 };
+    const oa = order[a.status] ?? 9, ob = order[b.status] ?? 9;
+    if (oa !== ob) return oa - ob;
+    return b.votes - a.votes;
+  });
+  const container = document.getElementById('wishlist-list');
+  if (!container) return;
+  const statusLabels = { open: 'Open', considering: 'Considering', scheduled: 'Scheduled', taught: 'Taught' };
+  container.innerHTML = list.map(w => {
+    const isVoted = voted.has(w.id);
+    let statusText = statusLabels[w.status] || 'Open';
+    if (w.chapter && (w.status === 'scheduled' || w.status === 'taught')) statusText += ' · ' + w.chapter;
+    const titleEsc = w.title.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const whenEsc = (w.when || '').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+    return '<article class="wish-item">'
+      + '<button class="wish-vote-btn ' + (isVoted ? 'voted' : '') + '" onclick="voteWish(\'' + w.id + '\')" aria-label="Vote up">'
+      + '<span class="arrow">▲</span><span class="count">' + w.votes + '</span></button>'
+      + '<div class="wish-body"><div class="wish-title">' + titleEsc + '</div>'
+      + '<div class="wish-meta">' + whenEsc + '</div></div>'
+      + '<span class="wish-status ' + w.status + '">' + statusText + '</span>'
+      + '</article>';
+  }).join('');
+}
+
+function voteWish(id) {
+  const voted = getVoted();
+  const list = getWishes();
+  const item = list.find(w => w.id === id);
+  if (!item) return;
+  if (voted.has(id)) { voted.delete(id); item.votes = Math.max(0, item.votes - 1); }
+  else { voted.add(id); item.votes += 1; }
+  saveVoted(voted); saveWishes(list); renderWishlist();
+}
+
+function submitWish(form) {
+  const fd = new FormData(form);
+  const title = (fd.get('title') || '').trim();
+  if (!title) return;
+  const list = getWishes();
+  const id = 'w' + Date.now();
+  list.unshift({ id, title, votes: 1, status: 'open', when: 'Just now · you' });
+  saveWishes(list);
+  const voted = getVoted();
+  voted.add(id); saveVoted(voted);
+  renderWishlist();
+  form.reset();
+  const btn = form.querySelector('button');
+  const orig = btn.textContent;
+  btn.textContent = '✓ Added to the wishlist';
+  btn.style.background = '#5C7A3E';
+  setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 2200);
+}
+
+document.addEventListener('DOMContentLoaded', renderWishlist);
+</script>
+
+</body>
+</html>
