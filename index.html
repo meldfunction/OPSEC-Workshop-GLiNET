@@ -549,6 +549,7 @@
     .hero-brand { border-right: none; border-bottom: 1px solid var(--border); }
     .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
     .nav-links { display: none; }
+    .nav-cta { font-size: 11px; padding: 8px 12px; }
     .workshop-grid { grid-template-columns: 1fr; }
     .hero-card-strip { grid-template-columns: 1fr; }
     .hero-map-col { border-left: none; border-top: 1px solid var(--border); min-height: 280px; }
@@ -556,6 +557,8 @@
 
     .about-series-inner { grid-template-columns: 1fr; gap: 2rem; }
     .about-text h2 { font-size: 1.5rem !important; }
+    .about-text p { font-size: 14px; }
+    .about-venue-card { padding: 1.25rem; }
     .venue-cards { grid-template-columns: 1fr; }
     .gear-strip-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
 
@@ -908,6 +911,7 @@
   .about-series {
     padding: 5rem clamp(1.5rem,5vw,4rem);
     background: var(--cream);
+    border-top: 3px solid var(--orange);
     border-bottom: 2px solid var(--border);
   }
   .about-series-inner {
@@ -928,7 +932,7 @@
     font-size: 15px; color: var(--ink-mid); line-height: 1.8; margin: 0 0 1rem;
   }
   .about-venue-card {
-    background: var(--warm-50, #faf8f5);
+    background: var(--cream-mid);
     border: 1px solid var(--border); border-radius: 12px; padding: 2rem;
   }
   .about-venue-logo { height: 40px; max-width: 100%; object-fit: contain; display: block; margin-bottom: 1rem; }
@@ -951,7 +955,8 @@
   /* ─── VENUE PARTNERS ─── */
   .venue-partners {
     padding: 5rem clamp(1.5rem,5vw,4rem);
-    background: var(--avocado-light);
+    background: var(--cream-dark);
+    border-top: 2px solid var(--border);
     border-bottom: 2px solid var(--border);
   }
   .venue-partners-inner { max-width: 1200px; margin: 0 auto; }
@@ -1581,7 +1586,7 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
 
 <!-- ─── PHOTO BREAK ─── -->
 <div class="photo-break">
-  <div class="photo-break-img"><img src="images/scene/cafe-work.jpg" alt="Afterglow Coffee Cooperative"></div>
+  <div class="photo-break-img"><img src="images/scene/cafe-laptop.jpg" alt="Working at a café"></div>
   <div class="photo-break-img"><img src="images/scene/workshop-coffee.jpg" alt="Workshop at Afterglow"></div>
   <div class="photo-break-img"><img src="images/scene/workshop-group.jpg" alt="Learning together"></div>
 </div>
