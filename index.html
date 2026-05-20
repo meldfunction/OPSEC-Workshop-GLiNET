@@ -952,6 +952,95 @@
   .about-venue-link:hover { opacity: .6; }
 
   /* ─── VENUE PARTNERS ─── */
+  /* ── Series intro ── */
+  .series-intro {
+    padding: 5rem clamp(1.5rem,5vw,4rem);
+    background: var(--ink);
+    border-top: 3px solid var(--orange);
+  }
+  .series-intro-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  }
+  .series-intro h2 {
+    font-family: 'Fraunces', serif; font-weight: 900;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.15;
+    color: var(--cream); margin: 0 0 1.25rem;
+  }
+  .series-intro .intro-label {
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--gold); margin: 0 0 1rem; display: block;
+  }
+  .series-intro p {
+    font-size: 16px; line-height: 1.75; color: rgba(247,242,229,.8); margin: 0 0 1rem;
+  }
+  .series-intro p:last-child { margin: 0; }
+  .series-why-list {
+    list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.25rem;
+  }
+  .series-why-list li {
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .series-why-list .why-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--orange); display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0; margin-top: 2px;
+  }
+  .series-why-list .why-body strong {
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: 15px;
+    color: var(--cream); display: block; margin-bottom: .25rem;
+  }
+  .series-why-list .why-body span {
+    font-size: 14px; line-height: 1.65; color: rgba(247,242,229,.7);
+  }
+
+  /* ── Our Approach ── */
+  .our-approach {
+    padding: 5rem clamp(1.5rem,5vw,4rem);
+    background: var(--avocado);
+    border-top: 3px solid rgba(255,255,255,.15);
+  }
+  .our-approach-inner {
+    max-width: 1100px; margin: 0 auto;
+  }
+  .our-approach-header {
+    margin-bottom: 3rem;
+  }
+  .our-approach-header .intro-label {
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .12em;
+    text-transform: uppercase; color: rgba(247,242,229,.7); margin: 0 0 .75rem; display: block;
+  }
+  .our-approach-header h2 {
+    font-family: 'Fraunces', serif; font-weight: 900;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.2;
+    color: var(--cream); margin: 0 0 1rem;
+  }
+  .our-approach-header p {
+    font-size: 16px; line-height: 1.75; color: rgba(247,242,229,.85); max-width: 640px;
+  }
+  .approach-pillars {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+  }
+  .approach-pillar {
+    background: rgba(255,255,255,.1); border-radius: 12px;
+    padding: 1.75rem; border: 1px solid rgba(255,255,255,.15);
+  }
+  .approach-pillar .pillar-icon {
+    font-size: 28px; margin-bottom: 1rem; display: block;
+  }
+  .approach-pillar h3 {
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.15rem;
+    color: var(--cream); margin: 0 0 .65rem; line-height: 1.25;
+  }
+  .approach-pillar p {
+    font-size: 14px; line-height: 1.7; color: rgba(247,242,229,.8); margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .series-intro-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .approach-pillars { grid-template-columns: 1fr; }
+  }
+
   .venue-partners {
     padding: 5rem clamp(1.5rem,5vw,4rem);
     background: var(--cream-dark);
@@ -1338,6 +1427,79 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
           <span>📅 Sessions every Friday 11 AM – 12 PM</span>
         </div>
         <a href="https://www.afterglowcoffee.com" target="_blank" class="about-venue-link">afterglowcoffee.com →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERIES INTRO ─── -->
+<section class="series-intro">
+  <div class="series-intro-inner">
+    <div>
+      <span class="intro-label">About the series</span>
+      <h2>Ten skills. Ten Fridays. Zero jargon.</h2>
+      <p>Safe at the Table is a free workshop series hosted at Afterglow Coffee in Richmond, VA. Each session runs one hour, costs nothing, and teaches one practical skill you can use the same day.</p>
+      <p>We are not a product demo. We are not a sales pitch. We are neighbors helping neighbors understand how digital life actually works — and what to do about it.</p>
+      <p>Every attendee gets to keep the device used in their session. GL.iNet provides the hardware as a sponsor. Afterglow provides the space. You just show up.</p>
+    </div>
+    <div>
+      <ul class="series-why-list">
+        <li>
+          <div class="why-icon">☕</div>
+          <div class="why-body">
+            <strong>Built for real people, not IT teams</strong>
+            <span>Freelancers, remote workers, small business owners — anyone who uses public WiFi and has ever wondered whether that was a good idea.</span>
+          </div>
+        </li>
+        <li>
+          <div class="why-icon">🔓</div>
+          <div class="why-body">
+            <strong>Always free to attend</strong>
+            <span>No registration fees. No upsell. No subscription. The only thing we ask is that you show up and pay attention.</span>
+          </div>
+        </li>
+        <li>
+          <div class="why-icon">🛠</div>
+          <div class="why-body">
+            <strong>Hands-on with real gear</strong>
+            <span>You will use a live device in the session — not watch slides. Complete the session, keep the device. That is the deal.</span>
+          </div>
+        </li>
+        <li>
+          <div class="why-icon">📍</div>
+          <div class="why-body">
+            <strong>Rooted in the community</strong>
+            <span>Starting at Afterglow — Richmond's first worker-owned coffee cooperative — and expanding to other independent spaces across RVA.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── OUR APPROACH ─── -->
+<section class="our-approach">
+  <div class="our-approach-inner">
+    <div class="our-approach-header">
+      <span class="intro-label">Our approach</span>
+      <h2>Community first. Industry-grade skills.</h2>
+      <p>We take the same techniques used by security professionals and strip away the complexity. What remains is practical, memorable, and actually useful — taught in the place where you need it most.</p>
+    </div>
+    <div class="approach-pillars">
+      <div class="approach-pillar">
+        <span class="pillar-icon">🤝</span>
+        <h3>Community-centered learning</h3>
+        <p>Sessions happen in public, communal spaces on purpose. Learning alongside your neighbors builds the kind of shared knowledge that a pamphlet never could. You ask questions out loud. Other people learn from them too.</p>
+      </div>
+      <div class="approach-pillar">
+        <span class="pillar-icon">🔒</span>
+        <h3>Industry best practices, plain language</h3>
+        <p>Every skill in this series comes directly from professional security frameworks — VPNs, network segmentation, encrypted DNS, kill switches. We just teach them without the alphabet soup.</p>
+      </div>
+      <div class="approach-pillar">
+        <span class="pillar-icon">📈</span>
+        <h3>Skills that compound</h3>
+        <p>Each session builds on the last. Start anywhere. Come back for more. By session ten you will have a personal security setup that most professionals would be proud of — assembled one Friday at a time.</p>
       </div>
     </div>
   </div>
