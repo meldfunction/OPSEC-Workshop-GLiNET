@@ -436,7 +436,7 @@
 
   /* ─── RSVP STRIP ─── */
   .rsvp-strip {
-    background: var(--blue);
+    background: linear-gradient(135deg, var(--orange) 0%, var(--terra) 100%);
     padding: 4rem clamp(1.5rem, 5vw, 4rem);
     text-align: center;
   }
@@ -554,7 +554,8 @@
     .hero-map-col { border-left: none; border-top: 1px solid var(--border); min-height: 280px; }
     .vibe-bar { grid-template-columns: 1fr; gap: 2rem; }
 
-    .about-series-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-series-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .about-text h2 { font-size: 1.5rem !important; }
     .venue-cards { grid-template-columns: 1fr; }
     .gear-strip-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
 
@@ -930,7 +931,7 @@
     background: var(--warm-50, #faf8f5);
     border: 1px solid var(--border); border-radius: 12px; padding: 2rem;
   }
-  .about-venue-logo { height: 48px; object-fit: contain; display: block; margin-bottom: 1rem; }
+  .about-venue-logo { height: 40px; max-width: 100%; object-fit: contain; display: block; margin-bottom: 1rem; }
   .about-venue-card h3 { font-size: 16px; font-weight: 700; color: var(--ink); margin: 0 0 .25rem; }
   .about-venue-tag {
     font-size: 12px; color: var(--ink-light); font-style: italic;
@@ -1285,12 +1286,9 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
     <img src="images/logo/afterglow.png"
          alt="Afterglow Coffee Cooperative"
          onerror="this.replaceWith(document.createTextNode('Afterglow Coffee'))">
-    <div class="nav-sep"></div>
-    <span class="nav-glinet">× GL.iNet</span>
   </div>
   <div class="nav-links">
     <a href="#workshops">Sessions</a>
-    <a href="#hardware">Hardware</a>
     <a href="#rsvp">RSVP</a>
     <a href="https://www.afterglowcoffee.com" target="_blank">Afterglow</a>
     
@@ -1342,7 +1340,7 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
 
   <!-- RIGHT: photo + mission overlay -->
   <div class="hero-photo">
-    <img src="images/scene/cafe-laptop.jpg" alt="Remote worker at a café">
+    <img src="images/scene/workshop-group.jpg" alt="Learning together at Afterglow Coffee">
     <div class="hero-mission-overlay">
       <p class="hero-mission-text">Most of us don't think about our online safety until something goes wrong — a card gets stolen, an account gets taken over, a message gets sent in our name.</p>
       <p class="hero-mission-text">Safe at the Table exists to change that. Every Friday at Afterglow, we spend one hour on one skill. Hands-on. No laptop required. No experience required. Just coffee and a little curiosity.</p>
