@@ -549,7 +549,7 @@
     .hero-brand { border-right: none; border-bottom: 1px solid var(--border); }
     .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
     .nav-links { display: none; }
-    .nav-cta { font-size: 11px; padding: 8px 12px; }
+    .nav-cta { font-size: 11px; padding: 8px 10px; max-width: 120px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .workshop-grid { grid-template-columns: 1fr; }
     .hero-card-strip { grid-template-columns: 1fr; }
     .hero-map-col { border-left: none; border-top: 1px solid var(--border); min-height: 280px; }
@@ -905,7 +905,6 @@
     padding: 4px 12px 4px 6px; font-size: 12px; color: var(--ink-mid);
     font-family: "DM Mono", monospace;
   }
-  .gear-device-pill img { height: 22px; width: 30px; object-fit: contain; }
 
   /* ─── ABOUT THE SERIES ─── */
   .about-series {
@@ -1085,16 +1084,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ── WORKSHOP DATA ──────────────────────────────────────────────────────────
 const WORKSHOPS = [
-  { num:1,  levelKey:0, level:"Beginner",     levelLabel:"No experience needed",              date:"FRI · MAY 1",  dateSort:1,  dur:"~15 min", durSort:15,  device:"Beryl AX", deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", prize:"Coffee voucher + stickers",       title:"Is anyone watching you right now?",                          desc:"We connect to the open WiFi and show you -- live -- exactly what someone two tables over can see. Then we fix it in under five minutes. You will never sit at a cafe the same way again." },
-  { num:2,  levelKey:0, level:"Beginner",     levelLabel:"No experience needed",              date:"FRI · MAY 8",  dateSort:2,  dur:"~15 min", durSort:15,  device:"Beryl AX", deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", prize:"1-month VPN access, on us",        title:"One button. Everything encrypted.",                           desc:"A VPN sounds complicated. It is not. We show you how to turn one on for every device you own -- phone, laptop, tablet -- in a single tap. No settings. No jargon. Just safe." },
-  { num:3,  levelKey:1, level:"Intermediate", levelLabel:"A little comfortable with tech",   date:"FRI · MAY 15", dateSort:3,  dur:"~20 min", durSort:20,  device:"Slate AX", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", prize:"Travel router to take home",       title:"Stop losing calls when the WiFi dies.",                       desc:"Your call drops because you depend on one connection. We show you how to run two at once -- cafe WiFi and your phone -- so if one goes down, nothing skips a beat. Your client never knows." },
-  { num:4,  levelKey:1, level:"Intermediate", levelLabel:"A little comfortable with tech",   date:"FRI · MAY 22", dateSort:4,  dur:"~15 min", durSort:15,  device:"Beryl AX", deviceImg:"images/products/router-beryl.webp", imgBg:"#EEF3FB", prize:"Travel router + branded pouch",     title:"What if ads just stopped following you?",                     desc:"Ads and trackers follow you because your devices let them. We show you how to block them at the network level -- every device, every app, everywhere you connect -- without touching a single browser setting." },
-  { num:5,  levelKey:1, level:"Intermediate", levelLabel:"A little comfortable with tech",   date:"FRI · MAY 29", dateSort:5,  dur:"~20 min", durSort:20,  device:"Slate AX", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", prize:"Travel router to take home",       title:"Work from anywhere like you never left your desk.",           desc:"Securely reach your files, your printer, your home setup from any cafe in the world. We walk you through it step by step. No exposed ports. No complicated setup. It just works." },
-  { num:6,  levelKey:2, level:"Advanced",     levelLabel:"Comfortable getting into settings",date:"FRI · JUN 6",  dateSort:6,  dur:"~20 min", durSort:20,  device:"Flint 2",  deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", prize:"Flint 2 router to take home",      title:"Block ads and trackers before they reach your screen.",       desc:"We go a layer deeper than browser extensions. Block tracking requests at the network level -- for every device you own, including your TV, your phone, everything. Set it once and forget it." },
-  { num:7,  levelKey:2, level:"Advanced",     levelLabel:"Comfortable getting into settings",date:"FRI · JUN 13", dateSort:7,  dur:"~20 min", durSort:20,  device:"Flint 2",  deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", prize:"Travel router + 3 months VPN",     title:"Keep your clients off your network -- even on the same WiFi.",desc:"When a client connects to your WiFi, do you know what they can see? We show you how to keep every device and every person in a separate lane -- so your work stays yours." },
-  { num:8,  levelKey:2, level:"Advanced",     levelLabel:"Comfortable getting into settings",date:"FRI · JUN 20", dateSort:8,  dur:"~20 min", durSort:20,  device:"Slate AX", deviceImg:"images/products/router-slate.webp", imgBg:"#FBF5EE", prize:"Travel router + privacy kit",      title:"What happens to your data when the VPN goes down?",          desc:"Most VPNs leak when they drop. We show you how to prove yours does not -- and how to set it up so your connection stops entirely rather than exposing you. Real protection, not just a logo." },
-  { num:9,  levelKey:3, level:"Pro",          levelLabel:"Ready to go deeper",               date:"FRI · JUN 27", dateSort:9,  dur:"~25 min", durSort:25,  device:"Flint 2",  deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", prize:"Flint 2 router for the whole team",title:"Run a secure office for your whole team from a bag.",         desc:"One small device. Your whole team on separate, secure connections. We show you how remote-first teams protect client data in shared spaces. No IT department. No corporate contract." },
-  { num:10, levelKey:3, level:"Pro",          levelLabel:"Ready to go deeper",               date:"FRI · JUL 11", dateSort:10, dur:"~30 min", durSort:30,  device:"Flint 2",  deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", prize:"Flint 2 + dev swag kit",           title:"Build your own rules for your own network.",                 desc:"This is the deep end. We open up the router, rewrite the traffic rules, and build a live dashboard you can actually read. Bring curiosity. Leave with full control." },
+  { num:1,  levelKey:0, level:"Beginner",     levelLabel:"Beginner friendly",              date:"FRI · MAY 1",  dateSort:1,  dur:"~15 min", durSort:15,  device:"Beryl AX", deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", prize:"Coffee voucher + stickers",       title:"Is anyone watching you right now?",                          desc:"We connect to the open WiFi and show you — live — exactly what someone two tables over can see. Then we fix it in under five minutes. You will never sit at a cafe the same way again." },
+  { num:2,  levelKey:0, level:"Beginner",     levelLabel:"Beginner friendly",              date:"FRI · MAY 8",  dateSort:2,  dur:"~15 min", durSort:15,  device:"Beryl AX", deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", prize:"1-month VPN access, on us",        title:"One button. Everything encrypted.",                           desc:"A VPN sounds complicated. It is not. We show you how to turn one on for every device you own — phone, laptop, tablet — in a single tap. No settings. No jargon. Just safe." },
+  { num:3,  levelKey:1, level:"Intermediate", levelLabel:"Some tech comfort",   date:"FRI · MAY 15", dateSort:3,  dur:"~20 min", durSort:20,  device:"Slate AX", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", prize:"Travel router to take home",       title:"Stop losing calls when the WiFi dies.",                       desc:"Your call drops because you depend on one connection. We show you how to run two at once — cafe WiFi and your phone — so if one goes down, nothing skips a beat. Your client never knows." },
+  { num:4,  levelKey:1, level:"Intermediate", levelLabel:"Some tech comfort",   date:"FRI · MAY 22", dateSort:4,  dur:"~15 min", durSort:15,  device:"Beryl AX", deviceImg:"images/products/router-beryl.webp", imgBg:"#EEF3FB", prize:"Travel router + branded pouch",     title:"What if ads just stopped following you?",                     desc:"Ads and trackers follow you because your devices let them. We show you how to block them at the network level — every device, every app, everywhere you connect — without touching a single browser setting." },
+  { num:5,  levelKey:1, level:"Intermediate", levelLabel:"Some tech comfort",   date:"FRI · MAY 29", dateSort:5,  dur:"~20 min", durSort:20,  device:"Slate AX", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", prize:"Travel router to take home",       title:"Work from anywhere like you never left your desk.",           desc:"Securely reach your files, your printer, your home setup from any cafe in the world. We walk you through it step by step. No exposed ports. No complicated setup. It just works." },
+  { num:6,  levelKey:2, level:"Advanced",     levelLabel:"Getting hands-on",date:"FRI · JUN 6",  dateSort:6,  dur:"~20 min", durSort:20,  device:"Flint 2",  deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", prize:"Flint 2 router to take home",      title:"Block ads and trackers before they reach your screen.",       desc:"We go a layer deeper than browser extensions. Block tracking requests at the network level — for every device you own, including your TV, your phone, everything. Set it once and forget it." },
+  { num:7,  levelKey:2, level:"Advanced",     levelLabel:"Getting hands-on",date:"FRI · JUN 13", dateSort:7,  dur:"~20 min", durSort:20,  device:"Flint 2",  deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", prize:"Travel router + 3 months VPN",     title:"Keep your clients off your network — even on the same WiFi.",desc:"When a client connects to your WiFi, do you know what they can see? We show you how to keep every device and every person in a separate lane — so your work stays yours." },
+  { num:8,  levelKey:2, level:"Advanced",     levelLabel:"Getting hands-on",date:"FRI · JUN 20", dateSort:8,  dur:"~20 min", durSort:20,  device:"Slate AX", deviceImg:"images/products/router-slate.webp", imgBg:"#FBF5EE", prize:"Travel router + privacy kit",      title:"What happens to your data when the VPN goes down?",          desc:"Most VPNs leak when they drop. We show you how to prove yours does not — and how to set it up so your connection stops entirely rather than exposing you. Real protection, not just a logo." },
+  { num:9,  levelKey:3, level:"Pro",          levelLabel:"Going deeper",               date:"FRI · JUN 27", dateSort:9,  dur:"~25 min", durSort:25,  device:"Flint 2",  deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", prize:"Flint 2 router for the whole team",title:"Run a secure office for your whole team from a bag.",         desc:"One small device. Your whole team on separate, secure connections. We show you how remote-first teams protect client data in shared spaces. No IT department. No corporate contract." },
+  { num:10, levelKey:3, level:"Pro",          levelLabel:"Going deeper",               date:"FRI · JUL 11", dateSort:10, dur:"~30 min", durSort:30,  device:"Flint 2",  deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", prize:"Flint 2 + dev swag kit",           title:"Build your own rules for your own network.",                 desc:"This is the deep end. We open up the router, rewrite the traffic rules, and build a live dashboard you can actually read. Bring curiosity. Leave with full control." },
 ];
 
 const LEVEL_CLASS = { Beginner:"beg", Intermediate:"int", Advanced:"adv", Pro:"pro" };
@@ -1496,18 +1495,9 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
       GL.iNet provides the hardware for every session. Finish a session and <strong>the device goes home with you.</strong> No purchase necessary.
     </div>
     <div class="gear-devices">
-      <div class="gear-device-pill">
-        <img src="images/products/router-beryl.webp" alt="Beryl AX">
-        <span>Beryl AX</span>
-      </div>
-      <div class="gear-device-pill">
-        <img src="images/products/router-slate.webp" alt="Slate AX">
-        <span>Slate AX</span>
-      </div>
-      <div class="gear-device-pill">
-        <img src="images/products/router-flint.webp" alt="Flint 2">
-        <span>Flint 2</span>
-      </div>
+      <div class="gear-device-pill"><span>📡</span><span>Beryl AX</span></div>
+      <div class="gear-device-pill"><span>📡</span><span>Slate AX</span></div>
+      <div class="gear-device-pill"><span>📡</span><span>Flint 2</span></div>
     </div>
   </div>
 </div>
