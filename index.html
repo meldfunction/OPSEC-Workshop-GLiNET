@@ -1055,16 +1055,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ── WORKSHOP DATA ──────────────────────────────────────────────────────────
 const WORKSHOPS = [
-  { num:1,  title:"WiFi Safety 101: Your Coffee Shop Survival Kit",       level:"Beginner",     levelKey:0, date:"FRI · MAY 1",  dateSort:1,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", dur:"~15 min", durSort:15,  prize:"Coffee voucher + stickers",       desc:"Live packet-sniffing demo. We'll show what's visible on open WiFi, then plug in a travel router and make it disappear in under 5 minutes." },
-  { num:2,  title:"One-Tap VPN — No Tech Knowledge Required",        level:"Beginner",     levelKey:0, date:"FRI · MAY 8",  dateSort:2,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", dur:"~15 min", durSort:15,  prize:"1-month VPN subscription",        desc:"Download the GL.iNet app, connect to a VPN with one toggle, and watch your IP address change live. Every device you own, protected instantly." },
-  { num:3,  title:"Never Drop a Zoom Call Again — Multi-WAN Failover",level:"Intermediate",levelKey:1, date:"FRI · MAY 15", dateSort:3,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", dur:"~20 min", durSort:20,  prize:"Beryl AX travel router",           desc:"Bond the cafe WiFi with your phone hotspot. Kill the connection mid-demo and watch it switch automatically without missing a beat." },
-  { num:4,  title:"Block Every Ad & Tracker — AdGuard Home Setup",   level:"Intermediate",levelKey:1, date:"FRI · MAY 22", dateSort:4,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EEF3FB", dur:"~15 min", durSort:15,  prize:"Branded travel pouch + router",    desc:"Enable AdGuard Home from the GL.iNet admin panel. Add three blocklists. Open a news site. Watch ads vanish across every connected device." },
-  { num:5,  title:"Access Your Home Office from Any Cafe",                level:"Intermediate",levelKey:1, date:"FRI · MAY 29", dateSort:5,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", dur:"~20 min", durSort:20,  prize:"Slate AX travel router",           desc:"Configure a site-to-site WireGuard tunnel using GoodCloud. Browse a home NAS from this table. No exposed ports, no static IP, no headaches." },
-  { num:6,  title:"Pi-hole on GL.iNet — Full DNS Sinkhole",          level:"Advanced",    levelKey:2, date:"FRI · JUN 6",  dateSort:6,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"Flint 2 router (AX6000)",        desc:"SSH in. Install Docker. Pull Pi-hole. Watch the dashboard light up with blocked queries from every device at this table." },
-  { num:7,  title:"Isolate Your Clients — VLAN & Guest Network Hardening",level:"Advanced",levelKey:2,date:"FRI · JUN 13",dateSort:7,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"Beryl AX + 3-month VPN",          desc:"Create a proper VLAN for guest devices. Block them from your LAN. Throttle their bandwidth. Prove it with a live ping test." },
-  { num:8,  title:"Kill Switch & DNS Leak — Ironclad VPN Setup",     level:"Advanced",    levelKey:2, date:"FRI · JUN 20", dateSort:8,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"Slate AX + privacy kit",          desc:"Enable the kill switch. Run a DNS leak test. Configure DNS-over-HTTPS. Drop the VPN. Prove nothing leaked." },
-  { num:9,  title:"Build a Secure Remote Team Hub at a Co-working Cafe",  level:"Pro",         levelKey:3, date:"FRI · JUN 27", dateSort:9,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", dur:"~25 min", durSort:25,  prize:"Flint 2 router for the team",    desc:"One router. Five colleagues. Separate VLANs per role. Pi-hole + AdGuard chained DNS. Individual WireGuard peers. Enterprise-grade, from a bag." },
-  { num:10, title:"OpenWRT Deep Dive — Custom Firmware for Power Users",level:"Pro",       levelKey:3, date:"FRI · JUL 11", dateSort:10, device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", dur:"~30 min", durSort:30,  prize:"Flint 2 + dev swag kit",    desc:"Go past the admin panel. Write your own nftables ruleset. Stand up Prometheus + Grafana in Docker. Watch live network traffic visualised." },
+  { num:1,  levelKey:0, level:"Beginner",     levelLabel:"No experience needed",              date:"FRI · MAY 1",  dateSort:1,  dur:"~15 min", durSort:15,  device:"Beryl AX", deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", prize:"Coffee voucher + stickers",       title:"Is anyone watching you right now?",                          desc:"We connect to the open WiFi and show you -- live -- exactly what someone two tables over can see. Then we fix it in under five minutes. You will never sit at a cafe the same way again." },
+  { num:2,  levelKey:0, level:"Beginner",     levelLabel:"No experience needed",              date:"FRI · MAY 8",  dateSort:2,  dur:"~15 min", durSort:15,  device:"Beryl AX", deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", prize:"1-month VPN access, on us",        title:"One button. Everything encrypted.",                           desc:"A VPN sounds complicated. It is not. We show you how to turn one on for every device you own -- phone, laptop, tablet -- in a single tap. No settings. No jargon. Just safe." },
+  { num:3,  levelKey:1, level:"Intermediate", levelLabel:"A little comfortable with tech",   date:"FRI · MAY 15", dateSort:3,  dur:"~20 min", durSort:20,  device:"Slate AX", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", prize:"Travel router to take home",       title:"Stop losing calls when the WiFi dies.",                       desc:"Your call drops because you depend on one connection. We show you how to run two at once -- cafe WiFi and your phone -- so if one goes down, nothing skips a beat. Your client never knows." },
+  { num:4,  levelKey:1, level:"Intermediate", levelLabel:"A little comfortable with tech",   date:"FRI · MAY 22", dateSort:4,  dur:"~15 min", durSort:15,  device:"Beryl AX", deviceImg:"images/products/router-beryl.webp", imgBg:"#EEF3FB", prize:"Travel router + branded pouch",     title:"What if ads just stopped following you?",                     desc:"Ads and trackers follow you because your devices let them. We show you how to block them at the network level -- every device, every app, everywhere you connect -- without touching a single browser setting." },
+  { num:5,  levelKey:1, level:"Intermediate", levelLabel:"A little comfortable with tech",   date:"FRI · MAY 29", dateSort:5,  dur:"~20 min", durSort:20,  device:"Slate AX", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", prize:"Travel router to take home",       title:"Work from anywhere like you never left your desk.",           desc:"Securely reach your files, your printer, your home setup from any cafe in the world. We walk you through it step by step. No exposed ports. No complicated setup. It just works." },
+  { num:6,  levelKey:2, level:"Advanced",     levelLabel:"Comfortable getting into settings",date:"FRI · JUN 6",  dateSort:6,  dur:"~20 min", durSort:20,  device:"Flint 2",  deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", prize:"Flint 2 router to take home",      title:"Block ads and trackers before they reach your screen.",       desc:"We go a layer deeper than browser extensions. Block tracking requests at the network level -- for every device you own, including your TV, your phone, everything. Set it once and forget it." },
+  { num:7,  levelKey:2, level:"Advanced",     levelLabel:"Comfortable getting into settings",date:"FRI · JUN 13", dateSort:7,  dur:"~20 min", durSort:20,  device:"Flint 2",  deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", prize:"Travel router + 3 months VPN",     title:"Keep your clients off your network -- even on the same WiFi.",desc:"When a client connects to your WiFi, do you know what they can see? We show you how to keep every device and every person in a separate lane -- so your work stays yours." },
+  { num:8,  levelKey:2, level:"Advanced",     levelLabel:"Comfortable getting into settings",date:"FRI · JUN 20", dateSort:8,  dur:"~20 min", durSort:20,  device:"Slate AX", deviceImg:"images/products/router-slate.webp", imgBg:"#FBF5EE", prize:"Travel router + privacy kit",      title:"What happens to your data when the VPN goes down?",          desc:"Most VPNs leak when they drop. We show you how to prove yours does not -- and how to set it up so your connection stops entirely rather than exposing you. Real protection, not just a logo." },
+  { num:9,  levelKey:3, level:"Pro",          levelLabel:"Ready to go deeper",               date:"FRI · JUN 27", dateSort:9,  dur:"~25 min", durSort:25,  device:"Flint 2",  deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", prize:"Flint 2 router for the whole team",title:"Run a secure office for your whole team from a bag.",         desc:"One small device. Your whole team on separate, secure connections. We show you how remote-first teams protect client data in shared spaces. No IT department. No corporate contract." },
+  { num:10, levelKey:3, level:"Pro",          levelLabel:"Ready to go deeper",               date:"FRI · JUL 11", dateSort:10, dur:"~30 min", durSort:30,  device:"Flint 2",  deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", prize:"Flint 2 + dev swag kit",           title:"Build your own rules for your own network.",                 desc:"This is the deep end. We open up the router, rewrite the traffic rules, and build a live dashboard you can actually read. Bring curiosity. Leave with full control." },
 ];
 
 const LEVEL_CLASS = { Beginner:"beg", Intermediate:"int", Advanced:"adv", Pro:"pro" };
@@ -1187,7 +1187,7 @@ function renderWorkshops() {
           + '<div class="wcard-body">'
           + '<div class="wcard-meta">'
           + '<span class="wcard-date">' + w.date + ' · 11 AM</span>'
-          + '<span class="wcard-level ' + lc + '">' + w.level + '</span>'
+          + '<span class="wcard-level ' + lc + '">' + (w.levelLabel || w.level) + '</span>'
           + '</div>'
           + '<div class="wcard-num">Session ' + String(w.num).padStart(2,'0') + '</div>'
           + '<h3>' + w.title + '</h3>'
@@ -1217,7 +1217,7 @@ function renderWorkshops() {
         return '<tr>'
           + '<td class="col-num">Session ' + String(w.num).padStart(2,'0') + '</td>'
           + '<td class="col-title">' + w.title + '</td>'
-          + '<td><span class="tbl-level ' + lc + '">' + w.level + '</span></td>'
+          + '<td><span class="tbl-level ' + lc + '" title="' + (w.levelLabel||w.level) + '">' + w.level + '</span></td>'
           + '<td class="col-date">' + w.date + '</td>'
           + '<td class="col-device">' + w.device + '</td>'
           + '<td class="col-dur">' + w.dur + '</td>'
@@ -1288,17 +1288,17 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
         <circle cx="16" cy="22" r="2" fill="#0047CC"/>
         <path d="M13 25 Q13 27.5 16 27.5 Q19 27.5 19 25" stroke="#B05A00" stroke-width="1.5" stroke-linecap="round" fill="none"/>
       </svg>
-      <h1 class="hero-brand-name">Hotspot<br>&amp; Learn</h1>
+      <h1 class="hero-brand-name">Safe at<br>the Table</h1>
       <span class="hero-brand-rva">RVA</span>
-      <div class="hero-bumper">Your café has WiFi.<br>Now make it safe.</div>
+      <div class="hero-bumper">Your favorite café is also a security risk.<br>We can fix that.</div>
       <div class="hero-sub-lockup">
-        <span class="hero-eyebrow-small">Exclusive to Afterglow Coffee · Richmond, VA</span>
+        <span class="hero-eyebrow-small">At Afterglow Coffee · Scott's Addition · Richmond, VA</span>
         <div class="hero-partner-row">
           <span class="hero-partner-label">Venue partner</span>
           <a href="https://www.afterglowcoffee.com" target="_blank">
             <img src="images/logo/afterglow.png" alt="Afterglow Coffee Cooperative" class="hero-partner-logo">
           </a>
-          <span class="hero-partner-label" style="margin-left:8px;">× GL.iNet</span>
+          
         </div>
         <div class="hero-actions" style="margin-top:1.5rem;">
           <a href="#rsvp" class="btn-primary">Reserve your seat</a>
@@ -1320,13 +1320,13 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
   <div class="hero-photo">
     <img src="images/scene/cafe-laptop.jpg" alt="Remote worker at a café">
     <div class="hero-mission-overlay">
-      <p class="hero-mission-text">Most of us don't think about protecting ourselves online until something goes wrong. We're here to change that — before it does.</p>
-      <p class="hero-mission-text">We bring industry best practices out of the IT department and into everyday hands. Remote workers, freelancers, café regulars. No jargon. Just skills you'll use the same afternoon.</p>
-      <p class="hero-mission-text">And the stakes are rising. AI is making it dramatically easier for bad actors to scale attacks, impersonate people, and craft convincing phishing at speed. The best defense isn't fear — it's knowing exactly what to do.</p>
+      <p class="hero-mission-text">Most of us don't think about our online safety until something goes wrong — a card gets stolen, an account gets taken over, a message gets sent in our name.</p>
+      <p class="hero-mission-text">Safe at the Table exists to change that. Every Friday at Afterglow, we spend one hour on one skill. Hands-on. No laptop required. No experience required. Just coffee and a little curiosity.</p>
+      <p class="hero-mission-text">AI is making it easier than ever for bad actors to reach people like us. The sessions in this series were designed around that reality — practical, immediate, and built for people, not IT departments.</p>
       <div class="hero-mission-levels">
         <div class="hml-item"><span class="hml-dot beg"></span><span><strong>Sessions 1–4</strong> No experience needed</span></div>
-        <div class="hml-item"><span class="hml-dot int"></span><span><strong>Sessions 5–8</strong> Basic router comfort</span></div>
-        <div class="hml-item"><span class="hml-dot adv"></span><span><strong>Sessions 9–10</strong> Linux / power users</span></div>
+        <div class="hml-item"><span class="hml-dot int"></span><span><strong>Sessions 5–8</strong> Comfortable with technology</span></div>
+        <div class="hml-item"><span class="hml-dot adv"></span><span><strong>Sessions 9–10</strong> Ready to go deeper</span></div>
       </div>
     </div>
   </div>
@@ -1372,16 +1372,16 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
         <input type="email" placeholder="Email address" id="req-email">
         <select id="req-session">
           <option value="">Which session interests you?</option>
-          <option>01 — WiFi Safety 101</option>
-          <option>02 — One-Tap VPN</option>
-          <option>03 — Multi-WAN Failover</option>
-          <option>04 — AdGuard Home</option>
-          <option>05 — Home Office Tunnel</option>
-          <option>06 — Pi-hole DNS Sinkhole</option>
-          <option>07 — VLAN &amp; Guest Hardening</option>
-          <option>08 — Kill Switch &amp; DNS Leak</option>
-          <option>09 — Secure Remote Team Hub</option>
-          <option>10 — OpenWRT Deep Dive</option>
+          <option>01 — Is anyone watching you right now?</option>
+          <option>02 — One button. Everything encrypted.</option>
+          <option>03 — Stop losing calls when the WiFi dies.</option>
+          <option>04 — What if ads just stopped following you?</option>
+          <option>05 — Work from anywhere like you never left your desk.</option>
+          <option>06 — Block ads and trackers before they reach your screen.</option>
+          <option>07 — Keep your clients off your network.</option>
+          <option>08 — What happens to your data when the VPN goes down?</option>
+          <option>09 — Run a secure office for your whole team from a bag.</option>
+          <option>10 — Build your own rules for your own network.</option>
           <option>Private / group session</option>
         </select>
         <textarea placeholder="Anything else? Group size, questions, special requests…" id="req-note" rows="3"></textarea>
@@ -1408,10 +1408,10 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
   <div class="about-series-inner">
     <div class="about-text">
       <p class="about-label">About the series</p>
-      <h2>Skills that pay dividends — taught where you already work.</h2>
-      <p>Safe at the Table is a free workshop series built for the everyday remote worker, freelancer, and small team. No IT background required. We meet on Fridays over coffee and spend an hour learning one skill that makes your digital life meaningfully safer.</p>
-      <p>Most of us never think about network security until something goes wrong — a card number stolen, an account taken over, a client email intercepted. These are not rare events. They happen on open WiFi, at tables like this one, to people who just wanted a good place to work.</p>
-      <p>We bring industry-grade tools and techniques out of the server room and onto the café table. Each session is hands-on, focused, and done before your lunch arrives.</p>
+      <h2>One hour. One skill. Every Friday over coffee.</h2>
+      <p>Safe at the Table is a free workshop series for remote workers, freelancers, and anyone who uses a laptop in public. No tech background required. We meet at Afterglow every Friday and spend one hour on one skill that makes your everyday digital life meaningfully safer.</p>
+      <p>Most of us never think about this until something goes wrong. A card number stolen, an account taken over, a message sent in our name. These are not rare events. They happen on open WiFi, at tables like this one, to people who just wanted a good place to work.</p>
+      <p>We bring the tools and the know-how out of the IT world and onto the café table. Each session is hands-on, focused, and done before your lunch arrives. You will leave knowing something real.</p>
     </div>
     <div class="about-venue">
       <p class="about-label">Our founding venue partner</p>
@@ -1490,8 +1490,8 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
 
 <!-- ─── WORKSHOPS GRID ─── -->
 <div class="section-header" id="workshops">
-  <h2>The 10-session arc</h2>
-  <span class="section-note">Every Friday 11 AM · Afterglow Coffee · Free to attend · Device included · Limited seats</span>
+  <h2>Ten Fridays. Ten skills.</h2>
+  <span class="section-note">Every Friday 11 AM · Afterglow Coffee · Free · Device included · Seats limited</span>
 </div>
 
 <!-- ─── WORKSHOP TOOLBAR ─── -->
@@ -1568,7 +1568,7 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
     </div>
     <h3>Richmond, Virginia's first worker-owned coffee roaster and café.</h3>
     <p>Afterglow Coffee Cooperative is collectively owned and operated by the people who work there — rooted in Scott's Addition and committed to building something worth being part of. It's the kind of place where a workshop about digital autonomy just makes sense.</p>
-    <p style="margin-top:.75rem">Every Friday at 11 AM, Afterglow opens its doors for this series. Free to attend. Great coffee. Leave with a skill.</p>
+    <p style="margin-top:.75rem">Every Friday at 11 AM, Afterglow makes space for this series. Free to attend. Great coffee. Leave with a skill.</p>
     <a href="https://www.afterglowcoffee.com" target="_blank" class="vibe-bar-link">Visit Afterglow Coffee Cooperative →</a>
   </div>
 </div>
@@ -1589,7 +1589,7 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
   <div class="footer-inner">
     <div class="footer-col">
       <h4>The series</h4>
-      <p>10 workshops. Beginner to Pro. Every Friday 11 AM at Afterglow Coffee, Scott's Addition, Richmond VA.</p>
+      <p>Ten sessions. Every Friday at 11 AM. Free to attend. Come for one, come for all.</p>
       <p style="margin-top:.75rem">Free to attend. Prizes each session. No tech background required for the first four.</p>
     </div>
     <div class="footer-col">
@@ -1663,34 +1663,33 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
       <div class="atk-screen atk-s2" id="atkS2">
         <div class="atk-terminal-title">
           <div class="atk-pulse"></div>
-          PACKET CAPTURE LIVE — INTERFACE: wlan0
+          WHAT THE PERSON AT THE NEXT TABLE SEES
         </div>
         <div class="atk-terminal">
-          <div class="dim">$ sudo tcpdump -i wlan0 -A port 80 | grep -A 20 POST</div>
+          <div class="dim">Free tool. Laptop. Open WiFi. That is all it takes.</div>
           <div>&nbsp;</div>
-          <div class="green">[✓] Listening on wlan0 (open network — no WPA2)</div>
-          <div class="dim">──────────────────────────────────────────────</div>
+          <div class="green">[listening]  Connected to the same WiFi as Sarah...</div>
+          <div class="dim">─────────────────────────────────────────────</div>
           <div>&nbsp;</div>
-          <div class="yellow">14:23:07.441  IP 192.168.1.42 → 104.21.8.133</div>
-          <div class="yellow">POST /login HTTP/1.1</div>
-          <div>Host: mybank-signin.com</div>
-          <div>Content-Type: application/x-www-form-urlencoded</div>
+          <div class="yellow">2:23 PM  — Sarah pressed "Sign In"</div>
+          <div class="yellow">Her information just traveled across the cafe.</div>
           <div>&nbsp;</div>
-          <div>email=<span class="hi">sarah.jones@gmail.com</span>&amp;password=<span class="hi">hunter2pass</span></div>
+          <div class="dim">Name on account:</div>
+          <div>email = <span class="hi">sarah.jones@gmail.com</span></div>
+          <div>password = <span class="hi">hunter2pass</span></div>
           <div>&nbsp;</div>
-          <div class="dim">──────────────────────────────────────────────</div>
-          <div class="red">[!] Credentials captured in plaintext.</div>
-          <div class="dim">    Session took: 0.3 seconds.</div>
-          <div class="dim">    Sarah has no idea this happened.</div>
+          <div class="dim">─────────────────────────────────────────────</div>
+          <div class="red">[captured]  Took 0.3 seconds.</div>
+          <div class="dim">           Sarah is still reading the menu.</div>
         </div>
-        <p class="atk-s2-caption">On an open WiFi network, HTTP traffic is readable by anyone nearby. No hacking required — just a laptop and free software.</p>
+        <p class="atk-s2-caption">On open WiFi, your information travels in plain sight. Anyone nearby with a free app can read it. No hacking. No skill. Just proximity.</p>
       </div>
 
       <!-- SCREEN 3: Aftermath -->
       <div class="atk-screen atk-s3" id="atkS3">
         <div style="margin-bottom:1.25rem">
           <div style="font-family:DM Mono,monospace;font-size:10px;letter-spacing:.1em;color:#ff4444;text-transform:uppercase;margin-bottom:.5rem">WHAT HAPPENS NEXT</div>
-          <div style="font-family:DM Mono,monospace;font-size:12px;color:#8b949e">The attacker now has Sarah's login. Here's what they can do with it — automatically, in minutes.</div>
+          <div style="font-family:DM Mono,monospace;font-size:12px;color:#8b949e">The person at the next table now has Sarah's login. Here is what happens next — automatically, in minutes, while she finishes her coffee.</div>
         </div>
         <div class="atk-s3-grid">
           <div class="atk-consequence c1">
@@ -1700,13 +1699,13 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
           </div>
           <div class="atk-consequence c2">
             <span class="big-icon">🤖</span>
-            <h5>AI-Powered Phishing</h5>
-            <p>LLMs now write flawless impersonation emails using her name, contacts, and writing style. Her family gets a "loan request."</p>
+            <h5>Her identity, used against the people she trusts</h5>
+            <p>AI tools can now write convincing messages in her voice, using her contacts. Her family gets a "loan request" that sounds exactly like her. Her clients get a payment redirect. None of it raises a flag.</p>
           </div>
           <div class="atk-consequence c3">
             <span class="big-icon">🔗</span>
-            <h5>Credential Stuffing</h5>
-            <p>Same password tried on Gmail, Venmo, Amazon, Uber. If she reused it anywhere — those accounts fall too.</p>
+            <h5>Every other account, too</h5>
+            <p>That same password gets tried on Gmail, Venmo, Amazon, everywhere. If she used it more than once — and most of us do — every account it matches is now compromised.</p>
           </div>
         </div>
         <div class="atk-cta-row">
