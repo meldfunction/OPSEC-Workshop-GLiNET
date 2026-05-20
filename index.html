@@ -968,6 +968,36 @@
   }
 
   /* ─── ABOUT THE SERIES ─── */
+  /* ── merged who-we-are ── */
+  .who-we-are {
+    padding: 5rem clamp(1.5rem,5vw,4rem);
+    background: var(--cream);
+    border-top: 3px solid var(--orange);
+    border-bottom: 2px solid var(--border);
+  }
+  .who-inner { max-width: 1200px; margin: 0 auto; }
+  .who-top {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+    margin-bottom: 3rem;
+  }
+  .who-divider {
+    width: 100%; height: 2px; background: var(--border); margin-bottom: 3rem;
+  }
+  .who-bottom {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  }
+  .who-sub-heading {
+    font-family: 'Fraunces', serif; font-weight: 800;
+    font-size: clamp(1.3rem, 2.2vw, 1.7rem); line-height: 1.25;
+    color: var(--ink); margin: 0 0 1rem;
+  }
+  .who-series p, .who-approach > p {
+    font-size: 15px; line-height: 1.75; color: var(--ink-mid);
+  }
+  @media (max-width: 768px) {
+    .who-top, .who-bottom { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
   .about-series {
     padding: 5rem clamp(1.5rem,5vw,4rem);
     background: var(--cream);
@@ -1468,101 +1498,90 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
   <a href="#rsvp" class="nav-cta">Reserve a seat →</a>
 </nav>
 
-<!-- ─── ABOUT THE SERIES ─── -->
-<section class="about-series">
-  <div class="about-series-inner">
-    <div class="about-text">
-      <p class="about-label">Our mission</p>
-      <h2 class="about-belief">We believe in a world where staying safe online is not a privilege reserved for people with IT departments.</h2>
-      <p class="about-belief-sub">It belongs to the freelancer at the corner table. The remote worker on deadline. The small team sharing a cafe hotspot. Everyone who just wants to do good work without getting burned.</p>
-    </div>
-    <div class="about-venue">
-      <p class="about-label">At Afterglow Coffee</p>
-      <div class="about-venue-card">
-        <img src="images/logo/afterglow.png" alt="Afterglow Coffee Cooperative" class="about-venue-logo">
-        <h3>Afterglow Coffee Cooperative</h3>
-        <p class="about-venue-tag">Richmond, Virginia&rsquo;s first worker-owned coffee roaster and café</p>
-        <p class="about-venue-copy">Worker-owned and community-rooted, Afterglow is exactly the kind of space where learning digital safety just makes sense. Every Friday they make room for us — and for you.</p>
-        <div class="about-venue-meta">
-          <span>📍 1719 Summit Ave, Scott&rsquo;s Addition</span>
-          <span>📅 Sessions every Friday 11 AM – 12 PM</span>
+<!-- ─── WHO WE ARE ─── -->
+<section class="who-we-are">
+  <div class="who-inner">
+
+    <!-- top: mission + venue side by side -->
+    <div class="who-top">
+      <div class="who-mission">
+        <p class="about-label">Our mission</p>
+        <h2 class="about-belief">We believe in a world where staying safe online is not a privilege reserved for people with IT departments.</h2>
+        <p class="about-belief-sub">It belongs to the freelancer at the corner table. The remote worker on deadline. The small team sharing a cafe hotspot. Everyone who just wants to do good work without getting burned.</p>
+      </div>
+      <div class="about-venue">
+        <p class="about-label">At Afterglow Coffee</p>
+        <div class="about-venue-card">
+          <img src="images/logo/afterglow.png" alt="Afterglow Coffee Cooperative" class="about-venue-logo">
+          <h3>Afterglow Coffee Cooperative</h3>
+          <p class="about-venue-tag">Richmond, Virginia&rsquo;s first worker-owned coffee roaster and café</p>
+          <p class="about-venue-copy">Worker-owned and community-rooted, Afterglow is exactly the kind of space where learning digital safety just makes sense. Every Friday they make room for us — and for you.</p>
+          <div class="about-venue-meta">
+            <span>📍 1719 Summit Ave, Scott&rsquo;s Addition</span>
+            <span>📅 Sessions every Friday 11 AM – 12 PM</span>
+          </div>
+          <a href="https://www.afterglowcoffee.com" target="_blank" class="about-venue-link">afterglowcoffee.com →</a>
         </div>
-        <a href="https://www.afterglowcoffee.com" target="_blank" class="about-venue-link">afterglowcoffee.com →</a>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ─── SERIES INTRO ─── -->
-<section class="series-intro">
-  <div class="series-intro-inner">
-    <div>
-      <span class="intro-label">About the series</span>
-      <h2>Ten skills. Ten Fridays. Zero jargon.</h2>
-      <p>Safe at the Table is a free workshop series hosted at Afterglow Coffee in Richmond, VA. Each session runs one hour, costs nothing, and teaches one practical skill you can use the same day.</p>
-      <p>We are not a product demo. We are not a sales pitch. We are neighbors helping neighbors understand how digital life actually works — and what to do about it.</p>
-      <p>Every attendee gets to keep the device used in their session. GL.iNet provides the hardware as a sponsor. Afterglow provides the space. You just show up.</p>
-    </div>
-    <div>
-      <ul class="series-why-list">
-        <li>
-          <div class="why-icon">☕</div>
-          <div class="why-body">
-            <strong>Built for real people, not IT teams</strong>
-            <span>Freelancers, remote workers, small business owners — anyone who uses public WiFi and has ever wondered whether that was a good idea.</span>
-          </div>
-        </li>
-        <li>
-          <div class="why-icon">🔓</div>
-          <div class="why-body">
-            <strong>Always free to attend</strong>
-            <span>No registration fees. No upsell. No subscription. The only thing we ask is that you show up and pay attention.</span>
-          </div>
-        </li>
-        <li>
-          <div class="why-icon">🛠</div>
-          <div class="why-body">
-            <strong>Hands-on with real gear</strong>
-            <span>You will use a live device in the session — not watch slides. Complete the session, keep the device. That is the deal.</span>
-          </div>
-        </li>
-        <li>
-          <div class="why-icon">📍</div>
-          <div class="why-body">
-            <strong>Rooted in the community</strong>
-            <span>Starting at Afterglow — Richmond's first worker-owned coffee cooperative — and expanding to other independent spaces across RVA.</span>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
+    <!-- divider -->
+    <div class="who-divider"></div>
 
-<!-- ─── OUR APPROACH ─── -->
-<section class="our-approach">
-  <div class="our-approach-inner">
-    <div class="our-approach-header">
-      <span class="intro-label">Our approach</span>
-      <h2>Community first. Industry-grade skills.</h2>
-      <p>We take the same techniques used by security professionals and strip away the complexity. What remains is practical, memorable, and actually useful — taught in the place where you need it most.</p>
+    <!-- bottom: series + approach side by side -->
+    <div class="who-bottom">
+      <div class="who-series">
+        <p class="about-label">About the series</p>
+        <h3 class="who-sub-heading">Ten skills. Ten Fridays. Zero jargon.</h3>
+        <p>Safe at the Table is a free workshop series. Each session runs one hour, costs nothing, and teaches one practical skill you can use the same day. Every attendee keeps the device used in their session — no strings attached.</p>
+        <ul class="series-why-list" style="margin-top:1.5rem;">
+          <li>
+            <div class="why-icon">☕</div>
+            <div class="why-body">
+              <strong>Built for real people, not IT teams</strong>
+              <span>Freelancers, remote workers, small businesses — anyone who has ever wondered whether public WiFi was a good idea.</span>
+            </div>
+          </li>
+          <li>
+            <div class="why-icon">🔓</div>
+            <div class="why-body">
+              <strong>Always free to attend</strong>
+              <span>No fees. No upsell. No subscription. Show up and pay attention.</span>
+            </div>
+          </li>
+          <li>
+            <div class="why-icon">🛠</div>
+            <div class="why-body">
+              <strong>Hands-on with real gear</strong>
+              <span>You use a live device in the session — not slides. Complete it, keep it. That is the deal.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="who-approach">
+        <p class="about-label">Our approach</p>
+        <h3 class="who-sub-heading">Community first. Industry-grade skills.</h3>
+        <p>We take the same techniques used by security professionals and strip away the complexity. What remains is practical and actually useful — taught in the place where you need it most.</p>
+        <div class="approach-pillars" style="margin-top:1.5rem;grid-template-columns:1fr;">
+          <div class="approach-pillar">
+            <span class="pillar-icon">🤝</span>
+            <h3>Community-centered learning</h3>
+            <p>Learning alongside neighbors builds shared knowledge a pamphlet never could. Questions asked out loud benefit everyone in the room.</p>
+          </div>
+          <div class="approach-pillar">
+            <span class="pillar-icon">🔒</span>
+            <h3>Industry best practices, plain language</h3>
+            <p>Every skill — VPNs, encrypted DNS, kill switches, network segmentation — comes from professional frameworks. Taught without the alphabet soup.</p>
+          </div>
+          <div class="approach-pillar">
+            <span class="pillar-icon">📈</span>
+            <h3>Skills that compound</h3>
+            <p>Start anywhere. Come back for more. By session ten you will have a personal security setup most professionals would be proud of.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="approach-pillars">
-      <div class="approach-pillar">
-        <span class="pillar-icon">🤝</span>
-        <h3>Community-centered learning</h3>
-        <p>Sessions happen in public, communal spaces on purpose. Learning alongside your neighbors builds the kind of shared knowledge that a pamphlet never could. You ask questions out loud. Other people learn from them too.</p>
-      </div>
-      <div class="approach-pillar">
-        <span class="pillar-icon">🔒</span>
-        <h3>Industry best practices, plain language</h3>
-        <p>Every skill in this series comes directly from professional security frameworks — VPNs, network segmentation, encrypted DNS, kill switches. We just teach them without the alphabet soup.</p>
-      </div>
-      <div class="approach-pillar">
-        <span class="pillar-icon">📈</span>
-        <h3>Skills that compound</h3>
-        <p>Each session builds on the last. Start anywhere. Come back for more. By session ten you will have a personal security setup that most professionals would be proud of — assembled one Friday at a time.</p>
-      </div>
-    </div>
+
   </div>
 </section>
 
