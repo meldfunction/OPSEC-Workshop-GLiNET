@@ -352,13 +352,13 @@
   .legend-dot.adv { background: var(--amber); }
   .legend-dot.pro { background: var(--rose); }
 
-  /* ─── GRID ─── */
+  /* ─── GRID (compact) ─── */
   .workshop-grid {
     max-width: 1200px; margin: 0 auto;
-    padding: 0 clamp(1.5rem, 5vw, 4rem) 5rem;
+    padding: 0 clamp(1.5rem, 5vw, 4rem) 3rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: .85rem;
   }
 
   /* ─── WORKSHOP CARD ─── */
@@ -382,19 +382,19 @@
   .wcard:hover .wcard-img img { transform: scale(1.04); }
 
 
-  .wcard-body { padding: 1.4rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+  .wcard-body { padding: .95rem 1.1rem 1rem; flex: 1; display: flex; flex-direction: column; }
 
   .wcard-meta {
     display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.45rem;
   }
   .wcard-date {
-    font-family: 'DM Mono', monospace; font-size: 11px;
+    font-family: 'DM Mono', monospace; font-size: 10px;
     color: var(--ink-light); letter-spacing: .06em;
   }
   .wcard-level {
-    font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500;
-    letter-spacing: .08em; padding: 3px 8px; border-radius: 20px;
+    font-family: 'DM Mono', monospace; font-size: 9.5px; font-weight: 500;
+    letter-spacing: .08em; padding: 2px 7px; border-radius: 20px;
     text-transform: uppercase;
   }
   .wcard-level.beg { background: var(--green-light); color: var(--green); }
@@ -403,34 +403,37 @@
   .wcard-level.pro { background: var(--rose-light); color: var(--rose); }
 
   .wcard-num {
-    font-family: 'Fraunces', serif; font-size: 11px; font-style: italic;
-    color: var(--ink-light); margin-bottom: 0.25rem;
+    font-family: 'Fraunces', serif; font-size: 10px; font-style: italic;
+    color: var(--ink-light); margin-bottom: 0.15rem;
   }
 
   .wcard h3 {
     font-family: 'Fraunces', serif;
-    font-size: 1.15rem; line-height: 1.3; font-weight: 700;
-    color: var(--ink); margin-bottom: 0.5rem;
+    font-size: 1.02rem; line-height: 1.25; font-weight: 700;
+    color: var(--ink); margin-bottom: 0.4rem;
+    letter-spacing: -.005em;
   }
 
   .wcard-sub {
-    font-size: 13px; color: var(--ink-mid); line-height: 1.55;
-    margin-bottom: 1rem; flex: 1;
+    font-size: 12.5px; color: var(--ink-mid); line-height: 1.5;
+    margin-bottom: 0.7rem; flex: 1;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
 
   .wcard-footer {
     display: flex; align-items: center; justify-content: space-between;
-    padding-top: 0.75rem; border-top: 1px solid var(--border);
+    padding-top: 0.55rem; border-top: 1px solid var(--border);
   }
   .wcard-time {
-    font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-light);
+    font-family: 'DM Mono', monospace; font-size: 10px; color: var(--ink-light);
   }
   .wcard-prize {
-    font-size: 11px; color: var(--ink-mid);
+    font-size: 10.5px; color: var(--ink-mid);
     display: flex; align-items: center; gap: 4px;
   }
-  .wcard-prize::before { content: '★'; font-size: 10px; color: var(--amber); }
+  .wcard-prize::before { content: '★'; font-size: 9px; color: var(--amber); }
 
   /* ─── HARDWARE INTRO ─── */
 
@@ -673,14 +676,14 @@
     font-family:'DM Mono',monospace; font-size:11px; color:var(--ink-light);
   }
   /* ─── LIST TABLE ─── */
-  #ws-list-view { max-width:1200px; margin:0 auto; padding:0 clamp(1.5rem,5vw,4rem) 4rem; }
+  #ws-list-view { max-width:1200px; margin:0 auto; padding:0 clamp(1.5rem,5vw,4rem) 2.5rem; }
   .ws-table-wrap { overflow-x:auto; border-radius:var(--radius-lg); border:1px solid var(--border); }
   .ws-table { width:100%; border-collapse:collapse; background:#fff; }
   .ws-table thead { background:var(--cream-dark); }
   .ws-table th {
     font-family:'DM Mono',monospace; font-size:10px; font-weight:500;
     letter-spacing:.08em; text-transform:uppercase; color:var(--ink-light);
-    padding:10px 14px; text-align:left; white-space:nowrap;
+    padding:8px 12px; text-align:left; white-space:nowrap;
     border-bottom:1px solid var(--border); user-select:none;
   }
   .ws-table th.sortable { cursor:pointer; }
@@ -688,8 +691,9 @@
   .ws-table th.sort-active { color:var(--blue); }
   .sort-icon { opacity:.4; font-size:10px; margin-left:2px; }
   .ws-table td {
-    padding:11px 14px; font-size:13px; color:var(--ink-mid);
+    padding:7px 12px; font-size:12.5px; color:var(--ink-mid);
     border-bottom:1px solid var(--border); vertical-align:middle;
+    line-height:1.35;
   }
   .ws-table tr:last-child td { border-bottom:none; }
   .ws-table tbody tr { transition:background .1s; cursor:default; }
@@ -763,6 +767,7 @@
   .atk-body { padding:0; }
   .atk-screen { display:none; }
   .atk-screen.active { display:block; }
+  .atk-screen:not(.active) { display:none !important; }
 
   /* Screen 1 — victim login */
   .atk-s1 { background:#f3f4f6; padding:2rem; display:flex; align-items:center; justify-content:center; min-height:340px; }
@@ -861,6 +866,66 @@
   .atk-cta-row a {
     color:#3fb950; text-decoration:underline; cursor:pointer;
   }
+
+  /* Screen 4 — How to protect yourself */
+  .atk-s4 { padding:1.5rem 1.75rem 1.75rem; min-height:340px; background:#0d1117; }
+  .atk-s4-why {
+    background:#161b22; border:1px solid #30363d;
+    border-left:3px solid #3fb950;
+    padding:1rem 1.25rem; border-radius:6px;
+    margin-bottom:1.25rem;
+  }
+  .atk-s4-why-label {
+    font-family:'DM Mono',monospace; font-size:10px;
+    letter-spacing:.14em; color:#3fb950; margin-bottom:.55rem; text-transform:uppercase;
+  }
+  .atk-s4-why p { font-size:13px; color:#c9d1d9; line-height:1.7; }
+  .atk-s4-why p strong { color:#f0f6fc; font-weight:600; }
+  .atk-s4-tips-label {
+    font-family:'DM Mono',monospace; font-size:10px;
+    letter-spacing:.14em; color:#8b949e; margin-bottom:.65rem; text-transform:uppercase;
+  }
+  .atk-s4-tips {
+    display:grid; grid-template-columns:repeat(2,1fr); gap:.65rem;
+  }
+  .atk-tip {
+    background:#161b22; border:1px solid #30363d; border-radius:6px;
+    padding:.9rem 1rem; position:relative;
+  }
+  .atk-tip-num {
+    position:absolute; top:.85rem; right:1rem;
+    font-family:'DM Mono',monospace; font-size:10px; font-weight:600;
+    color:#3fb950; letter-spacing:.04em;
+  }
+  .atk-tip h6 {
+    font-family:'DM Sans',sans-serif; font-size:13px; font-weight:600;
+    color:#f0f6fc; margin:0 0 .3rem; padding-right:2rem; line-height:1.25;
+  }
+  .atk-tip p { font-size:12px; color:#a5adba; line-height:1.5; margin:0; }
+  .atk-s4-cta {
+    margin-top:1.25rem; padding:1rem 1.25rem;
+    background:#3fb950; border-radius:6px;
+    display:flex; justify-content:space-between; align-items:center;
+    gap:1rem; flex-wrap:wrap;
+  }
+  .atk-s4-cta-label {
+    display:block; font-family:'DM Mono',monospace; font-size:10px;
+    letter-spacing:.12em; color:rgba(13,17,23,.65);
+    text-transform:uppercase; margin-bottom:3px;
+  }
+  .atk-s4-cta-title {
+    font-family:'Fraunces',serif; font-weight:700;
+    font-size:.98rem; color:#0d1117; line-height:1.2;
+  }
+  .atk-s4-cta-btn {
+    background:#0d1117; color:#fff;
+    font-family:'DM Mono',monospace; font-size:11px;
+    font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+    padding:11px 16px; border-radius:5px;
+    text-decoration:none; transition:opacity .15s; white-space:nowrap;
+  }
+  .atk-s4-cta-btn:hover { opacity:.85; }
+  @media (max-width:560px) { .atk-s4-tips { grid-template-columns:1fr; } }
   .atk-nav-row {
     padding:14px 20px; background:#161b22; border-top:1px solid #30363d;
     display:flex; justify-content:space-between; align-items:center;
@@ -986,6 +1051,7 @@
   .who-bottom {
     display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
   }
+  .who-bottom > * { min-width: 0; }
   .who-sub-heading {
     font-family: 'Fraunces', serif; font-weight: 800;
     font-size: clamp(1.3rem, 2.2vw, 1.7rem); line-height: 1.25;
@@ -1067,23 +1133,58 @@
   }
   .series-intro p:last-child { margin: 0; }
   .series-why-list {
-    list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.25rem;
+    list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px;
   }
   .series-why-list li {
-    display: flex; gap: 1rem; align-items: flex-start;
+    display: flex; align-items: center; gap: 10px;
+    height: 28px; overflow: hidden;
+    cursor: pointer; user-select: none;
+    position: relative; padding-right: 24px;
+    border-radius: 4px;
+    transition: background .15s, height .25s ease, padding .25s ease;
   }
+  .series-why-list li:hover { background: var(--cream-mid); }
+  .series-why-list li::after {
+    content: "+"; position: absolute; right: 6px; top: 8px;
+    font-family: 'DM Mono', monospace; font-size: 14px; line-height: 1;
+    color: var(--ink-light); font-weight: 500;
+    transition: transform .2s, color .15s;
+    pointer-events: none;
+  }
+  .series-why-list li:hover::after { color: var(--ink); }
   .series-why-list .why-icon {
-    width: 36px; height: 36px; border-radius: 50%;
+    width: 20px; height: 20px; border-radius: 50%;
     background: var(--orange); display: flex; align-items: center; justify-content: center;
-    font-size: 16px; flex-shrink: 0; margin-top: 2px;
+    font-size: 11px; flex-shrink: 0; margin: 0;
+  }
+  .series-why-list .why-body {
+    display: flex; align-items: baseline; gap: 6px;
+    flex: 1; min-width: 0;
   }
   .series-why-list .why-body strong {
-    font-family: 'Fraunces', serif; font-weight: 700; font-size: 15px;
-    color: var(--ink); display: block; margin-bottom: .25rem;
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: 12.5px;
+    color: var(--ink); margin: 0; line-height: 1.2;
+    white-space: nowrap; flex-shrink: 0;
   }
   .series-why-list .why-body span {
-    font-size: 14px; line-height: 1.65; color: var(--ink-mid);
+    font-size: 11.5px; line-height: 1.2; color: var(--ink-light);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    flex: 1; min-width: 0;
   }
+  .series-why-list .why-body span::before { content: "·\00a0"; color: var(--border); margin-right: 2px; }
+
+  .series-why-list li.expanded {
+    height: auto; padding: 6px 24px 8px 0;
+    align-items: flex-start;
+  }
+  .series-why-list li.expanded .why-icon { margin-top: 1px; }
+  .series-why-list li.expanded::after { transform: rotate(45deg); color: var(--orange); }
+  .series-why-list li.expanded .why-body { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .series-why-list li.expanded .why-body span {
+    white-space: normal; overflow: visible; text-overflow: clip;
+    font-size: 12px; color: var(--ink-mid); line-height: 1.5;
+  }
+  .series-why-list li.expanded .why-body span::before { content: ""; margin: 0; }
 
   /* ── Our Approach ── */
   .our-approach {
@@ -1110,22 +1211,56 @@
     font-size: 16px; line-height: 1.75; color: rgba(247,242,229,.85); max-width: 640px;
   }
   .approach-pillars {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
   }
   .approach-pillar {
-    background: var(--cream-dark); border-radius: 12px;
-    padding: 1.75rem; border: 1px solid var(--border);
+    background: var(--cream-dark); border-radius: 4px;
+    padding: 0 28px 0 12px; border: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+    height: 32px; overflow: hidden;
+    cursor: pointer; user-select: none;
+    position: relative;
+    transition: background .15s, height .25s ease, padding .25s ease;
   }
+  .approach-pillar:hover { background: var(--cream-mid); }
+  .approach-pillar::after {
+    content: "+"; position: absolute; right: 10px; top: 12px;
+    font-family: 'DM Mono', monospace; font-size: 16px; line-height: 1;
+    color: var(--ink-light); font-weight: 500;
+    transition: transform .2s, color .15s;
+    pointer-events: none;
+  }
+  .approach-pillar:hover::after { color: var(--ink); }
   .approach-pillar .pillar-icon {
-    font-size: 28px; margin-bottom: 1rem; display: block;
+    font-size: 13px; margin: 0; display: block; line-height: 1; flex-shrink: 0;
   }
   .approach-pillar h3 {
-    font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.15rem;
-    color: var(--ink); margin: 0 0 .65rem; line-height: 1.25;
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: 12.5px;
+    color: var(--ink); margin: 0; line-height: 1.2;
+    white-space: nowrap; flex-shrink: 0;
   }
   .approach-pillar p {
-    font-size: 14px; line-height: 1.7; color: var(--ink-mid); margin: 0;
+    font-size: 11.5px; line-height: 1.2; color: var(--ink-light); margin: 0;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    flex: 1; min-width: 0;
   }
+  .approach-pillar p::before { content: "·\00a0"; color: var(--border); margin-right: 2px; }
+
+  .approach-pillar.expanded {
+    height: auto;
+    padding: 8px 28px 10px 12px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .approach-pillar.expanded .pillar-icon { margin-top: 4px; }
+  .approach-pillar.expanded h3 { padding-top: 2px; }
+  .approach-pillar.expanded::after { transform: rotate(45deg); color: var(--orange); }
+  .approach-pillar.expanded p {
+    white-space: normal; overflow: visible; text-overflow: clip;
+    flex-basis: 100%; margin: 4px 0 0 23px;
+    font-size: 12px; color: var(--ink-mid); line-height: 1.5;
+  }
+  .approach-pillar.expanded p::before { content: ""; margin: 0; }
 
   @media (max-width: 768px) {
     .series-intro-inner { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -1207,6 +1342,131 @@
   .footer-sponsor a { color: rgba(255,255,255,.5); text-decoration: none; }
   .footer-sponsor a:hover { color: #fff; }
 
+
+  /* ─── CHAPTER EYEBROW (links series to The Brief) ─── */
+  .hero-chapter-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-light); text-decoration: none;
+    margin-bottom: 1.5rem;
+    padding: 8px 12px 8px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transition: color .15s;
+  }
+  .hero-chapter-eyebrow strong { color: var(--orange); font-weight: 500; }
+  .hero-chapter-eyebrow .arr { transition: transform .15s; }
+  .hero-chapter-eyebrow:hover { color: var(--ink); }
+  .hero-chapter-eyebrow:hover .arr { transform: translateX(3px); }
+
+  /* ─── NAV BRIEF LINK ─── */
+  .nav-brief-link {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--orange) !important;
+    border-bottom: 1.5px solid var(--orange);
+    padding-bottom: 2px;
+  }
+  .nav-brief-link:hover { color: var(--terra) !important; border-color: var(--terra); }
+
+  /* ─── BRIEF CALLOUT (replaces venue-partners + community-futures) ─── */
+  .brief-callout {
+    background: var(--ink); color: #efe5d0;
+    padding: 5rem clamp(1.5rem, 5vw, 4rem);
+    border-top: 3px double rgba(247,242,229,.18);
+    border-bottom: 3px double rgba(247,242,229,.18);
+    position: relative; overflow: hidden;
+  }
+  .brief-callout-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+    position: relative; z-index: 1;
+  }
+  .brief-callout-left { display: flex; flex-direction: column; gap: .5rem; }
+  .brief-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: .14em;
+    color: var(--orange); text-transform: uppercase;
+    margin-bottom: 1rem; display: block;
+  }
+  .brief-callout h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900; font-size: clamp(2rem, 4.4vw, 3.4rem);
+    letter-spacing: -.025em; line-height: .98;
+    color: #efe5d0;
+  }
+  .brief-callout h2 em {
+    font-style: italic; font-weight: 700; color: var(--orange);
+  }
+  .brief-callout-meta {
+    margin-top: 2rem; padding-top: 1.5rem;
+    border-top: 1px solid rgba(247,242,229,.18);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  }
+  .brief-callout-meta .cell .label-mono {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: .12em;
+    color: rgba(247,242,229,.5); text-transform: uppercase;
+    margin-bottom: 4px; display: block;
+  }
+  .brief-callout-meta .cell .v {
+    font-family: 'Fraunces', serif; font-weight: 700;
+    font-size: 1rem; color: #efe5d0; line-height: 1.3;
+  }
+  .brief-callout-right { border-left: 1px solid rgba(247,242,229,.18); padding-left: 3rem; }
+  .brief-callout-right p {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+    line-height: 1.55; color: rgba(239, 229, 208, .85);
+    margin-bottom: 1.25rem;
+  }
+  .brief-callout-right p:first-letter {
+    font-family: 'Fraunces', serif; font-weight: 900;
+    font-size: 3em; float: left;
+    line-height: .85; padding: .08em .12em 0 0;
+    color: var(--orange);
+  }
+  .brief-callout-right p strong { color: #fff; font-weight: 600; }
+  .brief-callout-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 1.5rem;
+    background: var(--orange); color: #fff;
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+    padding: 14px 22px; border-radius: 4px;
+    text-decoration: none; transition: opacity .15s, transform .15s;
+  }
+  .brief-callout-cta:hover { opacity: .92; transform: translateX(2px); }
+  @media (max-width: 860px) {
+    .brief-callout-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .brief-callout-right { border-left: none; padding-left: 0; border-top: 1px solid rgba(247,242,229,.18); padding-top: 2rem; }
+    .brief-callout-meta { grid-template-columns: 1fr; }
+  }
+
+  /* ─── NEWSLETTER RIBBON (sole pointer to The Brief) ─── */
+  .series-instance-strip {
+    background: var(--ink);
+    color: #efe5d0;
+    padding: 10px clamp(1.5rem, 5vw, 4rem);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: .08em; text-transform: uppercase;
+  }
+  .series-instance-strip a {
+    color: #efe5d0; text-decoration: none;
+    border-bottom: 1.5px solid var(--orange); padding-bottom: 1px;
+  }
+  .series-instance-strip a:hover { color: var(--orange); }
+  .series-instance-strip a strong { color: var(--orange); font-weight: 500; }
+  .series-instance-strip .sis-cta {
+    color: var(--orange); border-bottom-color: var(--orange);
+    font-weight: 500;
+  }
 
   /* ─── PHOTO BREAK ─── */
   .photo-break {
@@ -1331,7 +1591,7 @@ function closeAttackModal() {
   document.getElementById('atkOverlay').classList.remove('open');
 }
 function goAtkScreen(n) {
-  [1,2,3].forEach(function(i) {
+  [1,2,3,4].forEach(function(i) {
     var s = document.getElementById('atkS' + i);
     var p = document.getElementById('atkPill' + i);
     if (s) s.classList.toggle('active', i === n);
@@ -1342,11 +1602,11 @@ function goAtkScreen(n) {
   var lbl  = document.getElementById('atkLabel');
   if (prev) prev.disabled = (n === 1);
   if (next) {
-    next.textContent = (n === 3) ? 'CLOSE' : 'NEXT →';
-    next.onclick = (n === 3) ? closeAttackModal : function(){ goAtkScreen(n+1); };
+    next.textContent = (n === 4) ? 'CLOSE' : 'NEXT →';
+    next.onclick = (n === 4) ? closeAttackModal : function(){ goAtkScreen(n+1); };
   }
   if (prev) prev.onclick = function(){ goAtkScreen(n-1); };
-  var labels = ['', 'STEP 1 OF 3 — VICTIM VIEW', 'STEP 2 OF 3 — ATTACKER VIEW', 'STEP 3 OF 3 — AFTERMATH'];
+  var labels = ['', 'STEP 1 OF 4 — VICTIM VIEW', 'STEP 2 OF 4 — ATTACKER VIEW', 'STEP 3 OF 4 — AFTERMATH', 'STEP 4 OF 4 — HOW TO PROTECT YOURSELF'];
   if (lbl) lbl.textContent = labels[n];
 }
 document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeAttackModal(); });
@@ -1461,6 +1721,15 @@ function renderWorkshops() {
 }
 
 document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); });
+
+/* Expander rows — approach pillars + series-why-list */
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.approach-pillar, .series-why-list li').forEach(function(el) {
+    el.addEventListener('click', function() {
+      el.classList.toggle('expanded');
+    });
+  });
+});
 </script>
 
 
@@ -1493,7 +1762,7 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
     <a href="#workshops">Sessions</a>
     <a href="#rsvp">RSVP</a>
     <a href="https://www.afterglowcoffee.com" target="_blank">Afterglow</a>
-    
+    <a href="The Brief.html" class="nav-brief-link">The Brief →</a>
   </div>
   <a href="#rsvp" class="nav-cta">Reserve a seat →</a>
 </nav>
@@ -1562,7 +1831,7 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
         <p class="about-label">Our approach</p>
         <h3 class="who-sub-heading">Community first. Industry-grade skills.</h3>
         <p>We take the same techniques used by security professionals and strip away the complexity. What remains is practical and actually useful — taught in the place where you need it most.</p>
-        <div class="approach-pillars" style="margin-top:1.5rem;grid-template-columns:1fr;">
+        <div class="approach-pillars" style="margin-top:1.25rem;grid-template-columns:1fr;">
           <div class="approach-pillar">
             <span class="pillar-icon">🤝</span>
             <h3>Community-centered learning</h3>
@@ -1584,6 +1853,12 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
 
   </div>
 </section>
+
+<!-- ─── NEWSLETTER RIBBON (the one dedicated div pointing to The Brief) ─── -->
+<div class="series-instance-strip">
+  <span>Part of <a href="The Brief.html"><strong>The Brief</strong></a> — a Richmond community resilience newsletter.</span>
+  <a href="The Brief.html" class="sis-cta">Read it →</a>
+</div>
 
 <!-- ─── HERO ─── -->
 <section class="hero-split">
@@ -1714,33 +1989,7 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
 </div>
 
 
-<!-- ─── VENUE PARTNERS ─── -->
-<section class="venue-partners">
-  <div class="venue-partners-inner">
-    <div class="venue-partners-header">
-      <p class="about-label">Expanding to more spaces</p>
-      <h2>Bring it to your space.</h2>
-      <p class="venue-partners-sub">We are looking for Richmond cafés, co-working spots, and community spaces that want to host a session. You bring the table and the coffee. We bring the curriculum, the gear, and the people.</p>
-    </div>
-    <div class="venue-cards">
-      <div class="venue-card venue-card-active">
-        <div class="venue-card-badge">Founding partner · Active</div>
-        <img src="images/logo/afterglow.png" alt="Afterglow Coffee Cooperative" class="venue-card-logo">
-        <h4>Afterglow Coffee Cooperative</h4>
-        <p>1719 Summit Ave · Scott&rsquo;s Addition · Richmond, VA</p>
-        <p class="venue-card-sessions">Sessions 01 – 10 · Fridays 11 AM</p>
-      </div>
-      <div class="venue-card venue-card-future">
-        <div class="venue-card-badge">Coming soon</div>
-        <div class="venue-card-placeholder">
-          <span>Your café here</span>
-          <p>Bring Safe at the Table to your space. We handle the curriculum, the gear, and the facilitation. You provide the table and the coffee.</p>
-          <a href="#rsvp" class="venue-card-cta">Get in touch →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ─── VENUE PARTNERS section moved to The Brief (movement-scope content lives there now) ─── -->
 
 <!-- ─── GEAR SPONSOR STRIP ─── -->
 <div class="gear-strip">
@@ -1748,8 +1997,7 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
     <div class="gear-strip-text">
       <span class="gear-label">Hardware provided by</span>
       <a href="https://www.gl-inet.com" target="_blank" class="gear-glinet-link">
-        <img src="images/logo/glinet-logo.png" alt="GL.iNet" onerror="this.style.display='none';this.nextSibling.style.display='inline'">
-        <span style="display:none;font-family:DM Mono,monospace;font-size:13px;font-weight:600;color:var(--ink)">GL.iNet</span>
+        <span style="font-family:'DM Mono',monospace;font-size:14px;font-weight:600;color:var(--ink);letter-spacing:.04em">GL.iNet</span>
       </a>
     </div>
     <div class="gear-strip-copy">
@@ -1839,47 +2087,7 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
   <div class="photo-break-img"><img src="images/scene/workshop-group.jpg" alt="Learning together"></div>
 </div>
 
-<!-- ─── COMMUNITY FUTURES ─── -->
-<section class="community-futures">
-  <div class="community-futures-inner">
-    <div>
-      <span class="cf-label">Where we are headed</span>
-      <h2>Building toward a community security nonprofit.</h2>
-      <p>Safe at the Table is the beginning of something larger. We are working toward a nonprofit dedicated to community digital security — bringing industry-grade protection to the people and places that need it most.</p>
-      <p>Our research focus areas reflect what we believe the next decade of community resilience depends on.</p>
-      <ul class="cf-focus-list">
-        <li>
-          <span class="cf-icon">🌐</span>
-          <div class="cf-item-body">
-            <strong>Decentralized AI</strong>
-            <span>Local, community-owned AI tools that do not send your data to a corporate server. Powerful without being surveilled.</span>
-          </div>
-        </li>
-        <li>
-          <span class="cf-icon">📡</span>
-          <div class="cf-item-body">
-            <strong>Community mesh networks</strong>
-            <span>Neighborhood-scale connectivity that does not depend on a single ISP or cell tower — resilient, self-healing, and community-controlled.</span>
-          </div>
-        </li>
-        <li>
-          <span class="cf-icon">🆘</span>
-          <div class="cf-item-body">
-            <strong>Resilient communications</strong>
-            <span>What happens when the internet goes down after a flood, ice storm, or power outage? We are building the playbook before we need it.</span>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div>
-      <div class="cf-sponsor-cta">
-        <h3>Sponsor community security in Richmond.</h3>
-        <p>We are actively seeking partners — businesses, foundations, and individuals — who believe that digital safety is a public good. Your support funds free workshops, community gear, and the research that makes this work matter beyond our city.</p>
-        <a href="mailto:hello@safeatthetable.org">Get in touch about sponsorship →</a>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ─── (former Brief callout removed — newsletter pointer lives in the top ribbon only) ─── -->
 
 <!-- ─── RSVP ─── -->
 <section class="rsvp-strip" id="rsvp">
@@ -1896,7 +2104,7 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
 <footer>
   <div class="footer-inner">
     <div class="footer-col">
-      <h4>The series</h4>
+      <h4>This series</h4>
       <p>Ten sessions. Every Friday at 11 AM. Free to attend. Come for one, come for all.</p>
       <p style="margin-top:.75rem">Show up for one. Show up for all. No registration required — just grab a seat.</p>
     </div>
@@ -1909,12 +2117,12 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
     </div>
     <div class="footer-col">
       <h4>Hardware sponsor</h4>
-      <p style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;">GL.iNet sponsors every session with travel routers. Finish a session — the device is yours to keep.</p>
+      <p style="font-size:13px;color:var(--ink-mid);line-height:1.6;">GL.iNet sponsors every session with travel routers. Finish a session — the device is yours to keep.</p>
       <a href="https://www.gl-inet.com" target="_blank" style="margin-top:.5rem">gl-inet.com</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 · Safe at the Table · A Limicelia community program</span>
+    <span>© 2026 · Safe at the Table · Free, community-led, Richmond VA</span>
     <span>Founding venue: Afterglow Coffee Cooperative · Richmond, VA</span><div class="footer-sponsor">Hardware sponsored by <a href="https://www.gl-inet.com" target="_blank">GL.iNet</a></div>
   </div>
 </footer>
@@ -1927,6 +2135,7 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
         <button class="atk-step-pill" id="atkPill1" onclick="goAtkScreen(1)">01 · VICTIM</button>
         <button class="atk-step-pill" id="atkPill2" onclick="goAtkScreen(2)">02 · ATTACKER</button>
         <button class="atk-step-pill" id="atkPill3" onclick="goAtkScreen(3)">03 · AFTERMATH</button>
+        <button class="atk-step-pill" id="atkPill4" onclick="goAtkScreen(4)">04 · PROTECT</button>
       </div>
       <button class="atk-close" onclick="closeAttackModal()" aria-label="Close">✕</button>
     </div>
@@ -1981,7 +2190,7 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
           <div class="yellow">Her information just traveled across the cafe.</div>
           <div>&nbsp;</div>
           <div class="dim">Name on account:</div>
-          <div>email = <span class="hi">sarah.jones@gmail.com</span></div>
+          <div>email = <span class="hi"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e7948695868fc98d88898294a7808a868e8bc984888a">[email&#160;protected]</a></span></div>
           <div>password = <span class="hi">hunter2pass</span></div>
           <div>&nbsp;</div>
           <div class="dim">─────────────────────────────────────────────</div>
@@ -2015,9 +2224,48 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
           </div>
         </div>
         <div class="atk-cta-row">
-          This takes under 60 seconds on any open WiFi. · <a href="#rsvp" onclick="closeAttackModal()">Sign up for Session 01 →</a>
+          This takes under 60 seconds on any open WiFi. · <a onclick="goAtkScreen(4)">See how to protect yourself →</a>
         </div>
       </div>
+
+      <!-- SCREEN 4: How to protect yourself -->
+      <div class="atk-screen atk-s4" id="atkS4" data-comment-anchor="protect-screen">
+        <div class="atk-s4-why">
+          <div class="atk-s4-why-label">· WHY THIS WORKS · PLAIN LANGUAGE</div>
+          <p>On open WiFi, your phone and laptop send their messages <strong>out loud</strong> — to the cafe's router, yes, but also into the air, where any device nearby can listen. Modern sites encrypt most of that traffic. Older ones don't. Bad apps do whatever they want. You don't have to know which is which. <strong>You just have to encrypt everything before it leaves you.</strong></p>
+        </div>
+
+        <div class="atk-s4-tips-label">· FOUR THINGS THAT ACTUALLY WORK</div>
+        <div class="atk-s4-tips">
+          <div class="atk-tip">
+            <span class="atk-tip-num">01</span>
+            <h6>Turn on a VPN before you connect.</h6>
+            <p>Everything you send becomes unreadable to the cafe. One tap, every device. This is the single biggest move.</p>
+          </div>
+          <div class="atk-tip">
+            <span class="atk-tip-num">02</span>
+            <h6>Use your phone's hotspot.</h6>
+            <p>Cellular is already encrypted between you and the carrier. Easier than fighting the cafe's network.</p>
+          </div>
+          <div class="atk-tip">
+            <span class="atk-tip-num">03</span>
+            <h6>Carry a travel router.</h6>
+            <p>Plug it into the cafe WiFi, connect your devices to it. One trusted tunnel for everything you own.</p>
+          </div>
+          <div class="atk-tip">
+            <span class="atk-tip-num">04</span>
+            <h6>Watch for the padlock.</h6>
+            <p>A lock in your URL bar means the site itself is encrypting your traffic. A warning means it isn't — don't sign in.</p>
+          </div>
+        </div>
+
+        <div class="atk-s4-cta">
+          <div class="atk-s4-cta-text">
+            <span class="atk-s4-cta-label">Want this hands-on?</span>
+            <div class="atk-s4-cta-title">Sessions 01 &amp; 02 set this up for you in 15 minutes — free, and you keep the device.</div>
+          </div>
+          <a href="#workshops" onclick="closeAttackModal()" class="atk-s4-cta-btn">See the sessions →</a>
+        </div>
 
     </div>
     <div class="atk-nav-row">
@@ -2028,5 +2276,5 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
   </div>
 </div>
 
-</body>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
 </html>
