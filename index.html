@@ -1151,9 +1151,6 @@ function goAtkScreen(n) {
 }
 document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeAttackModal(); });
 
-renderWorkshops();
-}
-
 function setView(v) {
   _view = v;
   document.getElementById('ws-grid-view').style.display = v === 'grid' ? '' : 'none';
@@ -1586,7 +1583,7 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
 
 <!-- ─── PHOTO BREAK ─── -->
 <div class="photo-break">
-  <div class="photo-break-img"><img src="images/scene/cafe-laptop.jpg" alt="Working at a café"></div>
+  <div class="photo-break-img"><img src="images/scene/cafe-work.jpg" alt="Working at Afterglow Coffee"></div>
   <div class="photo-break-img"><img src="images/scene/workshop-coffee.jpg" alt="Workshop at Afterglow"></div>
   <div class="photo-break-img"><img src="images/scene/workshop-group.jpg" alt="Learning together"></div>
 </div>
