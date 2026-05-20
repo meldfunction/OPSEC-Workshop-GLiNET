@@ -435,6 +435,67 @@
   /* ─── HARDWARE INTRO ─── */
 
   /* ─── RSVP STRIP ─── */
+  /* ── Community futures ── */
+  .community-futures {
+    padding: 5rem clamp(1.5rem,5vw,4rem);
+    background: var(--ink);
+    border-top: 3px solid var(--gold);
+  }
+  .community-futures-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  }
+  .community-futures .cf-label {
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--gold); margin: 0 0 1rem; display: block;
+  }
+  .community-futures h2 {
+    font-family: 'Fraunces', serif; font-weight: 900;
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem); line-height: 1.2;
+    color: var(--cream); margin: 0 0 1.25rem;
+  }
+  .community-futures p {
+    font-size: 15px; line-height: 1.8; color: rgba(247,242,229,.8); margin: 0 0 1rem;
+  }
+  .community-futures p:last-of-type { margin-bottom: 0; }
+  .cf-focus-list {
+    list-style: none; padding: 0; margin: 0 0 2.5rem; display: flex; flex-direction: column; gap: 1rem;
+  }
+  .cf-focus-list li {
+    display: flex; gap: .85rem; align-items: flex-start;
+    background: rgba(255,255,255,.07); border-radius: 10px; padding: 1rem 1.25rem;
+    border: 1px solid rgba(255,255,255,.1);
+  }
+  .cf-focus-list .cf-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+  .cf-focus-list .cf-item-body strong {
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: 15px;
+    color: var(--cream); display: block; margin-bottom: .2rem;
+  }
+  .cf-focus-list .cf-item-body span {
+    font-size: 13px; line-height: 1.6; color: rgba(247,242,229,.65);
+  }
+  .cf-sponsor-cta {
+    background: var(--orange); border-radius: 12px; padding: 1.75rem 2rem;
+    border: none;
+  }
+  .cf-sponsor-cta h3 {
+    font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.3rem;
+    color: #fff; margin: 0 0 .65rem; line-height: 1.25;
+  }
+  .cf-sponsor-cta p {
+    font-size: 14px; line-height: 1.7; color: rgba(255,255,255,.9); margin: 0 0 1.25rem;
+  }
+  .cf-sponsor-cta a {
+    display: inline-block; background: #fff; color: var(--orange);
+    font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .06em;
+    font-weight: 700; text-decoration: none; border-radius: 6px;
+    padding: .6rem 1.25rem; transition: opacity .2s;
+  }
+  .cf-sponsor-cta a:hover { opacity: .85; }
+  @media (max-width: 768px) {
+    .community-futures-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
   .rsvp-strip {
     background: linear-gradient(135deg, var(--orange) 0%, var(--terra) 100%);
     padding: 4rem clamp(1.5rem, 5vw, 4rem);
@@ -1209,7 +1270,7 @@ const WORKSHOPS = [
 const LEVEL_CLASS = { Beginner:"beg", Intermediate:"int", Advanced:"adv", Pro:"pro" };
 const LEVEL_ORDER = { Beginner:0, Intermediate:1, Advanced:2, Pro:3 };
 
-let _view = 'grid', _filter = 'all', _sortCol = null, _sortDir = 1;
+let _view = 'list', _filter = 'all', _sortCol = null, _sortDir = 1;
 
 function setFilter(level, btn) {
   _filter = level;
@@ -1712,10 +1773,10 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
     </select>
   </div>
   <div class="ws-view-toggle">
-    <button class="ws-view active" id="btn-grid" onclick="setView('grid')" title="Grid">
+    <button class="ws-view" id="btn-grid" onclick="setView('grid')" title="Grid">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
     </button>
-    <button class="ws-view" id="btn-list" onclick="setView('list')" title="List">
+    <button class="ws-view active" id="btn-list" onclick="setView('list')" title="List">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="2" width="14" height="2" rx="1"/><rect x="1" y="7" width="14" height="2" rx="1"/><rect x="1" y="12" width="14" height="2" rx="1"/></svg>
     </button>
   </div>
@@ -1723,7 +1784,7 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
 <div class="ws-meta" id="ws-meta"></div>
 
 <!-- LIST VIEW -->
-<div id="ws-list-view" style="display:none">
+<div id="ws-list-view">
   <div class="ws-table-wrap">
     <table class="ws-table">
       <thead><tr>
@@ -1742,7 +1803,7 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
 </div>
 
 <!-- GRID VIEW -->
-<div id="ws-grid-view">
+<div id="ws-grid-view" style="display:none">
   <div class="legend">
     <div class="legend-item"><div class="legend-dot beg"></div>Beginner</div>
     <div class="legend-item"><div class="legend-dot int"></div>Intermediate</div>
@@ -1758,6 +1819,48 @@ document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); })
   <div class="photo-break-img"><img src="images/scene/workshop-coffee.jpg" alt="Workshop at Afterglow"></div>
   <div class="photo-break-img"><img src="images/scene/workshop-group.jpg" alt="Learning together"></div>
 </div>
+
+<!-- ─── COMMUNITY FUTURES ─── -->
+<section class="community-futures">
+  <div class="community-futures-inner">
+    <div>
+      <span class="cf-label">Where we are headed</span>
+      <h2>Building toward a community security nonprofit.</h2>
+      <p>Safe at the Table is the beginning of something larger. We are working toward a nonprofit dedicated to community digital security — bringing industry-grade protection to the people and places that need it most.</p>
+      <p>Our research focus areas reflect what we believe the next decade of community resilience depends on.</p>
+      <ul class="cf-focus-list">
+        <li>
+          <span class="cf-icon">🌐</span>
+          <div class="cf-item-body">
+            <strong>Decentralized AI</strong>
+            <span>Local, community-owned AI tools that do not send your data to a corporate server. Powerful without being surveilled.</span>
+          </div>
+        </li>
+        <li>
+          <span class="cf-icon">📡</span>
+          <div class="cf-item-body">
+            <strong>Community mesh networks</strong>
+            <span>Neighborhood-scale connectivity that does not depend on a single ISP or cell tower — resilient, self-healing, and community-controlled.</span>
+          </div>
+        </li>
+        <li>
+          <span class="cf-icon">🆘</span>
+          <div class="cf-item-body">
+            <strong>Resilient communications</strong>
+            <span>What happens when the internet goes down after a flood, ice storm, or power outage? We are building the playbook before we need it.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <div class="cf-sponsor-cta">
+        <h3>Sponsor community security in Richmond.</h3>
+        <p>We are actively seeking partners — businesses, foundations, and individuals — who believe that digital safety is a public good. Your support funds free workshops, community gear, and the research that makes this work matter beyond our city.</p>
+        <a href="mailto:hello@safeatthetable.org">Get in touch about sponsorship →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ─── RSVP ─── -->
 <section class="rsvp-strip" id="rsvp">
