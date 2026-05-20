@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Connected at the Café — GL.iNet × Afterglow Coffee Workshops</title>
+<title>Safe at the Table — Remote Work Safety · Richmond, VA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -53,7 +53,6 @@
   .nav-logos { display: flex; align-items: center; gap: 16px; }
   .nav-logos img { height: 28px; object-fit: contain; }
   .nav-sep { width: 1px; height: 24px; background: var(--border); }
-  .nav-glinet { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; color: var(--ink-mid); letter-spacing: .04em; }
 
   /* ─── HOTSPOT & LEARN LOGO ─── */
   .hl-logo {
@@ -370,28 +369,8 @@
   .wcard-top-bar.adv { background: var(--amber); }
   .wcard-top-bar.pro { background: var(--rose); }
 
-  .wcard-img {
-    width: 100%; height: 160px;
-    background: var(--cream-dark);
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden; position: relative;
-  }
-  .wcard-img img {
-    width: 100%; height: 100%;
-    object-fit: contain; padding: 1.5rem;
-    transition: transform .3s;
-  }
   .wcard:hover .wcard-img img { transform: scale(1.04); }
 
-  .wcard-img-overlay {
-    position: absolute; top: 10px; right: 10px;
-    background: rgba(255,255,255,.92);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 3px 8px;
-    font-family: 'DM Mono', monospace; font-size: 10px; color: var(--ink-mid);
-    letter-spacing: .04em;
-  }
 
   .wcard-body { padding: 1.4rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
 
@@ -429,15 +408,6 @@
     margin-bottom: 1rem; flex: 1;
   }
 
-  .wcard-product {
-    display: flex; align-items: center; gap: 8px;
-    padding: 8px 10px;
-    background: var(--cream); border-radius: var(--radius);
-    margin-bottom: 1rem;
-    font-size: 12px; color: var(--ink-mid);
-  }
-  .wcard-product strong { color: var(--ink); font-weight: 500; font-family: 'DM Mono', monospace; font-size: 11px; }
-  .product-icon { font-size: 16px; }
 
   .wcard-footer {
     display: flex; align-items: center; justify-content: space-between;
@@ -453,82 +423,6 @@
   .wcard-prize::before { content: '★'; font-size: 10px; color: var(--amber); }
 
   /* ─── HARDWARE INTRO ─── */
-  .hardware-intro {
-    border-top: 1px solid var(--border);
-    padding: 4rem clamp(1.5rem, 5vw, 4rem) 0;
-  }
-  .hardware-intro-inner {
-    max-width: 1200px; margin: 0 auto 3rem;
-  }
-  .hardware-intro-label {
-    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .1em;
-    text-transform: uppercase; color: var(--ink-light); margin-bottom: 0.5rem;
-  }
-  .hardware-intro-inner h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700;
-    color: var(--ink); margin-bottom: 0.5rem;
-  }
-  .hardware-intro-sub { font-size: 15px; color: var(--ink-mid); max-width: 640px; }
-
-  .hardware-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border-top: 1px solid var(--border);
-  }
-  .hw-card {
-    border-right: 1px solid var(--border);
-    display: flex; flex-direction: column;
-  }
-  .hw-card:last-child { border-right: none; }
-
-  .hw-card-img {
-    height: 240px;
-    display: flex; align-items: center; justify-content: center;
-    padding: 2rem;
-  }
-  .hw-card-img img { height: 100%; width: 100%; object-fit: contain; }
-
-  .hw-card-body {
-    padding: 1.75rem;
-    border-top: 1px solid var(--border);
-    flex: 1; display: flex; flex-direction: column; gap: 0.75rem;
-  }
-  .hw-card-nick {
-    font-family: 'Playfair Display', serif;
-    font-size: 13px; font-style: italic; color: var(--ink-light);
-  }
-  .hw-card-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem; font-weight: 700; color: var(--ink);
-  }
-  .hw-card-model {
-    font-family: 'DM Mono', monospace; font-size: 11px;
-    color: var(--ink-light); font-style: normal; margin-left: 6px;
-  }
-  .hw-card-desc {
-    font-size: 13px; color: var(--ink-mid); line-height: 1.65;
-  }
-  .hw-card-uses {
-    display: flex; flex-direction: column; gap: 5px;
-    margin-top: 0.25rem;
-  }
-  .hw-use {
-    font-size: 12px; color: var(--ink-mid);
-    background: var(--cream-dark); border-radius: var(--radius);
-    padding: 5px 10px;
-  }
-  .hw-card-sessions {
-    margin-top: auto; padding-top: 1rem;
-    border-top: 1px solid var(--border);
-    font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-light);
-  }
-  .hw-card-sessions span {
-    display: inline-block; background: var(--blue-light); color: var(--blue);
-    border-radius: 3px; padding: 2px 7px; margin-left: 4px;
-    font-size: 11px;
-  }
 
   /* ─── RSVP STRIP ─── */
   .rsvp-strip {
@@ -646,12 +540,14 @@
     .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
     .nav-links { display: none; }
     .workshop-grid { grid-template-columns: 1fr; }
-    .hardware-cards { grid-template-columns: 1fr; }
-    .hw-card { border-right: none; border-bottom: 1px solid var(--border); }
-    .hw-card:last-child { border-bottom: none; }
     .hero-card-strip { grid-template-columns: 1fr; }
     .hero-map-col { border-left: none; border-top: 1px solid var(--border); min-height: 280px; }
     .vibe-bar { grid-template-columns: 1fr; gap: 2rem; }
+
+    .about-series-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .venue-cards { grid-template-columns: 1fr; }
+    .gear-strip-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
   }
 
   /* ─── WORKSHOP TOOLBAR ─── */
@@ -962,6 +858,157 @@
   .tbl-signup-label.checked .cb-txt-off { display:none; }
   .tbl-signup-label.checked .cb-txt-on  { display:inline; }
 
+
+  /* ─── GEAR SPONSOR STRIP ─── */
+  .gear-strip {
+    background: var(--warm-50, #faf8f5);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem clamp(1.5rem,5vw,4rem);
+  }
+  .gear-strip-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+  }
+  .gear-strip-text {
+    display: flex; align-items: center; gap: .75rem; flex-shrink: 0;
+  }
+  .gear-label {
+    font-family: "DM Mono", monospace; font-size: 10px; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-light);
+  }
+  .gear-glinet-link img { height: 28px; vertical-align: middle; }
+  .gear-strip-copy {
+    flex: 1; font-size: 13px; color: var(--ink-mid); line-height: 1.6;
+    min-width: 200px;
+  }
+  .gear-devices {
+    display: flex; gap: .75rem; flex-wrap: wrap;
+  }
+  .gear-device-pill {
+    display: flex; align-items: center; gap: 6px;
+    background: #fff; border: 1px solid var(--border); border-radius: 20px;
+    padding: 4px 12px 4px 6px; font-size: 12px; color: var(--ink-mid);
+    font-family: "DM Mono", monospace;
+  }
+  .gear-device-pill img { height: 22px; width: 30px; object-fit: contain; }
+
+  /* ─── ABOUT THE SERIES ─── */
+  .about-series {
+    padding: 5rem clamp(1.5rem,5vw,4rem);
+    border-bottom: 1px solid var(--border);
+  }
+  .about-series-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  }
+  .about-label {
+    font-family: "DM Mono", monospace; font-size: 10px; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-light);
+    margin: 0 0 1rem;
+  }
+  .about-text h2 {
+    font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 700;
+    color: var(--ink); margin: 0 0 1.5rem; line-height: 1.25;
+  }
+  .about-text p {
+    font-size: 15px; color: var(--ink-mid); line-height: 1.8; margin: 0 0 1rem;
+  }
+  .about-venue-card {
+    background: var(--warm-50, #faf8f5);
+    border: 1px solid var(--border); border-radius: 12px; padding: 2rem;
+  }
+  .about-venue-logo { height: 48px; object-fit: contain; display: block; margin-bottom: 1rem; }
+  .about-venue-card h3 { font-size: 16px; font-weight: 700; color: var(--ink); margin: 0 0 .25rem; }
+  .about-venue-tag {
+    font-size: 12px; color: var(--ink-light); font-style: italic;
+    margin: 0 0 1rem; display: block;
+  }
+  .about-venue-copy { font-size: 13px; color: var(--ink-mid); line-height: 1.75; margin: 0 0 1.25rem; }
+  .about-venue-meta {
+    display: flex; flex-direction: column; gap: .35rem;
+    font-size: 12px; color: var(--ink-mid); margin-bottom: 1.25rem;
+  }
+  .about-venue-link {
+    font-family: "DM Mono", monospace; font-size: 11px; font-weight: 600;
+    color: var(--ink); text-decoration: none; letter-spacing: .05em;
+  }
+  .about-venue-link:hover { opacity: .6; }
+
+  /* ─── VENUE PARTNERS ─── */
+  .venue-partners {
+    padding: 5rem clamp(1.5rem,5vw,4rem);
+    background: var(--warm-50, #faf8f5);
+    border-bottom: 1px solid var(--border);
+  }
+  .venue-partners-inner { max-width: 1200px; margin: 0 auto; }
+  .venue-partners-header { margin-bottom: 2.5rem; }
+  .venue-partners-header h2 {
+    font-size: clamp(1.4rem,2.5vw,2rem); font-weight: 700;
+    color: var(--ink); margin: 0 0 .75rem; line-height: 1.25;
+  }
+  .venue-partners-sub { font-size: 15px; color: var(--ink-mid); max-width: 640px; margin: 0; }
+  .venue-cards {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+  }
+  .venue-card {
+    border-radius: 12px; padding: 2rem; border: 1px solid var(--border);
+    position: relative;
+  }
+  .venue-card-active { background: #fff; }
+  .venue-card-future {
+    background: transparent;
+    border-style: dashed; border-color: var(--border);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .venue-card-badge {
+    font-family: "DM Mono", monospace; font-size: 9px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--green); background: #edfaf3;
+    border-radius: 20px; padding: 3px 10px; display: inline-block; margin-bottom: 1rem;
+  }
+  .venue-card-future .venue-card-badge {
+    color: var(--ink-light); background: var(--border);
+  }
+  .venue-card-logo { height: 36px; object-fit: contain; display: block; margin-bottom: .75rem; }
+  .venue-card h4 { font-size: 15px; font-weight: 700; color: var(--ink); margin: 0 0 .35rem; }
+  .venue-card p { font-size: 13px; color: var(--ink-mid); margin: 0 0 .35rem; line-height: 1.5; }
+  .venue-card-sessions {
+    font-family: "DM Mono", monospace; font-size: 10px; font-weight: 600;
+    letter-spacing: .06em; color: var(--blue); margin-top: .75rem; display: block;
+  }
+  .venue-card-placeholder { text-align: center; }
+  .venue-card-placeholder span {
+    font-size: 18px; font-weight: 700; color: var(--ink-light);
+    display: block; margin-bottom: .75rem;
+  }
+  .venue-card-placeholder p { font-size: 13px; color: var(--ink-light); line-height: 1.6; margin-bottom: 1.25rem; }
+  .venue-card-cta {
+    font-family: "DM Mono", monospace; font-size: 11px; font-weight: 600;
+    letter-spacing: .06em; color: var(--ink); text-decoration: none;
+  }
+  .venue-card-cta:hover { opacity: .6; }
+
+  /* ─── CARD: updated for no-image layout ─── */
+  .wcard-level-bar { height: 4px; border-radius: 4px 4px 0 0; }
+  .wcard-level-bar.beg { background: var(--green); }
+  .wcard-level-bar.int { background: var(--blue); }
+  .wcard-level-bar.adv { background: var(--amber); }
+  .wcard-level-bar.pro { background: var(--rose); }
+  .wcard-device-tag {
+    font-family: "DM Mono", monospace; font-size: 10px; color: var(--ink-light);
+    letter-spacing: .04em; margin-bottom: .5rem;
+  }
+
+  /* ─── FOOTER SPONSOR ─── */
+  .footer-sponsor {
+    font-family: "DM Mono", monospace; font-size: 10px; font-weight: 500;
+    letter-spacing: .07em; color: rgba(255,255,255,.35);
+    margin-top: .35rem;
+  }
+  .footer-sponsor a { color: rgba(255,255,255,.5); text-decoration: none; }
+  .footer-sponsor a:hover { color: #fff; }
+
 </style>
 </head>
 <body>
@@ -1010,14 +1057,14 @@ document.addEventListener('DOMContentLoaded', function() {
 const WORKSHOPS = [
   { num:1,  title:"WiFi Safety 101: Your Coffee Shop Survival Kit",       level:"Beginner",     levelKey:0, date:"FRI · MAY 1",  dateSort:1,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", dur:"~15 min", durSort:15,  prize:"Coffee voucher + stickers",       desc:"Live packet-sniffing demo. We'll show what's visible on open WiFi, then plug in a travel router and make it disappear in under 5 minutes." },
   { num:2,  title:"One-Tap VPN — No Tech Knowledge Required",        level:"Beginner",     levelKey:0, date:"FRI · MAY 8",  dateSort:2,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EDF4F0", dur:"~15 min", durSort:15,  prize:"1-month VPN subscription",        desc:"Download the GL.iNet app, connect to a VPN with one toggle, and watch your IP address change live. Every device you own, protected instantly." },
-  { num:3,  title:"Never Drop a Zoom Call Again — Multi-WAN Failover",level:"Intermediate",levelKey:1, date:"FRI · MAY 15", dateSort:3,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", dur:"~20 min", durSort:20,  prize:"GL.iNet Beryl AX unit",           desc:"Bond the cafe WiFi with your phone hotspot. Kill the connection mid-demo and watch it switch automatically without missing a beat." },
+  { num:3,  title:"Never Drop a Zoom Call Again — Multi-WAN Failover",level:"Intermediate",levelKey:1, date:"FRI · MAY 15", dateSort:3,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", dur:"~20 min", durSort:20,  prize:"Beryl AX travel router",           desc:"Bond the cafe WiFi with your phone hotspot. Kill the connection mid-demo and watch it switch automatically without missing a beat." },
   { num:4,  title:"Block Every Ad & Tracker — AdGuard Home Setup",   level:"Intermediate",levelKey:1, date:"FRI · MAY 22", dateSort:4,  device:"Beryl AX · GL-MT3000",  deviceImg:"images/products/router-beryl.webp", imgBg:"#EEF3FB", dur:"~15 min", durSort:15,  prize:"Branded travel pouch + router",    desc:"Enable AdGuard Home from the GL.iNet admin panel. Add three blocklists. Open a news site. Watch ads vanish across every connected device." },
-  { num:5,  title:"Access Your Home Office from Any Cafe",                level:"Intermediate",levelKey:1, date:"FRI · MAY 29", dateSort:5,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", dur:"~20 min", durSort:20,  prize:"GL.iNet Slate AX unit",           desc:"Configure a site-to-site WireGuard tunnel using GoodCloud. Browse a home NAS from this table. No exposed ports, no static IP, no headaches." },
-  { num:6,  title:"Pi-hole on GL.iNet — Full DNS Sinkhole",          level:"Advanced",    levelKey:2, date:"FRI · JUN 6",  dateSort:6,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"GL.iNet Flint 2 (AX6000)",        desc:"SSH in. Install Docker. Pull Pi-hole. Watch the dashboard light up with blocked queries from every device at this table." },
+  { num:5,  title:"Access Your Home Office from Any Cafe",                level:"Intermediate",levelKey:1, date:"FRI · MAY 29", dateSort:5,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#EEF3FB", dur:"~20 min", durSort:20,  prize:"Slate AX travel router",           desc:"Configure a site-to-site WireGuard tunnel using GoodCloud. Browse a home NAS from this table. No exposed ports, no static IP, no headaches." },
+  { num:6,  title:"Pi-hole on GL.iNet — Full DNS Sinkhole",          level:"Advanced",    levelKey:2, date:"FRI · JUN 6",  dateSort:6,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"Flint 2 router (AX6000)",        desc:"SSH in. Install Docker. Pull Pi-hole. Watch the dashboard light up with blocked queries from every device at this table." },
   { num:7,  title:"Isolate Your Clients — VLAN & Guest Network Hardening",level:"Advanced",levelKey:2,date:"FRI · JUN 13",dateSort:7,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"Beryl AX + 3-month VPN",          desc:"Create a proper VLAN for guest devices. Block them from your LAN. Throttle their bandwidth. Prove it with a live ping test." },
   { num:8,  title:"Kill Switch & DNS Leak — Ironclad VPN Setup",     level:"Advanced",    levelKey:2, date:"FRI · JUN 20", dateSort:8,  device:"Slate AX · GL-AXT1800", deviceImg:"images/products/router-slate.webp", imgBg:"#FBF5EE", dur:"~20 min", durSort:20,  prize:"Slate AX + privacy kit",          desc:"Enable the kill switch. Run a DNS leak test. Configure DNS-over-HTTPS. Drop the VPN. Prove nothing leaked." },
-  { num:9,  title:"Build a Secure Remote Team Hub at a Co-working Cafe",  level:"Pro",         levelKey:3, date:"FRI · JUN 27", dateSort:9,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", dur:"~25 min", durSort:25,  prize:"GL.iNet Flint 2 for the team",    desc:"One router. Five colleagues. Separate VLANs per role. Pi-hole + AdGuard chained DNS. Individual WireGuard peers. Enterprise-grade, from a bag." },
-  { num:10, title:"OpenWRT Deep Dive — Custom Firmware for Power Users",level:"Pro",       levelKey:3, date:"FRI · JUL 11", dateSort:10, device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", dur:"~30 min", durSort:30,  prize:"Flint 2 + developer swag kit",    desc:"Go past the admin panel. Write your own nftables ruleset. Stand up Prometheus + Grafana in Docker. Watch live network traffic visualised." },
+  { num:9,  title:"Build a Secure Remote Team Hub at a Co-working Cafe",  level:"Pro",         levelKey:3, date:"FRI · JUN 27", dateSort:9,  device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", dur:"~25 min", durSort:25,  prize:"Flint 2 router for the team",    desc:"One router. Five colleagues. Separate VLANs per role. Pi-hole + AdGuard chained DNS. Individual WireGuard peers. Enterprise-grade, from a bag." },
+  { num:10, title:"OpenWRT Deep Dive — Custom Firmware for Power Users",level:"Pro",       levelKey:3, date:"FRI · JUL 11", dateSort:10, device:"Flint 2 · GL-MT6000",   deviceImg:"images/products/router-flint.webp", imgBg:"#FAF0F4", dur:"~30 min", durSort:30,  prize:"Flint 2 + dev swag kit",    desc:"Go past the admin panel. Write your own nftables ruleset. Stand up Prometheus + Grafana in Docker. Watch live network traffic visualised." },
 ];
 
 const LEVEL_CLASS = { Beginner:"beg", Intermediate:"int", Advanced:"adv", Pro:"pro" };
@@ -1136,10 +1183,7 @@ function renderWorkshops() {
         const brand = w.device.split('·')[0].trim();
         return '<article class="wcard">'
           + '<div class="wcard-top-bar ' + lc + '"></div>'
-          + '<div class="wcard-img" style="background:' + w.imgBg + '">'
-          + '<img src="' + w.deviceImg + '" alt="' + w.device + '">'
-          + '<div class="wcard-img-overlay">' + model + '</div>'
-          + '</div>'
+          + '<div class="wcard-level-bar ' + lc + '"></div>'
           + '<div class="wcard-body">'
           + '<div class="wcard-meta">'
           + '<span class="wcard-date">' + w.date + ' · 11 AM</span>'
@@ -1148,10 +1192,7 @@ function renderWorkshops() {
           + '<div class="wcard-num">Session ' + String(w.num).padStart(2,'0') + '</div>'
           + '<h3>' + w.title + '</h3>'
           + '<p class="wcard-sub">' + w.desc + '</p>'
-          + '<div class="wcard-product">'
-          + '<span class="product-icon">📡</span>'
-          + '<div><strong>' + brand + '</strong><br>' + w.device + '</div>'
-          + '</div>'
+          + '<div class="wcard-device-tag">🔧 ' + w.device + '</div>'
           + '<div class="wcard-footer">'
           + '<span class="wcard-time">' + w.dur + '</span>'
           + '<span class="wcard-prize">' + w.prize + '</span>'
@@ -1192,15 +1233,15 @@ function renderWorkshops() {
   }
 }
 
-renderWorkshops();
+document.addEventListener('DOMContentLoaded', function() { renderWorkshops(); });
 </script>
 
 
 <!-- ─── NAV ─── -->
 <nav>
   <div class="nav-logos">
-    <!-- Hotspot & Learn RVA logo -->
-    <a href="/" class="hl-logo" aria-label="Hotspot & Learn RVA">
+    <!-- Safe at the Table RVA logo -->
+    <a href="/" class="hl-logo" aria-label="Safe at the Table RVA">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <!-- WiFi arcs -->
         <path d="M16 22 C16 22 16 22 16 22" stroke="#0047CC" stroke-width="2.5" stroke-linecap="round"/>
@@ -1212,7 +1253,7 @@ renderWorkshops();
         <path d="M13 25 Q13 27.5 16 27.5 Q19 27.5 19 25" stroke="#B05A00" stroke-width="1.5" stroke-linecap="round" fill="none"/>
       </svg>
       <div class="hl-logo-text">
-        <span class="hl-name">Hotspot &amp; Learn</span>
+        <span class="hl-name">Safe at the Table</span>
         <span class="hl-rva">RVA</span>
       </div>
     </a>
@@ -1228,7 +1269,7 @@ renderWorkshops();
     <a href="#hardware">Hardware</a>
     <a href="#rsvp">RSVP</a>
     <a href="https://www.afterglowcoffee.com" target="_blank">Afterglow</a>
-    <a href="https://www.gl-inet.com" target="_blank">GL.iNet</a>
+    
   </div>
   <a href="#rsvp" class="nav-cta">Reserve a seat →</a>
 </nav>
@@ -1313,12 +1354,8 @@ renderWorkshops();
         <div class="hour-row"><span class="hour-day">Thursday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
         <div class="hour-row"><span class="hour-day">Friday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
         <div class="hour-row">
-          <span class="hour-day" style="font-weight:500;color:var(--ink)">Friday</span>
-          <span class="hour-time workshop"><span class="workshop-dot"></span>8:00 AM – 6:00 PM
-        </div>
-        <div class="hour-row">
-          <span class="hour-day" style="font-weight:500;color:var(--ink)">Friday (Workshop)</span>
-          <span class="hour-time workshop"><span class="workshop-dot"></span>11:00 AM – 12:00 PM · Free session</span>
+          <span class="hour-day" style="font-weight:500;color:var(--ink)">Friday · Workshop</span>
+          <span class="hour-time workshop"><span class="workshop-dot"></span>11:00 AM – 12:00 PM · Free</span>
         </div>
         <div class="hour-row"><span class="hour-day">Sunday</span><span class="hour-time">8:00 AM – 6:00 PM</span></div>
       </div>
@@ -1365,73 +1402,96 @@ renderWorkshops();
   </div>
 </div>
 
-<!-- ─── HARDWARE INTRO ─── -->
-<section class="hardware-intro">
-  <div class="hardware-intro-inner">
-    <p class="hardware-intro-label">The gear</p>
-    <h2>Three routers. Ten sessions. One bag.</h2>
-    <p class="hardware-intro-sub">Every workshop uses one of these. Matched to skill level. All pocket-sized. All OpenWRT. All VPN-ready before you even unbox them.</p>
-  </div>
-  <div class="hardware-cards">
 
-    <div class="hw-card">
-      <div class="hw-card-img" style="background:#EDF4F0;">
-        <img src="images/products/router-beryl.webp" alt="GL.iNet Beryl AX">
-      </div>
-      <div class="hw-card-body">
-        <div class="hw-card-nick">"The Pocket Shield"</div>
-        <div class="hw-card-name">Beryl AX <span class="hw-card-model">GL-MT3000</span></div>
-        <p class="hw-card-desc">The one you'll actually carry every day. Pocket-sized, Wi-Fi 6, WireGuard at 300 Mbps. Plugs into any hotel or café and wraps every device in an encrypted tunnel — in under 60 seconds.</p>
-        <div class="hw-card-uses">
-          <div class="hw-use">📡 One-tap VPN for all your devices</div>
-          <div class="hw-use">🛡️ Ad + tracker blocking via AdGuard Home</div>
-          <div class="hw-use">☕ Open WiFi survival kit</div>
+<!-- ─── ABOUT THE SERIES ─── -->
+<section class="about-series">
+  <div class="about-series-inner">
+    <div class="about-text">
+      <p class="about-label">About the series</p>
+      <h2>Skills that pay dividends — taught where you already work.</h2>
+      <p>Safe at the Table is a free workshop series built for the everyday remote worker, freelancer, and small team. No IT background required. We meet on Fridays over coffee and spend an hour learning one skill that makes your digital life meaningfully safer.</p>
+      <p>Most of us never think about network security until something goes wrong — a card number stolen, an account taken over, a client email intercepted. These are not rare events. They happen on open WiFi, at tables like this one, to people who just wanted a good place to work.</p>
+      <p>We bring industry-grade tools and techniques out of the server room and onto the café table. Each session is hands-on, focused, and done before your lunch arrives.</p>
+    </div>
+    <div class="about-venue">
+      <p class="about-label">Our founding venue partner</p>
+      <div class="about-venue-card">
+        <img src="images/logo/afterglow.png" alt="Afterglow Coffee Cooperative" class="about-venue-logo">
+        <h3>Afterglow Coffee Cooperative</h3>
+        <p class="about-venue-tag">Richmond, Virginia&rsquo;s first worker-owned coffee roaster and café</p>
+        <p class="about-venue-copy">Afterglow opened their doors not just for coffee, but for community. Their Scott&rsquo;s Addition space is where creative professionals, remote workers, and neighbors already gather — making it the natural first home for Safe at the Table. They are our founding venue partner and the model for every space that joins the series.</p>
+        <div class="about-venue-meta">
+          <span>📍 1719 Summit Ave, Scott&rsquo;s Addition</span>
+          <span>📅 Sessions every Friday 11 AM – 12 PM</span>
         </div>
-        <div class="hw-card-sessions">Sessions: <span>01</span><span>02</span><span>04</span></div>
+        <a href="https://www.afterglowcoffee.com" target="_blank" class="about-venue-link">afterglowcoffee.com →</a>
       </div>
     </div>
-
-    <div class="hw-card">
-      <div class="hw-card-img" style="background:#EEF3FB;">
-        <img src="images/products/router-slate.webp" alt="GL.iNet Slate AX">
-      </div>
-      <div class="hw-card-body">
-        <div class="hw-card-nick">"The Road Warrior"</div>
-        <div class="hw-card-name">Slate AX <span class="hw-card-model">GL-AXT1800</span></div>
-        <p class="hw-card-desc">Built for the remote professional who can't afford a dropped call. Bond the café WiFi with your phone hotspot. If one dies, the other takes over automatically — mid-Zoom, no hiccup.</p>
-        <div class="hw-card-uses">
-          <div class="hw-use">🔄 Multi-WAN failover + load balancing</div>
-          <div class="hw-use">🏠 Site-to-site tunnel to your home office</div>
-          <div class="hw-use">🔒 Kill switch + DNS leak protection</div>
-        </div>
-        <div class="hw-card-sessions">Sessions: <span>03</span><span>05</span><span>08</span></div>
-      </div>
-    </div>
-
-    <div class="hw-card">
-      <div class="hw-card-img" style="background:#FBF5EE;">
-        <img src="images/products/router-flint.webp" alt="GL.iNet Flint 2">
-      </div>
-      <div class="hw-card-body">
-        <div class="hw-card-nick">"The Lab in a Box"</div>
-        <div class="hw-card-name">Flint 2 <span class="hw-card-model">GL-MT6000</span></div>
-        <p class="hw-card-desc">When you're done playing it safe and want to run your own infrastructure from a bag. Docker, Pi-hole, Prometheus, nftables — this is the router that IT teams wish they'd started with.</p>
-        <div class="hw-card-uses">
-          <div class="hw-use">🐳 Docker · Pi-hole · Grafana</div>
-          <div class="hw-use">🌐 VLAN isolation + guest hardening</div>
-          <div class="hw-use">⚙️ Full OpenWRT · custom firmware</div>
-        </div>
-        <div class="hw-card-sessions">Sessions: <span>06</span><span>07</span><span>09</span><span>10</span></div>
-      </div>
-    </div>
-
   </div>
 </section>
+
+<!-- ─── VENUE PARTNERS ─── -->
+<section class="venue-partners">
+  <div class="venue-partners-inner">
+    <div class="venue-partners-header">
+      <p class="about-label">Venue partners</p>
+      <h2>Where we meet — and where we&rsquo;re headed.</h2>
+      <p class="venue-partners-sub">Safe at the Table grows by partnering with independent cafés and co-working spaces that share our belief: the best learning happens in the places people already love.</p>
+    </div>
+    <div class="venue-cards">
+      <div class="venue-card venue-card-active">
+        <div class="venue-card-badge">Founding partner · Active</div>
+        <img src="images/logo/afterglow.png" alt="Afterglow Coffee Cooperative" class="venue-card-logo">
+        <h4>Afterglow Coffee Cooperative</h4>
+        <p>1719 Summit Ave · Scott&rsquo;s Addition · Richmond, VA</p>
+        <p class="venue-card-sessions">Sessions 01 – 10 · Fridays 11 AM</p>
+      </div>
+      <div class="venue-card venue-card-future">
+        <div class="venue-card-badge">Coming soon</div>
+        <div class="venue-card-placeholder">
+          <span>Your café here</span>
+          <p>Bring Safe at the Table to your space. We handle the curriculum, the gear, and the facilitation. You provide the table and the coffee.</p>
+          <a href="#rsvp" class="venue-card-cta">Get in touch →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GEAR SPONSOR STRIP ─── -->
+<div class="gear-strip">
+  <div class="gear-strip-inner">
+    <div class="gear-strip-text">
+      <span class="gear-label">Hardware provided by</span>
+      <a href="https://www.gl-inet.com" target="_blank" class="gear-glinet-link">
+        <img src="images/logo/glinet-logo.png" alt="GL.iNet" onerror="this.style.display='none';this.nextSibling.style.display='inline'">
+        <span style="display:none;font-family:DM Mono,monospace;font-size:13px;font-weight:600;color:var(--ink)">GL.iNet</span>
+      </a>
+    </div>
+    <div class="gear-strip-copy">
+      GL.iNet sponsors every session with the travel routers we use. Finish a session — <strong>the device is yours to keep.</strong>
+    </div>
+    <div class="gear-devices">
+      <div class="gear-device-pill">
+        <img src="images/products/router-beryl.webp" alt="Beryl AX">
+        <span>Beryl AX</span>
+      </div>
+      <div class="gear-device-pill">
+        <img src="images/products/router-slate.webp" alt="Slate AX">
+        <span>Slate AX</span>
+      </div>
+      <div class="gear-device-pill">
+        <img src="images/products/router-flint.webp" alt="Flint 2">
+        <span>Flint 2</span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ─── WORKSHOPS GRID ─── -->
 <div class="section-header" id="workshops">
   <h2>The 10-session arc</h2>
-  <span class="section-note">Every Friday at 11 AM · Free to attend · Limited seats</span>
+  <span class="section-note">Every Friday 11 AM · Afterglow Coffee · Free to attend · Device included · Limited seats</span>
 </div>
 
 <!-- ─── WORKSHOP TOOLBAR ─── -->
@@ -1476,9 +1536,9 @@ renderWorkshops();
         <th class="sortable" onclick="sortCol('title')">Session <span class="sort-icon" id="si-title">↕</span></th>
         <th class="sortable" onclick="sortCol('level')">Level <span class="sort-icon" id="si-level">↕</span></th>
         <th class="sortable" onclick="sortCol('date')">Date <span class="sort-icon" id="si-date">↕</span></th>
-        <th class="sortable" onclick="sortCol('device')">Hardware <span class="sort-icon" id="si-device">↕</span></th>
+        <th class="sortable" onclick="sortCol('device')">Tool used <span class="sort-icon" id="si-device">↕</span></th>
         <th class="sortable" onclick="sortCol('dur')">Duration <span class="sort-icon" id="si-dur">↕</span></th>
-        <th>Prize</th>
+        <th>Take home</th>
         <th class="col-signup">Sign Up</th>
       </tr></thead>
       <tbody id="ws-tbody"></tbody>
@@ -1509,7 +1569,7 @@ renderWorkshops();
     <h3>Richmond, Virginia's first worker-owned coffee roaster and café.</h3>
     <p>Afterglow Coffee Cooperative is collectively owned and operated by the people who work there — rooted in Scott's Addition and committed to building something worth being part of. It's the kind of place where a workshop about digital autonomy just makes sense.</p>
     <p style="margin-top:.75rem">Every Friday at 11 AM, Afterglow opens its doors for this series. Free to attend. Great coffee. Leave with a skill.</p>
-    <a href="https://www.afterglowcoffee.com" target="_blank" class="vibe-bar-link">Visit afterglowcoffee.com →</a>
+    <a href="https://www.afterglowcoffee.com" target="_blank" class="vibe-bar-link">Visit Afterglow Coffee Cooperative →</a>
   </div>
 </div>
 
@@ -1548,8 +1608,8 @@ renderWorkshops();
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 · Connected at the Café · GL.iNet × Afterglow Coffee Cooperative</span>
-    <span>Exclusive workshop series · Richmond, Virginia</span>
+    <span>© 2026 · Safe at the Table · A Limicelia community program</span>
+    <span>Founding venue: Afterglow Coffee Cooperative · Richmond, VA</span><div class="footer-sponsor">Hardware sponsored by <a href="https://www.gl-inet.com" target="_blank">GL.iNet</a></div>
   </div>
 </footer>
 
