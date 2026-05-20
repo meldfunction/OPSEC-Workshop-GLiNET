@@ -1029,7 +1029,8 @@ function setFilter(level, btn) {
   _filter = level;
   document.querySelectorAll('.ws-filter').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  
+  renderWorkshops();
+}
 
 var signedUp = new Set();
 function toggleSignup(num, e) {
